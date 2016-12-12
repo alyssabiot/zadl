@@ -1,13 +1,8 @@
 class MessageMailer < ApplicationMailer
-
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.message_mailer.user_comment.subject
-  #
-  def user_comment
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
-  end
+ def user_comment(user, booking)
+   @greeting = "Hi"
+   @user = user
+   @event = booking.event
+   mail(to: event.user.email, subject: 'Quelqu\'un a ajouté un commentaire à votre événement', comment_user: user.first_name.capitalize, event_name: event.name)
+ end
 end

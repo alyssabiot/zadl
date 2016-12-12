@@ -73,8 +73,8 @@ user12.save
 event1 = Event.new(location:"16 villa gaudelet - 75011 Paris", price: 10)
 event1.name = "Raclette de fin de Batch"
 event1.description = "Venez nombreux pour clôturer le Batch #43 autour d'une raclette ! PS: si vous avez un appareil à raclette, apportez-le !"
-event1.starts_at = DateTime.new(2016,12,16,19,00,00)
-event1.ends_at = DateTime.new(2016,12,16,23,00,00)
+event1.starts_at = DateTime.new(2017,12,16,19,00,00)
+event1.ends_at = DateTime.new(2017,12,16,23,00,00)
 event1.user = user7
 event1.max_participants = 30
 event1.notif_subscription = true
@@ -234,8 +234,8 @@ booking15.save!
 event3 = Event.new(location:"16 villa gaudelet - 75011 Paris", price: 20)
 event3.name = "Hackathon au Wagon - Team Mamoun"
 event3.description = "Rejoignez mon équipe pour le Hackaton final du Batch #43 ! Pizzas et bières à volonté ;)"
-event3.starts_at = DateTime.new(2016,12,10,10,00,00)
-event3.ends_at = DateTime.new(2016,12,11,23,00,00)
+event3.starts_at = DateTime.new(2017,12,10,10,00,00)
+event3.ends_at = DateTime.new(2017,12,11,23,00,00)
 event3.user = user9
 event3.max_participants = 4
 event3.notif_subscription = true
