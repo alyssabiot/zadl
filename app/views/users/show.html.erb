@@ -14,14 +14,14 @@
     </div>
     <!-- Affichage des events non archivés -->
     <% unless @bookings_not_archived.empty? %>
-      <h3><%= t('users.show.not-archived')%></h3>
       <% @bookings_not_archived.each do |booking| %>
         <%= render "event-banner", event: booking.event %>
       <% end %>
     <% end %>
     <!-- Affichage des events archivés -->
     <% unless @bookings_archived.empty? %>
-      <h3><%= t('users.show.archived')%></h3>
+      <div class="archives_button"><i class="fi-plus"></i> <%= t('users.show.unhide_archives')%></div>
+      <div class="archives_button hidden"><i class="fi-minus"></i> <%= t('users.show.hide_archives')%></div>
       <% @bookings_archived.each do |booking| %>
         <%= render "event-banner", event: booking.event %>
       <% end %>

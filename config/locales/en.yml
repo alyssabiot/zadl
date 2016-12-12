@@ -148,8 +148,8 @@ en:
   users:
     show:
       create: "Create your event"
-      archived: "My events archived"
-      not-archived: "My events"
+      unhide_archives: "Show my archived events"
+      hide_archives: "Hide my archived events"
       edit: "Edit profile"
       event-banner:
         beginning: "Beginning :"
@@ -171,6 +171,14 @@ en:
         waiting-list-subscribe: "Be placed on the waiting-list"
         event-link-banner:
           copy: "Copy the link"
+        past_activity: "Past activity"
+        cancelled_activity: "Cancelled activity"
+        cancelled_by: "Activity cancelled_by %{organizer}"
+        duplicate: "Duplicate"
+        organized_by: "Organized by"
+        sure: "Are you sure you want to unsubscribe?"
+        unsubscribe_title: "Send a message to %{organizer}"
+        send: "Confirm and send your message"
 
   user_mailer:
     welcome:

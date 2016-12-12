@@ -148,8 +148,8 @@ fr:
   users:
     show:
       create: "Créer une activité"
-      archived: "Mes activités archivées"
-      not-archived: "Mes activités"
+      unhide_archives: "Afficher mes activités archivées"
+      hide_archives: "Masquer mes activités archivées"
       edit: "Modifier votre profil"
       event-banner:
         beginning: "Début :"
@@ -171,6 +171,14 @@ fr:
         waiting-list-subscribe: "Etre placé en liste d'attente"
         event-link-banner:
           copy: "Copier le lien"
+        past_activity: "Activité passée"
+        cancelled_activity: "Activité annulée"
+        cancelled_by: "Activité annulée par %{organizer}"
+        duplicate: "Dupliquer"
+        organized_by: "Organisé par"
+        sure: "Etes-vous sûr de vouloir vous désinscrire ?"
+        unsubscribe_title: "Envoyez un message d'explication à %{organizer}"
+        send: "Confirm and send your message"
 
   user_mailer:
     welcome:
