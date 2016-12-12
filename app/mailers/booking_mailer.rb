@@ -12,7 +12,7 @@ class BookingMailer < ApplicationMailer
     @booking = booking
     @event = booking.event
     @user = user
-    mail(to: @user.email, subject: t('booking_mailer.user_unsubscription.subject',unsubscribe_participant_name: user.first_name.capitalize, event_name: @event.name))
+    mail(to: event.user.email, subject: t('booking_mailer.user_unsubscription.subject',unsubscribe_participant_name: user.first_name.capitalize, event_name: event.name))
   end
 
   # def reimbursement_status(user,booking)

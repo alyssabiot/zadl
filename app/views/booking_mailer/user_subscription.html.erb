@@ -1,10 +1,8 @@
-<h1> <%= t('booking_mailer.user_subscription.hello', name: @event.user.first_name.capitalize) %> </h1>
+<p> <%= t('booking_mailer.user_subscription.hello', name: @event.user.first_name.capitalize) %> </p>
 
 <p> <%= t('booking_mailer.user_subscription.body', event_name: @event.name, participant_name: @user.first_name.capitalize) %> </p>
 <%= link_to event_url(id: @event.id) do %>
-  <button class = "btn btn-danger margin margin-sides">
-    <%= t('booking_mailer.user_subscription.event_access')%>
-  </button>
+ <button style="background-color: #DA4167 ; border: 2px solid #DA4167 ; border-radius: 5px; color: white; font-size: 16px;">
+   <%= t('booking_mailer.user_subscription.event_access')%>
+ </button>
 <% end %>
-
-
