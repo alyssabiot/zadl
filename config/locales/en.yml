@@ -1,0 +1,211 @@
+en:
+  activerecord:
+    models:
+      user: "User"
+      event: "Activity"
+    attributes:
+      user:
+        first_name: "First name"
+        last_name: "Name"
+        email: "Email"
+
+  controllers:
+    bookings:
+      subscription: "Your subscription is now validated!"
+      subscription_after_cancellation: "Your subcription is validated, your reimbursement request has been cancelled!"
+      reimbursement: "The reimbursement status has been updated! %{name} has been notified!"
+      unsubscription: "Your unsubscription has been validated and the message sent to %{name}!"
+    payments:
+      payment: "Payment for the activity %{activity}"
+      confirmation: "Your payment has been validated!"
+    events:
+      creation: "Your activity has been created! Copy the link to share it with your guests!"
+      creation-error: "Some mandatory fields have not been filled..."
+      update: "Your activity has been updated, copy the link to share it with your guests!"
+      cancellation: "Your activity has been cancelled, a notificaton has been sent to registered guests!"
+
+  footer:
+    about: "About us"
+
+  root:
+    organize: "Organize your "
+    clicks: " in 3 clics"
+    create_banner: "Create your activity"
+    activity: "Which activity?"
+    how: "How does it works?"
+    create: "1. Create"
+    personnalize: "Personnalize your activity in 3 clicks"
+    invite: "2. Invite"
+    diffuse: "Transfer your activity link via e-mail, Facebook..."
+    collect: "3. Collect"
+    validate: "Your guests validate their subscribtions with their credit cards"
+    participate: "4. Participate"
+    fun: "Enjoy your friends!"
+    parties: "parties"
+    soccer_games: "soccer games"
+    bachelor: "bachelor parties"
+    bachelorette: "bachelorette parties"
+    card_games: "card games"
+    examples: "ZA:DL makes your events alive !"
+    match: "SPORTS GAMES"
+    match_testimonial: "\"Finally a tool that allows a quick and clear organization!\""
+    evg: "BACHELOR/BACHELORETTE PARTIES"
+    evg_testimonial: "\"It is nice not to be required to advance money\""
+    jeux: "GAMES"
+    jeux_testimonial: "\"Thanks ZA:DL, your app makes our parties easier to manage !\""
+    vacances: "HOLIDAYS"
+    vacances_testimonial: "\"An optimized management of our expenses! And everyone pays exactly what he owes... NIIICE!\""
+    soiree: "PARTIES"
+    soiree_testimonial: "\"No more questions ... just enjoy! Let's do it again soon!\""
+    aventure: "ADVENTURES"
+    aventure_testimonial: "\"Magic this website ! THANKS A MILLION ZA:DL :D !\""
+
+  events:
+    new:
+      title:
+        create: "Create your event"
+        personalize: "Personalize your event"
+        price: "Do you want your guests to pay?"
+        notification: "Which notifications do you want to receive by email?"
+      name: "Name of your event"
+      description: "Description of your event"
+      starts_at: "Beginning of your event"
+      ends_at: "End of your event"
+      max_participants: "Maximum number of participants [optional]"
+      price: "Price per person (EUR)"
+      photo: "Pick a picture"
+      photo-button: "Pick a picture"
+      location: "Location of your event"
+      notif_subscription_html: "Each time a participant <strong>subscribes</strong>"
+      notif_cancellation_html: "Each time a participant <strong>cancels</strong>"
+      notif_message_html: "When a <strong>message</strong> is posted on your event's page"
+      submit: "Submit"
+      next: "Next"
+      return: "Return"
+      first_step: "First step!"
+      second_step: "Only two steps left!"
+      third_step: "Almost done!"
+      last_step: "Done!"
+    edit:
+      update: "Modify your activity"
+      name: "Name of your activity"
+      description: "Description"
+      starts_at: "Beginning"
+      ends_at: "End"
+      max_participants: "Maximum number of participants [optional]"
+      price: "Price per person (EUR)"
+      currency: "Currency"
+      photo: "Photo"
+      location: "Location"
+      notif_subscription_html: "Each time a participant <strong>subscribes</strong>"
+      notif_cancellation_html: "Each time a participant <strong>cancels</strong>"
+      notif_message_html: "When a <strong>message</strong> is posted on your event's page"
+      submit: "Submit"
+    show:
+      past_activity: "Past activity"
+      subscribe: "Subscribe"
+      subscribe_waiting_list: "Be put on the waiting list"
+      edit: "Update"
+      cancel: "Cancel"
+      unsubscribe: "Unsubscribe"
+      sure: "Are you sure you want to unsubscribe?"
+      message_title: "Send a message to %{user}"
+      send: "Confirm and send your message"
+      currently_waiting_list: "You are currently on the waiting list"
+      copy_link: "Copy link"
+      calendar: "Add to calendar"
+      organized_by: "Organized by %{name}"
+      beginning: "Beginning :"
+      end: "End :"
+      free: "Free"
+      participants: "Participants"
+      cancellations: "My cancellations (%{number})"
+      cancelled_by: "Cancelled by %{name}"
+      message: "Message"
+      status: "Status : "
+      reimbursed: "Reimbursed"
+      not_reimbursed: "Reimbursement refused"
+      pending: "Pending"
+      update: "Update"
+      modal_reimbursement_title: "Decide whether you want to reimburse %{name}"
+      accept_reimbursement: "Accept reimbursement"
+      refuse_reimbursement: "Refuse reimbursement"
+      confirm: "Confirm"
+      new-message: "Write your comment here"
+      submit: "Submit"
+      at: "at"
+      messages:
+        zero: "Be the first to leave a message about %{event}"
+        one: "1 comment"
+        other: "%{count} comments"
+      about: "%{time} ago"
+      duplicate: "Duplicate"
+      date_pick: "Pick a date for your activity"
+      duplicate_confirm: "Confirm the date and create your activity"
+      no_places_left: "No places left"
+      popover: "Click here to subscribe!"
+
+  users:
+    show:
+      create: "Create your event"
+      bookings: "My bookings"
+      events: "My events"
+      edit: "Edit profile"
+      event-banner:
+        beginning: "Beginning :"
+        end: "End :"
+        participants:
+          zero: "No participants so far"
+          one: "%{count} participant so far"
+          other: "%{count} participants so far"
+        places:
+          zero: "No places left"
+          one: "%{count} place left!"
+          other: "%{count} places left"
+        edit: "Edit your event"
+        delete: "Cancel your event"
+        organized: "Organized by"
+        unsubscribe: "Unsubscribe"
+        waiting-list-on: "You are currently on the waiting list"
+        participate: "Participate"
+        waiting-list-subscribe: "Be placed on the waiting-list"
+        event-link-banner:
+          copy: "Copy the link"
+
+  user_mailer:
+    welcome:
+      subject: "Welcome to ZA:DL !"
+      hello: "Hello %{name}"
+      body: "Your account has been successfully created, you can now created your first event!"
+
+  booking_mailer:
+    user_subscription:
+      subject: "%{participant_name} subscribed to your event %{event_name}!"
+      hello: "Hello %{name}"
+      event_access: "Access to event page"
+      body: "%{participant_name} subscribed to your %{event_name}, you can check it here"
+    user_unsubscription:
+      subject: "%{unsubscribe_participant_name} just unsubscribed from your event %{event_name}"
+      hello: Hello %{name},"
+      body: "%{unsubscribe_participant_name} just unsubscribed from your event %{event_name}"
+      message: "The participant sent the following message: '%{message}'"
+      end: "You can decide to reimburse %{unsubscribe_participant_name} (or not!)"
+
+  event_mailer:
+    event_edited_cancellation:
+      subject: "%{organizer_name} has cancelled the event %{event_name}"
+      hello: Hello %{participant_name},"
+      body: "%{organizer_name} has cancelled the event %{event_name}"
+      message: "You will be automatically reimbursed."
+      end: "See you soon for a new event!"
+      profile_access: "Go to my profile"
+
+  payments:
+    new:
+      title: "Please, make the payment to validate your registration"
+      activity_html: "<strong>Name of the activity:</strong> %{activity}"
+      organized_by_html: "<strong>Organized by:</strong> %{organizer}"
+      start_html: "<strong>Starting at:</strong> %{start}"
+      price: "Prix: %{price}"
+
+

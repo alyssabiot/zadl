@@ -1,0 +1,57 @@
+Searching 197 files for "min_participants"
+
+/Users/isabellebonnard/code/IsabelleBonnard/zadl/config/locales/fr.yml:
+   36        starts_at: "Début"
+   37        ends_at: "Fin"
+   38:       min_participants: "Nb min pers."
+   39        max_participants: "Nb max pers."
+   40        price: "Prix par personne"
+
+/Users/isabellebonnard/code/IsabelleBonnard/zadl/db/schema.rb:
+   36      t.text     "description"
+   37      t.integer  "user_id"
+   38:     t.integer  "min_participants"
+   39      t.integer  "max_participants"
+   40      t.string   "photo"
+
+/Users/isabellebonnard/code/IsabelleBonnard/zadl/db/migrate/20161128113608_create_events.rb:
+    7        t.string :ends_at
+    8        t.references :user, foreign_key: true
+    9:       t.integer :min_participants
+   10        t.integer :max_participants
+   11        t.float :price, default: 0
+
+/Users/isabellebonnard/code/IsabelleBonnard/zadl/db/migrate/20161206150609_remove_min_participants_to_events.rb:
+    1  class RemoveMinParticipantsToEvents < ActiveRecord::Migration[5.0]
+    2    def change
+    3:     remove_column :events, :min_participants
+    4    end
+    5  end
+
+4 matches across 4 files
+
+
+Searching 197 files for "min_participants"
+
+/Users/isabellebonnard/code/IsabelleBonnard/zadl/db/schema.rb:
+   36      t.text     "description"
+   37      t.integer  "user_id"
+   38:     t.integer  "min_participants"
+   39      t.integer  "max_participants"
+   40      t.string   "photo"
+
+/Users/isabellebonnard/code/IsabelleBonnard/zadl/db/migrate/20161128113608_create_events.rb:
+    7        t.string :ends_at
+    8        t.references :user, foreign_key: true
+    9:       t.integer :min_participants
+   10        t.integer :max_participants
+   11        t.float :price, default: 0
+
+/Users/isabellebonnard/code/IsabelleBonnard/zadl/db/migrate/20161206150609_remove_min_participants_to_events.rb:
+    1  class RemoveMinParticipantsToEvents < ActiveRecord::Migration[5.0]
+    2    def change
+    3:     remove_column :events, :min_participants
+    4    end
+    5  end
+
+3 matches across 3 files

@@ -1,0 +1,10 @@
+<% if @message.persisted? %>
+ var new_message = $('<%= j render "message", message: @message %>').hide();
+ $('#messages').prepend(new_message);
+ new_message.slideDown();
+ $('#message_content').val('');
+ $('#messages_count').html('<%= j render "events/messages_count", event: @event %>')
+ $('#no_messages').remove();
+<% else %>
+ $('#message_form_container').html('<%= j render 'messages/form', event: @event, message: @message %>')
+<% end %>

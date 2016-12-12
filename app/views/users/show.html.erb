@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="text-center">
+    <h2> <%= @user.first_name %> <%= @user.last_name %> </h2>
+    <div> <%= avatar(@user, class: "avatar-large") %> </div>
+  </div>
+
+  <!-- Cas où current user est sur sa propre page de profil -->
+  <% if @user == current_user %>
+    <div class="text-center">
+      <%= link_to new_user_event_path(@user) do %>
+        <button class = "btn btn-danger margin margin-sides"> <%= t('users.show.create')%></button>
+      <% end %>
+      <%= link_to t('users.show.edit'), edit_user_registration_path, class: "margin margin-sides" %>
+    </div>
+    <!-- Affichage des events ou le current user participe -->
+    <% unless @bookings_as_participant.empty? %>
+      <h3><%= t('users.show.bookings')%></h3>
+      <% @bookings_as_participant.each do |booking| %>
+        <%= render "event-banner", event: booking.event %>
+      <% end %>
+    <% end %>
+    <!-- Affichage des events organisés par le current user -->
+    <% unless @events_as_organizer.empty? %>
+      <h3><%= t('users.show.events')%></h3>
+      <% @user.events.each do |event| %>
+        <%= render "event-banner", event: event %>
+      <% end %>
+    <% end %>
+  <!-- Cas où current user est sur la page de profil d'un autre user -->
+  <% else %>
+    <% @user.events.each do |event| %>
+      <%= render "event-banner", event: event %>
+    <% end %>
+  <% end %>
+</div>

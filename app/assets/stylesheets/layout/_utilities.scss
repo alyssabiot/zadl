@@ -1,0 +1,80 @@
+/* -------------------------------------
+ * Utilities classes
+ * These are examples of utilities classes
+ * Feel free to change them and create your own
+ * ------------------------------------- */
+
+// Paddings
+.padded {
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+
+// Backgrounds
+.bg-black {
+  background: #4a4a4a;
+}
+.bg-grey {
+  background: #aeaeae;
+}
+.bg-blue {
+  background: #00a3e1;
+}
+.bg-dark-blue {
+  background: #3b5998;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.link-margin {
+  margin: 10px 0px;
+}
+
+.margin {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.margin-sides {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.flex-center-column {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.red-font {
+  color: $red;
+}
+
+// modal
+
+.modal-header {
+  background-color: $blue;
+  color: white;
+  text-align: left;
+}
+
+.modal-body {
+  color: $light-gray;
+  text-align: left;
+  font-size: 16px;
+  .text {
+    font-weight: lighter;
+  }
+}
+textarea {
+  resize: none;
+}
+
+//stripe
+
+.stripe-button-el span {
+  background-color: $red !important;
+}

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+     <div class="form-container">
+        <h2><%= t('events.edit.update') %></h2>
+        <%= simple_form_for @event do |f| %>
+            <%= f.input :name, label: t('events.edit.name') %>
+            <%= f.input :description, :input_html => { :cols => 5, :rows => 5 }, label: t('events.new.description')  %>
+            <%= f.input :max_participants, label: t('events.edit.max_participants') %>
+            <%= f.input :starts_at, label: t('events.edit.starts_at'), as: :string, input_html: { class: "datetimepicker", value: @event.starts_at.strftime("%d-%m-%Y - %H:%M") } %>
+            <%= f.input :ends_at, label: t('events.edit.ends_at'), as: :string, input_html: { class: "datetimepicker", value: @event.ends_at.strftime("%d-%m-%Y - %H:%M") } %>
+            <%= f.input :location, label: t('events.edit.location') %>
+            <%= f.input :photo, label: t('events.edit.photo') %>
+            <%= f.input :photo_cache, as: :hidden %>
+            <%= f.input :price, label: t('events.edit.price') %>
+            <%= f.input :notif_subscription, label: t('events.edit.notif_subscription_html') %>
+            <%= f.input :notif_cancellation, label: t('events.edit.notif_cancellation_html') %>
+            <%= f.input :notif_message, label: t('events.edit.notif_message_html') %>
+            <%= f.submit t('events.edit.submit'), class: "btn btn-danger" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

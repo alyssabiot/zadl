@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+     <div class="form-container">
+        <%= simple_form_for [ @user, @event ] do |f| %>
+          <div class="form-part">
+            <div class="form-part-title"><%= t('events.new.title.create') %></div>
+            <div class="container-2">
+              <div class="row">
+                <div class="col-xs-12 col-sm-6 column-form">
+                  <%= f.input :name, label: false, placeholder: t('events.new.name') %>
+                  <%= f.input :description, :input_html => { :cols => 5, :rows => 5 }, label: false, placeholder: t('events.new.description')  %>
+                </div>
+                <div class="col-xs-12 col-sm-6 column-form">
+                  <div class="carrier-wave-fake-button btn btn-danger">
+                    <i class="fi-archive"></i>
+                    <div> <%= t('events.new.photo-button')%></div>
+                  </div>
+                  <div class="carrier-wave-field">
+                    <%= f.input :photo, label: false, input_html: { class: "hidden carrier-wave-real-button" } %>
+                    <%= f.input :photo_cache, as: :hidden %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-status form-step1">
+            </div>
+            <div class="bubble text-center bubble1">
+              <p><%=  t('events.new.first_step')%></p>
+            </div>
+            <div class="form-buttons">
+              <button type="button" class="btn btn-danger btn-next"><%= t('events.new.next') %></button>
+            </div>
+          </div>
+
+          <div class="form-part hidden">
+            <div class="form-part-title"><%= t('events.new.title.personalize') %></div>
+            <div class="row">
+              <div class="col-xs-6">
+                <%= f.input :starts_at, label: false, placeholder: t('events.new.starts_at'), as: :string, input_html: { class: "datetimepicker" } %>
+              </div>
+              <div class="col-xs-6">
+                <%= f.input :ends_at, label: false, placeholder: t('events.new.ends_at'), as: :string, input_html: { class: "datetimepicker" } %>
+              </div>
+            </div>
+            <%= f.input :location, label: false, placeholder: t('events.new.location') %>
+            <%= f.input :max_participants, label: false, placeholder: t('events.new.max_participants'), input_html: { min: '0' } %>
+            <div class="form-status form-step2">
+            </div>
+            <div class="bubble text-center bubble2">
+              <p><%= t('events.new.second_step') %></p>
+            </div>
+            <div class="form-buttons">
+              <button type="button" class="btn btn-return"><%= t('events.new.return') %></button>
+              <button type="button" class="btn btn-danger btn-next"><%= t('events.new.next') %></button>
+            </div>
+          </div>
+
+          <div class="form-part hidden">
+            <div class="form-part-title"><%= t('events.new.title.price') %></div>
+            <%= f.input :price, label: t('events.new.price') %>
+            <div class="form-status form-step3">
+            </div>
+            <div class="bubble text-center bubble3">
+              <p><%= t('events.new.third_step') %></p>
+            </div>
+            <div class="form-buttons">
+              <button type="button" class="btn btn-return"><%= t('events.new.return') %></button>
+              <button type="button" class="btn btn-danger btn-next"><%= t('events.new.next') %></button>
+            </div>
+          </div>
+
+          <div class="form-part hidden">
+            <div class="form-part-title"><%= t('events.new.title.notification') %></div>
+            <%= f.input :notif_subscription, label: t('events.new.notif_subscription_html') %>
+            <%= f.input :notif_cancellation, label: t('events.new.notif_cancellation_html') %>
+            <%= f.input :notif_message, label: t('events.new.notif_message_html') %>
+            <div class="form-status form-step4">
+            </div>
+            <div class="last-bubble text-center">
+              <p><%=  t('events.new.last_step')%></p>
+            </div>
+            <div class="form-buttons">
+              <button type="button" class="btn btn-return"><%= t('events.new.return') %></button>
+              <%= f.submit t('events.new.submit'), class: "btn btn-danger" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- javascript for carrier-wave button -->
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function() {
+      $('.carrier-wave-fake-button').on('click', function() {
+        $('.carrier-wave-real-button').click();
+      })
+      $('#event_photo').change(function() {
+        var filename = $(this).val();
+        var lastIndex = filename.lastIndexOf("\\");
+        if (lastIndex >= 0) {
+          filename = filename.substring(lastIndex + 1);
+        }
+        $('.carrier-wave-fake-button div').html(filename + " <i class='fa fa-check'></i>");
+      });
+    });
+  </script>
+<% end %>

@@ -1,0 +1,6 @@
+<%= simple_form_for([event, message], remote: true)  do |f| %>
+  <%= f.input :content, id: "message_content", label: false, placeholder: t("events.show.new-message") %>
+  <div class="form-buttons send-msg">
+  <%= f.submit t("events.show.submit"), class: "btn btn-danger" %>
+  </div>
+<% end %>

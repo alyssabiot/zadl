@@ -1,0 +1,581 @@
+<% content_for :meta_title, "Inscrivez-vous à l'activité #{@event.name} créée par #{@event.user.first_name}" %>
+<% content_for :meta_description, "Don't Paddle, ZA:DL !" %>
+<% content_for :meta_image, @event.photo.url %>
+
+<div class="event-banner text-center flex-container center" style="background-image: linear-gradient(-915deg, rgba(124, 152, 179, 0.84) 0%, rgba(232, 179, 179, 0.82) 85%), url('<%= url_photo(@event) %>');">
+  <div class="title-event flex-item">
+    <h1><%= @event.name %></h1>
+  </div>
+  <div class="title-btn flex-item">
+    <% if Time.now() > @event.starts_at %>
+      <h3 class="passed-event"><strong><%= t('events.show.past_activity') %></strong></h3>
+      <% if current_user == @event.user %>
+        <div class="right-bottom">
+          <%= link_to '#', data: {toggle: "modal", target: "#ModalDupplicate"}, class: "margin margin-sides link_admin" do %>
+            <%=  t('events.show.duplicate')%>
+          <% end %>
+        </div>
+        <!-- Modal en cas de duplication -->
+        <div class="modal fade" id="ModalDupplicate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"> <%= t('events.show.date_pick') %> </h4>
+              </div>
+              <div class="modal-body">
+                <%= simple_form_for [current_user, @duplicated_event], method: :post do |f| %>
+                  <div class="col-xs-6">
+                    <%= f.input :starts_at, label: false, placeholder: t('events.new.starts_at'), as: :string, input_html: { class: "datetimepicker" } %>
+                  </div>
+                  <div class="col-xs-6">
+                    <%= f.input :ends_at, label: false, placeholder: t('events.new.ends_at'), as: :string, input_html: { class: "datetimepicker" } %>
+                  </div>
+                  <%= f.hidden_field :name, value: @event.name %>
+                  <%= f.hidden_field :description, value: @event.description %>
+                  <% if @event.max_participants %>
+                    <%= f.hidden_field :max_participants, value: @event.max_participants %>
+                  <% end %>
+                  <%= f.hidden_field :price, value: @event.price %>
+                  <% if @event.photo %>
+                    <%= f.hidden_field :photo, value: @event.photo %>
+                    <%= f.hidden_field :photo_cache, value: @event.photo_cache %>
+                  <% end %>
+                  <%= f.hidden_field :location, value: @event.location %>
+                  <%= f.hidden_field :notif_subscription, value: @event.notif_subscription %>
+                  <%= f.hidden_field :notif_cancellation, value: @event.notif_cancellation %>
+                  <%= f.hidden_field :notif_message, value: @event.notif_message %>
+                  <%= f.submit t('events.show.duplicate_confirm') , class: "btn btn-danger" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <!-- L'activitée n'est pas passée -->
+    <% else %>
+    <!-- Il n'y a pas de current user (user non loggé) -->
+    <% if !current_user %>
+      <!-- Le nombre de places est limité -->
+      <% if @event.max_participants %>
+        <!-- Il reste des places -->
+        <% if @event.max_participants - @event.validated_bookings_number > 0 %>
+          <%= simple_form_for [@event, @booking], method: :post do |f| %>
+              <%= f.hidden_field :on_waiting_list, value: false %>
+              <%= f.submit t('events.show.subscribe'), class: "btn btn-danger" %>
+          <% end %>
+        <!-- L'événement est complet -->
+        <% else %>
+          <p><%= t('events.show.no_places_left') %></p>
+          <%= simple_form_for [@event, @booking], method: :post do |f| %>
+              <%= f.hidden_field :on_waiting_list, value: true %>
+              <%= f.submit t('events.show.subscribe_waiting_list'), class: "btn btn-danger" %>
+          <% end %>
+        <% end %>
+      <!-- L'évenement a un nombre de places illimitées -->
+      <% else %>
+        <%= simple_form_for [@event, @booking], method: :patch do |f| %>
+            <%= f.hidden_field :on_waiting_list, value: false %>
+            <%= f.submit t('events.show.subscribe'), class: "btn btn-danger" %>
+        <% end %>
+      <% end %>
+    <!-- Le current user est l'organisateur -->
+    <% elsif current_user == @event.user %>
+      <div class="right-bottom">
+        <%=link_to t('events.show.edit'), edit_event_path(@event), class: "btn btn-danger" %>
+        <%= link_to t('events.show.cancel'), event_path(@event), method: :delete, class: "margin margin-sides link_admin" %>
+        <%= link_to '#', data: {toggle: "modal", target: "#ModalDupplicate"}, class: "margin margin-sides link_admin" do %>
+            <%=  t('events.show.duplicate')%>
+          <% end %>
+      </div>
+      <!-- Modal en cas de duplication -->
+      <div class="modal fade" id="ModalDupplicate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel"> <%= t('events.show.date_pick') %> </h4>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for [current_user, @duplicated_event], method: :post do |f| %>
+                <div class="col-xs-6">
+                  <%= f.input :starts_at, label: false, placeholder: t('events.new.starts_at'), as: :string, input_html: { class: "datetimepicker" } %>
+                </div>
+                <div class="col-xs-6">
+                  <%= f.input :ends_at, label: false, placeholder: t('events.new.ends_at'), as: :string, input_html: { class: "datetimepicker" } %>
+                </div>
+                <%= f.hidden_field :name, value: @event.name %>
+                <%= f.hidden_field :description, value: @event.description %>
+                <% if @event.max_participants %>
+                  <%= f.hidden_field :max_participants, value: @event.max_participants %>
+                <% end %>
+                <%= f.hidden_field :price, value: @event.price %>
+                <% if @event.photo %>
+                  <%= f.hidden_field :photo, value: @event.photo %>
+                  <%= f.hidden_field :photo_cache, value: @event.photo_cache %>
+                <% end %>
+                <%= f.hidden_field :location, value: @event.location %>
+                <%= f.hidden_field :notif_subscription, value: @event.notif_subscription %>
+                <%= f.hidden_field :notif_cancellation, value: @event.notif_cancellation %>
+                <%= f.hidden_field :notif_message, value: @event.notif_message %>
+                <%= f.submit t('events.show.duplicate_confirm') , class: "btn btn-danger" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- Le current user n'est pas l'organisateur -->
+    <% else %>
+      <!-- Le current user a un booking non annulé pour l'event -->
+      <% if has_a_booking_not_cancelled?(current_user, @event) %>
+        <!-- Le booking est validé -->
+        <% if @existing_booking.on_waiting_list == false %>
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalUnsubscribe">
+            <%= t('events.show.unsubscribe') %>
+          </button>
+          <!-- Modal en cas de désinscription -->
+          <div class="modal fade" id="ModalUnsubscribe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel"><%= t('events.show.sure') %> </h4>
+                </div>
+                <div class="modal-body">
+                  <%= simple_form_for @existing_booking, method: :delete do |f| %>
+                    <%= f.input :cancellation_message, label: t('events.show.message_title', user: @event.user.first_name)   %>
+                    <%= f.submit t('events.show.send'), class: "btn btn-danger" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- Le current user est en liste d'attente -->
+        <% else %>
+          <p><%= t('events.show.currently_waiting_list') %></p>
+          <% if @event.max_participants %>
+            <% if @event.max_participants - @event.validated_bookings_number > 0 %>
+              <%= simple_form_for @existing_booking, method: :patch do |f| %>
+                    <%= f.hidden_field :on_waiting_list, value: false %>
+                    <%= f.hidden_field :reimbursed, value: "pending" %>
+                    <%= f.submit t('events.show.subscribe'), class: "btn btn-danger" %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <!-- Le current user a un booking annulé pour l'event -->
+      <% elsif has_a_booking_cancelled?(current_user, @event) %>
+        <!-- L'événement a un nombre limité de places -->
+        <% if @event.max_participants %>
+          <!-- Il reste des places -->
+          <% if @event.max_participants - @event.validated_bookings_number > 0 %>
+            <%= simple_form_for @cancelled_booking, method: :patch do |f| %>
+                  <%= f.hidden_field :on_waiting_list, value: false %>
+                  <%= f.hidden_field :reimbursed, value: "pending" %>
+                  <%= f.hidden_field :state, value: "paid" %>
+                  <%= f.hidden_field :cancellation_message, value: "" %>
+                  <%= f.submit t('events.show.subscribe'), class: "btn btn-danger" %>
+            <% end %>
+          <!-- L'événement est complet -->
+          <% else %>
+            <p><%= t('events.show.no_places_left') %></p>
+            <%= simple_form_for @cancelled_booking, method: :patch do |f| %>
+              <%= f.hidden_field :on_waiting_list, value: true %>
+              <%= f.hidden_field :reimbursed, value: "pending" %>
+              <%= f.hidden_field :state, value: "paid" %>
+              <%= f.hidden_field :cancellation_message, value: "" %>
+              <%= f.submit t('events.show.subscribe_waiting_list'), class: "btn btn-danger" %>
+            <% end %>
+          <% end %>
+        <!-- L'évenement a un nombre de places illimitées -->
+        <% else %>
+          <%= simple_form_for @cancelled_booking, method: :patch do |f| %>
+                <%= f.hidden_field :on_waiting_list, value: false %>
+                <%= f.hidden_field :reimbursed, value: "pending" %>
+                <%= f.hidden_field :state, value: "paid" %>
+                <%= f.hidden_field :cancellation_message, value: "" %>
+                <%= f.submit t('events.show.subscribe'), class: "btn btn-danger" %>
+          <% end %>
+        <% end %>
+      <!-- Le current user n'a pas encore de booking pour l'event -->
+      <% else %>
+        <!-- L'événement a un nombre limité de places -->
+        <% if @event.max_participants %>
+          <!-- Il reste des places -->
+          <% if @event.max_participants - @event.validated_bookings_number > 0 %>
+            <%= simple_form_for [@event, @booking], method: :post do |f| %>
+                <%= f.hidden_field :on_waiting_list, value: false %>
+                <%= f.hidden_field :reimbursed, value: "pending" %>
+                <%= f.submit t('events.show.subscribe'), class: "btn btn-danger subscribe-link-action" %>
+            <% end %>
+          <!-- L'événement est complet -->
+          <% else %>
+            <p><%= t('events.show.no_places_left') %></p>
+            <%= simple_form_for [@event, @booking], method: :post do |f| %>
+                <%= f.hidden_field :on_waiting_list, value: true %>
+                <%= f.hidden_field :reimbursed, value: "pending" %>
+                <%= f.submit t('events.show.subscribe_waiting_list'), class: "btn btn-danger" %>
+            <% end %>
+          <% end %>
+        <!-- L'évenement a un nombre de places illimitées -->
+        <% else %>
+          <%= simple_form_for [@event, @booking], url: event_bookings_path(@event), method: :post do |f| %>
+              <%= f.hidden_field :on_waiting_list, value: false %>
+              <%= f.hidden_field :reimbursed, value: "pending" %>
+              <%= f.submit t('events.show.subscribe'), class: "btn btn-danger" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="share-link-container text-center">
+    <div class="row">
+      <div class="col-xs-12 col-lg-7">
+        <div class="event-url">
+          <p id="copy"><%= event_url(@event.id) %></p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-lg-2">
+        <div class="btn btn-danger url-copy-button" data-clipboard-target="#copy" id="btn-copy">
+          <i class="fi-link"></i> <%= t('events.show.copy_link') %>
+        </div>
+      </div>
+      <div class="col-xs-12 col-lg-3">
+        <div class= "btn add-calendar">
+          <%= link_to controller: 'events', action: :ics_export, format: :ics do %>
+            <i class="fi-download"></i> <%= t('events.show.calendar') %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row container-list">
+    <div class="col-xs-12 col-sm-3">
+      <!-- photo de l'admin -->
+      <%= link_to user_path(@event.user), class: "event-photo-container flex-center-column" do %>
+        <div><%= avatar(@event.user, class: "avatar-large") %></div>
+        <p><%= t('events.show.organized_by', name: @event.user.first_name) %></p>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-9">
+      <!-- Nom de l'event -->
+      <h3 class="border-bottom"> <strong> <%= @event.location %> </strong> </h3>
+      <!-- Content box -->
+      <div class="content-box">
+        <div class="content-box-item">
+          <div class= "margin margin-sides">
+            <div class="text-center margin color-red">
+              <i class="fi-calendar"></i>
+            </div>
+            <p><strong> <%= t('events.show.beginning') %></strong></p>
+            <p><%= @event.starts_at.strftime('%d/%m/%Y - %H:%M') %> </p>
+          </div>
+          <div class= "margin margin-sides">
+            <p><strong> <%= t('events.show.end')%> </strong></p>
+            <p> <%= @event.ends_at.strftime('%d/%m/%Y - %H:%M') %> </p>
+          </div>
+        </div>
+        <div class="content-box-item-participants">
+          <div class="text-center margin color-red">
+            <i class="fi-align-left"></i>
+          </div>
+          <p class="description-center"> <strong> <%= @event.description %> </strong> </p>
+        </div>
+        <div class="content-box-item text-center">
+          <div class="text-center margin color-red">
+            <i class="fi-dollar-bill"></i>
+          </div>
+          <div class="margin">
+            <% if @event.price == 0 %>
+              <h1><%= t('events.show.free') %></h1>
+            <% else %>
+              <h1><%= @event.price %> <i class="fi-euro"></i></h1>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row container-list">
+    <div class="col-xs-12 col-sm-3">
+      <!-- photo de l'admin -->
+      <div class="event-photo-container flex-center-column">
+          <i class="fi-torsos-all" style="font-size: 100px;"></i>
+          <% if @event.max_participants %>
+            <h3 class="color-red"><strong> <%= @participants_number %>/<%= @event.max_participants %></strong> </h3>
+          <% else %>
+            <h3 class="color-red"><strong> <%= @participants_number %></h3>
+          <% end %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-9">
+      <h3 class="border-bottom"> <strong> <%= t('events.show.participants') %> </strong> </h3>
+      <div class="flex-center participants_master_card">
+        <% @participants.each do |participant| %>
+          <div class="participant_card">
+            <% if participant %>
+              <%= link_to user_path(participant) do %>
+                <div><%= avatar(participant, class: "avatar-medium") %></div>
+                <div class="text-center"><%= participant.first_name %></div>
+              <% end %>
+            <% else  %>
+              <!-- il y a un current user -->
+              <% if current_user %>
+                <!-- Le current user n'a pas de booking pour l'event -->
+                <% if booking_find_by_user_and_event(current_user, @event) == "No booking" %>
+                  <div class = "subscribe-link" id="popover" data-placement="top" data-trigger="hover" data-content="<%= t('events.show.popover') %>">
+                    <div><%= avatar(participant, class: "avatar-medium") %></div>
+                    <div><p> <%= "..." %> </p></div>
+                  </div>
+                <!-- Le current user a un booking (même annulé - WIP) -->
+                <% else %>
+                  <div><%= avatar(participant, class: "avatar-medium") %></div>
+                  <div><p> <%= "..." %> </p></div>
+                <% end %>
+              <!-- il n'y a pas de current user -->
+              <% else %>
+                <div class = "subscribe-link" id="popover" data-trigger="hover" data-content=<%= t('events.show.popover') %>>
+                  <div><%= avatar(participant, class: "avatar-medium") %></div>
+                  <div><p> <%= "..." %> </p></div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container container-list">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6">
+      <div>
+        <h3 id="messages_count" class="border"><strong>
+         <%= render "events/messages_count", event: @event %>
+         </strong>
+        </h3>
+
+        <div id="message_form_container">
+          <%= render "messages/form", event: @event, message: @message %>
+        </div>
+
+        <div id="messages">
+         <% if @event.messages.present? %>
+           <% @event.messages.reverse_each do |message| %>
+             <%= render 'messages/message', message: message %>
+           <% end %>
+         <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6">
+      <div class="margin event-photo photo-forum" style="background-image: url('<%= url_photo(@event) %>'); width: 100%; height: 400px;">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% if current_user == @event.user && @bookings_cancelled.present? %>
+  <div class="container annulations">
+    <div class="row container-list">
+      <!-- Titre de la carte -->
+      <% if @bookings_cancelled.length > 0 %>
+        <h3 class="title-annulation"> <strong> <%= t('events.show.cancellations', number: @bookings_cancelled_number) %> </strong> </h3>
+      <% end %>
+      <!-- Début Boucle -->
+      <% @bookings_cancelled.each do |booking|%>
+      <h3 class="border-bottom"> <strong><% @participants_cancelled_number %> </strong> </h3>
+        <div class="row">
+          <div class="col-xs-12 col-sm-3">
+            <!-- Partie Gauche avatar -->
+            <%= link_to user_path(booking.user), class: "flex-center-column" do %>
+              <div><%= avatar(booking.user, class: "avatar-large") %>
+              </div>
+              <p> <%= t('events.show.cancelled_by', name: booking.user.first_name) %></p>
+            <% end %>
+          </div>
+          <!-- Partie Droite -->
+          <div class="col-xs-12 col-sm-5">
+            <div class="content-box">
+              <!-- Partie Droite colonne 1: Message -->
+                <div class= "margin">
+                  <div class="text-center margin color-red">
+                    <i class="fi-mail" style="font-size: 30px;"></i>
+                  </div>
+                  <p class="no-padding-on-p"><strong> <%= t('events.show.message') %></strong></p>
+                  <p><%= booking.cancellation_message %></p>
+                </div>
+            </div>
+          </div>
+          <!-- Partie Droite colonne 2: Statut -->
+          <div class="col-xs-12 col-sm-4">
+            <div class="flex-center-column right-annulation-column">
+              <p><%= t('events.show.status') %>
+              <% if booking.reimbursed == "reimbursed" %>
+                <strong><%= t('events.show.reimbursed') %></strong>
+              <% elsif booking.reimbursed == "reimbursement refused" %>
+                <strong><%= t('events.show.not_reimbursed')%></strong>
+              <% else %>
+                <strong><%= t('events.show.pending')%></strong>
+              <% end %>
+              </p>
+
+              <% if booking.reimbursed == "pending" %>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalReimbursement_<%=booking.id%>">
+                <%= t('events.show.update') %>
+                </button>
+              <% end %>
+              <!-- Modal choix du remboursement -->
+                <div class="modal fade" id="ModalReimbursement_<%=booking.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"> <%= t('events.show.modal_reimbursement_title', name: booking.user.first_name)%> </h4>
+                      </div>
+                      <div class="modal-body">
+                        <%= simple_form_for booking, method: :patch do |f| %>
+                          <%= f.hidden_field :on_waiting_list, value: false %>
+                          <%= f.input :reimbursed, label: false, collection: [t('events.show.accept_reimbursement'), t('events.show.refuse_reimbursement')] %>
+                          <%= f.submit t('events.show.confirm'), class: "btn btn-danger" %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div id="map" style="width: 100%; height: 300px;"></div>
+    </div>
+    <% content_for(:after_js) do %>
+      <%= javascript_tag do %>
+        $(document).ready(function() {
+          var handler = Gmaps.build('Google');
+          handler.buildMap({
+                provider: {
+                  scrollwheel: false,
+                  styles: [
+        {
+            "featureType": "administrative",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                    "color": "#444444"
+                }
+            ]
+        },
+        {
+            "featureType": "landscape",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "color": "#f2f2f2"
+                }
+            ]
+        },
+        {
+            "featureType": "poi",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "road",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "saturation": -100
+                },
+                {
+                    "lightness": 45
+                }
+            ]
+        },
+        {
+            "featureType": "road.highway",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "visibility": "simplified"
+                }
+            ]
+        },
+        {
+            "featureType": "road.arterial",
+            "elementType": "labels.icon",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "transit",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "water",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "color": "#74a8be"
+                },
+                {
+                    "visibility": "on"
+                }
+            ]
+        }
+    ]
+                },
+          internal: { id: 'map' } }, function() {
+            markers = handler.addMarkers(<%= raw @hash_event.to_json %>);
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+            if (markers.length == 0) {
+              handler.getMap().setZoom(2);
+            } else if (markers.length == 1) {
+              handler.getMap().setZoom(14);
+            }
+          });
+        });
+      <% end %>
+    <% end %>
+
+<!-- subscribe by clicking on fake avatar -->
+
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function() {
+      $('.subscribe-link').on('click', function() {
+        $('.subscribe-link-action').click();
+      })
+      $("#popover").popover({ trigger: "hover" });
+    });
+  </script>
+<% end %>

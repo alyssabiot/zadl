@@ -1,0 +1,7 @@
+<div class= "display_messages <%= message.user == message.event.user ? "organiser" : "" %>">
+  <%= avatar message.user %>
+  <div class="message-bubble">
+    <p class="msg-time"><strong><%= message.user.first_name %></strong> - <em><%= t('events.show.about', time: time_ago_in_words(message.created_at)) %></em></p>
+    <%= message.content %>
+  </div>
+</div>

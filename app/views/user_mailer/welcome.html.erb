@@ -1,0 +1,9 @@
+<h1> <%= t('user_mailer.welcome.hello', name: @user.first_name.capitalize) %> </h1>
+
+<p> <%= t('user_mailer.welcome.body') %> </p>
+<%= link_to new_user_event_url(user_id: @user.id) do %>
+  <button class = "btn btn-danger margin margin-sides">
+    <%= t('users.show.create')%>
+  </button>
+<% end %>
+

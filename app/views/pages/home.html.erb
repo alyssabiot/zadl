@@ -1,0 +1,174 @@
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "banner.png" %>');">
+  <div class="banner-content">
+    <h1>Don't paddle, ZA:DL !</h1>
+    <p><%= t('root.organize') %><span class="rotate"></span><%= t('root.clicks') %></p>
+    <% if current_user %>
+      <%= form_tag new_user_event_path(current_user), method: :get do %>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-3 col-sm-offset-3 col-lg-2 col-lg-offset-4">
+              <div class="event-name-field-col">
+                <div class="event-name-field">
+                  <%= text_field_tag :event_name, nil, id: :activity_name, placeholder: t('root.activity') %>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-lg-2">
+              <div class="event-name-button-col">
+                <div class="event-name-button">
+                  <%= submit_tag t('root.create_banner'), class: "btn btn-danger btn-lg" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <%= form_tag new_user_registration_path, method: :get, class: "home-form" do %>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-3 col-sm-offset-3 col-lg-2 col-lg-offset-4">
+              <div class="event-name-field-col">
+                <div class="event-name-field">
+                  <%= text_field_tag :event_name, nil, id: :activity_name, placeholder: t('root.activity') %>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-lg-2">
+              <div class="event-name-button-col">
+                <div class="event-name-button">
+                  <%= submit_tag t('root.create_banner'), class: "btn btn-danger btn-lg" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<!-- cards-home -->
+<div class="wrapper wrapper-home">
+  <div class="container narrow">
+    <div class=" text-center features">
+      <div class="row">
+        <h2 class="title"> <%= t('root.how') %></h2>
+        <div class="col-xs-12 col-sm-6 col-md-3 ">
+          <div class="card-home">
+            <i class="fi-plus"></i>
+            <h4> <%= t('root.create') %></h4>
+            <p><%= t('root.personnalize') %></p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="card-home">
+            <i class="fi-mail"></i>
+            <h4><%= t('root.invite')%></h4>
+            <p><%= t('root.diffuse')%></p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="card-home">
+            <i class="fi-euro"></i>
+            <h4><%= t('root.collect')%></h4>
+            <p><%= t('root.validate') %></p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="card-home">
+            <i class="fi-torsos-all"></i>
+            <h4><%= t('root.participate')%></h4>
+            <p><%= t('root.fun')%></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- testimonials -->
+<div class="wrapper wrapper-home wrapper-white">
+  <div class="container narrow">
+    <div class=" text-center features">
+      <div class="row">
+        <h2 class="title"> <%= t('root.examples') %></h2>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="cardt cardt1" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "match.jpg" %>');">
+            <div class="inter-card">
+              <h4> <%= t('root.match') %></h4>
+                  <div class="card-testimonial">
+                    <%= image_tag "john.jpg", class: "avatar" %>
+                    <h5><%= t('root.match_testimonial')%></h5>
+                  </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="cardt cardt2" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "evg.JPG" %>');">
+            <div class="inter-card">
+              <h4><%= t('root.evg')%></h4>
+              <div class="card-testimonial">
+                <%= image_tag "peter.jpg", class: "avatar" %>
+                <h5><%= t('root.evg_testimonial')%></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="cardt cardt3" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "jeux.jpg" %>');">
+            <div class="inter-card">
+              <h4><%= t('root.jeux')%></h4>
+                <div class="card-testimonial">
+                  <%= image_tag "mary.jpg", class: "avatar" %>
+                  <h5><%= t('root.jeux_testimonial')%></h5>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="cardt cardt4" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "vacances.jpg" %>');">
+            <div class="inter-card">
+              <h4><%= t('root.vacances')%></h4>
+              <div class="card-testimonial">
+                  <%= image_tag "james.jpg", class: "avatar" %>
+                  <h5><%= t('root.vacances_testimonial')%></h5>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="cardt cardt5" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "soirée.jpg" %>');">
+            <div class="inter-card">
+              <h4><%= t('root.soiree')%></h4>
+              <div class="card-testimonial">
+                  <%= image_tag "jane.jpg", class: "avatar" %>
+                  <h5><%= t('root.soiree_testimonial')%></h5>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="cardt cardt6" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "aventure.jpg" %>');">
+              <div class="inter-card">
+                <h4><%= t('root.aventure')%></h4>
+                <div class="card-testimonial">
+                  <%= image_tag "jean.jpg", class: "avatar" %>
+                  <h5><%= t('root.aventure_testimonial')%></h5>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var rotator_text = <%= raw [t("root.parties"), t("root.soccer_games"), t("root.bachelor"), t("root.bachelorette"), t("root.card_games")] %>
+</script>
+
+
+

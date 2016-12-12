@@ -1,0 +1,28 @@
+
+div {
+  display: block;
+}
+
+.card-home {
+  position: relative;
+  background-color: white;
+  height: 235px;
+  margin: 5px;
+  padding: 25px 27px;
+  margin-bottom: 100px;
+}
+
+ .card-home h4 {
+  font-size: 20px;
+  color: $red;
+
+ }
+
+ .card-home p {
+  font-size: 17px;
+ }
+
+.card-home i{
+  color: $blue;
+  font-size: 30px;
+}

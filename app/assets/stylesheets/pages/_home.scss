@@ -1,0 +1,91 @@
+.home-form {
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+ color: gray;
+ margin-top: 40px;
+}
+
+.event-name-field-col {
+  display: flex;
+  justify-content: center;
+}
+
+.event-name-field {
+  // float: right;
+
+  margin-bottom: 20px;
+}
+
+.event-name-button-col {
+
+}
+
+.event-name-button {
+  // float: left;
+  margin-bottom: 20px;
+  .btn {
+    width: 201px;
+  }
+}
+
+.home-form select {
+ width: 160px;
+ height: 50px;
+}
+
+#activity_name {
+ width: 201px;
+ height: 48px;
+ font-size: 20px;
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+ color: gray;
+ background-color: rgb(248, 248, 248);
+ border-width: 1px;
+ border-style: solid;
+ border-color: rgb(166, 166, 166);
+ border-image: initial;
+ border-radius: 5px;
+ padding-left: 15px;
+}
+
+.pink_color {
+ color: $red;
+}
+
+.title {
+  padding-top: 30px;
+  padding-bottom: 40px;
+}
+
+.pages-home .wrapper {
+  min-height: 0;
+  padding-bottom: 0;
+}
+
+.pages-home .wrapper-home {
+  padding-bottom: 4em;
+}
+
+.pages-home .wrapper-white{
+  background-color: white;
+  padding-bottom: 50px;
+}
+
+.center-button{
+  display:flex;
+  justify-content:center;
+  align-items: center;
+}
+
+.thanxbtn {
+  color: white;
+  padding: 0px;
+}
+
+.thanxbtn:hover {
+  color: $red;
+}
+

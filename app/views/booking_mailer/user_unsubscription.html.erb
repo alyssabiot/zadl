@@ -1,0 +1,10 @@
+<h1> <%= t('booking_mailer.user_unsubscription.hello', name: @event.user.first_name.capitalize) %> </h1>
+
+<p> <%= t('booking_mailer.user_unsubscription.body', event_name: @event.name, unsubscribe_participant_name: @user.first_name.capitalize) %> </p>
+<p> <%= t('booking_mailer.user_unsubscription.message', message: @booking.cancellation_message) %> </p>
+<p> <%= t('booking_mailer.user_unsubscription.end',unsubscribe_participant_name: @user.first_name.capitalize) %> </p>
+<%= link_to event_url(id: @event.id) do %>
+  <button class = "btn btn-danger margin margin-sides">
+    <%= t('booking_mailer.user_unsubscription.event_access')%>
+  </button>
+<% end %>

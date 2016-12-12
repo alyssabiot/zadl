@@ -1,0 +1,67 @@
+<div class="navbar-wagon">
+  <!-- Logo -->
+  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+    <%= image_tag "logo.png" %>
+  <% end %>
+
+  <!-- Merci -->
+  <div class="container text-center center-button">
+    <div>
+      <%= link_to pages_thanks_path do %>
+      <h1> <i class="thanxbtn fi-heart" aria-hidden="true"></i></h1>
+      <% end %>
+    </div>
+  </div>
+
+
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right">
+    <!-- Language choice -->
+    <div>
+      <%= link_to locale: nil do %>
+        <%= image_tag("France_flag.png", class: "flag")  %>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to locale: 'en' do %>
+        <%= image_tag("union jack.png", class: "flag") %>
+      <% end %>
+    </div>
+
+    <!-- Search form -->
+    <!-- Different navigation if login or not -->
+    <% if user_signed_in? %>
+
+      <!-- Profile picture and dropdown -->
+      <div class="navbar-wagon-item">
+        <div class="dropdown">
+          <%= avatar(current_user, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown") %>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li>
+              <%= link_to user_path(current_user) do %>
+                <i class="fi-torso"></i> <%= t(".profile", default: "Profil") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to root_path do %>
+                <i class="fi-home"></i>  <%= t(".profile", default: "Accueil") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fi-x"></i>  <%= t(".sign_out", default: "Déconnexion") %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    <% else %>
+
+      <!-- Login text link -->
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
+    <% end %>
+  </div>
+</div>
+
