@@ -191,13 +191,13 @@ en:
       subject: "%{participant_name} subscribed to your event %{event_name}!"
       hello: "Hello %{name}"
       event_access: "Access to event page"
-      body: "%{participant_name} subscribed to your %{event_name}, you can check it here"
-    user_unsubscription:
-      subject: "%{unsubscribe_participant_name} just unsubscribed from your event %{event_name}"
-      hello: Hello %{name},"
-      body: "%{unsubscribe_participant_name} just unsubscribed from your event %{event_name}"
-      message: "The participant sent the following message: '%{message}'"
-      end: "You can decide to reimburse %{unsubscribe_participant_name} (or not!)"
+      body: "%{participant_name} subscribed to your %{event_name}, you can check it here :"
+  user_unsubscription:
+    subject: "%{unsubscribe_participant_name} just unsubscribed from your event %{event_name}"
+    hello: Hello %{name},"
+    body: "%{unsubscribe_participant_name} just unsubscribed from your event %{event_name}"
+    message: "The participant sent the following message: '%{message}'"
+    end: "You can decide to reimburse %{unsubscribe_participant_name} (or not!)"
 
   event_mailer:
     event_edited_cancellation:
@@ -207,6 +207,14 @@ en:
       message: "You will be automatically reimbursed."
       end: "See you soon for a new event!"
       profile_access: "Go to my profile"
+
+  message_mailer:
+    user_comment:
+    body: "%{comment_user} left a comment on your event %{event_name}, you can check it here :"
+
+  layouts:
+    mailer:
+      signature_html: "See you soon,<br><strong>Team ZA:DL</strong>"
 
   payments:
     new:
