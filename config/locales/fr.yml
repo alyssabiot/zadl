@@ -148,8 +148,8 @@ fr:
   users:
     show:
       create: "Créer une activité"
-      bookings: "Mes réservations"
-      events: "Mes activités"
+      archived: "Mes activités archivées"
+      not-archived: "Mes activités"
       edit: "Modifier votre profil"
       event-banner:
         beginning: "Début :"

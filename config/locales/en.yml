@@ -148,8 +148,8 @@ en:
   users:
     show:
       create: "Create your event"
-      bookings: "My bookings"
-      events: "My events"
+      archived: "My events archived"
+      not-archived: "My events"
       edit: "Edit profile"
       event-banner:
         beginning: "Beginning :"

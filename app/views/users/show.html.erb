@@ -12,18 +12,18 @@
       <% end %>
       <%= link_to t('users.show.edit'), edit_user_registration_path, class: "margin margin-sides" %>
     </div>
-    <!-- Affichage des events ou le current user participe -->
-    <% unless @bookings_as_participant.empty? %>
-      <h3><%= t('users.show.bookings')%></h3>
-      <% @bookings_as_participant.each do |booking| %>
+    <!-- Affichage des events non archivés -->
+    <% unless @bookings_not_archived.empty? %>
+      <h3><%= t('users.show.not-archived')%></h3>
+      <% @bookings_not_archived.each do |booking| %>
         <%= render "event-banner", event: booking.event %>
       <% end %>
     <% end %>
-    <!-- Affichage des events organisés par le current user -->
-    <% unless @events_as_organizer.empty? %>
-      <h3><%= t('users.show.events')%></h3>
-      <% @user.events.each do |event| %>
-        <%= render "event-banner", event: event %>
+    <!-- Affichage des events archivés -->
+    <% unless @bookings_archived.empty? %>
+      <h3><%= t('users.show.archived')%></h3>
+      <% @bookings_archived.each do |booking| %>
+        <%= render "event-banner", event: booking.event %>
       <% end %>
     <% end %>
   <!-- Cas où current user est sur la page de profil d'un autre user -->
