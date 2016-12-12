@@ -20,10 +20,12 @@
     <% end %>
     <!-- Affichage des events archivés -->
     <% unless @bookings_archived.empty? %>
-      <div class="archives_button"><i class="fi-plus"></i> <%= t('users.show.unhide_archives')%></div>
-      <div class="archives_button hidden"><i class="fi-minus"></i> <%= t('users.show.hide_archives')%></div>
+      <div class="archives_button unhide_archives_button"><i class="fi-plus"></i> <%= t('users.show.unhide_archives')%></div>
+      <div class="archives_button hide_archives_button hidden"><i class="fi-minus"></i> <%= t('users.show.hide_archives')%></div>
       <% @bookings_archived.each do |booking| %>
-        <%= render "event-banner", event: booking.event %>
+        <div class="archives_banners hidden">
+          <%= render "event-banner", event: booking.event %>
+        </div>
       <% end %>
     <% end %>
   <!-- Cas où current user est sur la page de profil d'un autre user -->
@@ -33,3 +35,22 @@
     <% end %>
   <% end %>
 </div>
+
+<!-- Hide / Show archives  -->
+
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function() {
+      $('.unhide_archives_button').on('click', function() {
+        $(this).addClass("hidden");
+        $('.hide_archives_button').removeClass("hidden");
+        $('.archives_banners').removeClass("hidden");
+      })
+      $('.hide_archives_button').on('click', function() {
+        $(this).addClass("hidden");
+        $('.archives_banners').addClass("hidden");
+        $('.unhide_archives_button').removeClass("hidden");
+      })
+    });
+  </script>
+<% end %>
