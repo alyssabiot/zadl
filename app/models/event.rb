@@ -1,6 +1,5 @@
 class Event < ApplicationRecord
   geocoded_by :location
-  default_scope { where(active: true) }
   mount_uploader :photo, PhotoUploader
   belongs_to :user
   has_many :bookings, dependent: :nullify
