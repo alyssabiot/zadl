@@ -9,3 +9,22 @@
 # production:
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
+
+CLOUDINARY_URL: "cloudinary://353375187738432:CaIyI8U4DoZWE7aVJaAvrFkr9QM@rsvp"
+GOOGLE_API_SERVER_KEY: "AIzaSyAETcQGS9Z8urI3z3Tujw_Z1Sl0DTHcZpc"
+GOOGLE_API_BROWSER_KEY: "AIzaSyAQLj9oq4Ktx-5brwhnLNmOvdTlxz2rs6Q"
+
+
+development:
+ FB_ID: "1771151969819914"
+ FB_SECRET: "dde72594e851da7239ace75bdd9c2de8"
+ STRIPE_PUBLISHABLE_KEY: "pk_test_3qB6P7SljtYpBMNxR6KoLQS7"
+ STRIPE_SECRET_KEY: "sk_test_sx4xqAbOdpGdSIUKBF0sripT"
+ HOST: "localhost:3000"
+
+production:
+ FB_ID: "1329301247112385"
+ FB_SECRET: "602fbbecb77c374d0f6d97f796074047"
+ STRIPE_PUBLISHABLE_KEY: "pk_test_3qB6P7SljtYpBMNxR6KoLQS7"
+ STRIPE_SECRET_KEY: "sk_test_sx4xqAbOdpGdSIUKBF0sripT"
+ HOST: "beta.zadl.fr"
