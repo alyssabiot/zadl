@@ -1,4 +1,8 @@
 {:uriI"|file://app/assets/images/union%20jack.png?type=image/png&id=1e081a8be39a5c9cd9cd172c0d6761a2b6b4b3d311bbced1291a97e9d6ad5796:ET:load_pathI"app/assets/images;T:filenameI"%app/assets/images/union jack.png;T:	nameI"union jack;T:logical_pathI"union jack.png;T:content_typeI"image/png;T:source0:metadata{:digest"%¤Å«[ ‘ØBèh«3·W»ªbŸštSˆ©“0`lŒ²:lengthiæ.:dependencieso:Set:
 @hash}
 I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"2processors:type=image/png&file_type=image/png;TTI"5file-digest://app/assets/images/union%20jack.png;TTF:dependencies_digest"%4PŞÉ	»n¨TÍSÛœëŒÏ}\DÁÜßkDä&ÿ:idI"E1e081a8be39a5c9cd9cd172c0d6761a2b6b4b3d311bbced1291a97e9d6ad5796;F:
+<<<<<<< HEAD
 mtimel+4;OX
+=======
+mtimel+uÀOX
+>>>>>>> 03b19920ccdf8d079f7012f2810b0acca3b63ed0
