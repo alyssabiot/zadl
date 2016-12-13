@@ -803,3 +803,197 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 136ms (Views: 114.9ms | ActiveRecord: 7.7ms)
 
 
+Started GET "/" for ::1 at 2016-12-13 10:06:48 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (25.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PagesController#home as HTML
+Started GET "/" for ::1 at 2016-12-13 10:06:49 +0100
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (514.0ms)
+  Rendered pages/home.html.erb within layouts/application (638.9ms)
+  Rendered shared/_navbar.html.erb (5.6ms)
+  Rendered shared/_flashes.html.erb (0.6ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 1116ms (Views: 694.1ms | ActiveRecord: 0.0ms)
+
+
+  Rendered shared/_navbar.html.erb (18.9ms)
+  Rendered shared/_flashes.html.erb (0.1ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 1505ms (Views: 719.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up?utf8=%E2%9C%93&event_name=foot&commit=Cr%C3%A9er+une+activit%C3%A9" for ::1 at 2016-12-13 10:07:08 +0100
+Processing by RegistrationsController#new as HTML
+  Parameters: {"utf8"=>"✓", "event_name"=>"foot", "commit"=>"Créer une activité"}
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (82.7ms)
+  Rendered shared/_navbar.html.erb (2.8ms)
+  Rendered shared/_flashes.html.erb (0.3ms)
+  Rendered shared/_footer.html.erb (0.2ms)
+Completed 200 OK in 201ms (Views: 128.6ms | ActiveRecord: 46.8ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-12-13 10:07:10 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (20.1ms)
+  Rendered shared/_navbar.html.erb (4.3ms)
+  Rendered shared/_flashes.html.erb (0.4ms)
+  Rendered shared/_footer.html.erb (0.2ms)
+Completed 200 OK in 64ms (Views: 62.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2016-12-13 10:07:12 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mNr48/CQVqOr28pqnI8eiCko7kJT/F84aQUuWILrp9yEJ3t2DsURSuyUdEmYYRWioLjPYRnJpQ9QxLP5Oe2pjA==", "user"=>{"email"=>"isabelle.charon@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Connexion"}
+  [1m[36mUser Load (24.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "isabelle.charon@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", 2016-12-13 09:07:12 UTC], ["last_sign_in_at", 2016-12-12 14:24:03 UTC], ["sign_in_count", 3], ["updated_at", 2016-12-13 09:07:12 UTC], ["id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 212ms (ActiveRecord: 28.4ms)
+
+
+Started GET "/" for ::1 at 2016-12-13 10:07:12 +0100
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered pages/home.html.erb within layouts/application (16.1ms)
+  Rendered shared/_navbar.html.erb (6.0ms)
+  Rendered shared/_flashes.html.erb (0.4ms)
+  Rendered shared/_footer.html.erb (0.3ms)
+Completed 200 OK in 57ms (Views: 54.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/2/events/new?utf8=%E2%9C%93&event_name=Foot&commit=Cr%C3%A9er+une+activit%C3%A9" for ::1 at 2016-12-13 10:07:15 +0100
+Processing by EventsController#new as HTML
+  Parameters: {"utf8"=>"✓", "event_name"=>"Foot", "commit"=>"Créer une activité", "user_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/new.html.erb within layouts/application (23.6ms)
+  Rendered shared/_navbar.html.erb (4.3ms)
+  Rendered shared/_flashes.html.erb (0.4ms)
+  Rendered shared/_footer.html.erb (0.3ms)
+Completed 200 OK in 125ms (Views: 66.4ms | ActiveRecord: 4.7ms)
+
+
+Started POST "/users/2/events" for ::1 at 2016-12-13 10:08:48 +0100
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MDbcObwmQhRJwnvXLHHWWJoZHgPJUHqCqXxBjy6aYgTRVBlnyUAATzWuyu+huknC8S03vVHdUzajahNI34j4uQ==", "event"=>{"name"=>"Foot", "description"=>"entre filles", "photo"=>#<ActionDispatch::Http::UploadedFile:0x007fcb52088340 @tempfile=#<Tempfile:/var/folders/6m/hzkxw1692d71qp6ybw87lh200000gn/T/RackMultipart20161213-1351-4u8d90.jpg>, @original_filename="boris.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"event[photo]\"; filename=\"boris.jpg\"\r\nContent-Type: image/jpeg\r\n">, "photo_cache"=>"", "starts_at"=>"15-12-2016 10:00", "ends_at"=>"16-12-2016 10:00", "location"=>"Gare Montparnasse, Boulevard de Vaugirard, Paris, France", "max_participants"=>"10", "price"=>"10,00", "notif_subscription"=>"0", "notif_cancellation"=>"1", "notif_message"=>"0"}, "commit"=>"Valider", "user_id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (24.4ms)[0m  [1m[32mINSERT INTO "events" ("name", "description", "user_id", "max_participants", "photo", "location", "created_at", "updated_at", "starts_at", "ends_at", "price_cents") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Foot"], ["description", "entre filles"], ["user_id", 2], ["max_participants", 10], ["photo", "tgdzhwkpkyueexiu6ipc.jpg"], ["location", "Gare Montparnasse, Boulevard de Vaugirard, Paris, France"], ["created_at", 2016-12-13 09:08:52 UTC], ["updated_at", 2016-12-13 09:08:52 UTC], ["starts_at", 2016-12-15 10:00:00 UTC], ["ends_at", 2016-12-16 10:00:00 UTC], ["price_cents", 1000]]
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "events" SET "photo" = 'image/upload/v1481620134/tgdzhwkpkyueexiu6ipc.jpg' WHERE "events"."id" = $1[0m  [["id", 8]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBooking Exists (24.3ms)[0m  [1m[34mSELECT  1 AS one FROM "bookings" WHERE "bookings"."user_id" = $1 AND "bookings"."event_id" = $2 LIMIT $3[0m  [["user_id", 2], ["event_id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "bookings" ("user_id", "event_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 2], ["event_id", 8], ["created_at", 2016-12-13 09:08:56 UTC], ["updated_at", 2016-12-13 09:08:56 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/events/8
+Completed 302 Found in 8587ms (ActiveRecord: 60.9ms)
+
+
+Started GET "/events/8" for ::1 at 2016-12-13 10:08:56 +0100
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 8], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2[0m  [["event_id", 8], ["cancelled", true]]
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT  "bookings".* FROM "bookings" WHERE "bookings"."user_id" = $1 AND "bookings"."event_id" = 8 AND "bookings"."cancelled" = $2 ORDER BY "bookings"."id" ASC LIMIT $3[0m  [["user_id", 2], ["cancelled", false], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT  "bookings".* FROM "bookings" WHERE "bookings"."user_id" = $1 AND "bookings"."event_id" = 8 AND "bookings"."cancelled" = $2 ORDER BY "bookings"."id" ASC LIMIT $3[0m  [["user_id", 2], ["cancelled", true], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (8.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."event_id" = $1[0m  [["event_id", 8]]
+  Rendered events/_messages_count.html.erb (12.3ms)
+  Rendered messages/_form.html.erb (5.4ms)
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2[0m  [["event_id", 8], ["cancelled", true]]
+  Rendered events/show.html.erb within layouts/application (66.3ms)
+  Rendered shared/_navbar.html.erb (3.9ms)
+  Rendered shared/_flashes.html.erb (0.4ms)
+  Rendered shared/_footer.html.erb (0.6ms)
+Completed 200 OK in 131ms (Views: 96.3ms | ActiveRecord: 14.9ms)
+
+
+Started GET "/users/2" for ::1 at 2016-12-13 10:11:40 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.6ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" INNER JOIN "events" ON "events"."id" = "bookings"."event_id" WHERE "bookings"."user_id" = $1 AND (events.active = 't' AND bookings.cancelled = 'f')[0m  [["user_id", 2]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" INNER JOIN "events" ON "events"."id" = "bookings"."event_id" WHERE "bookings"."user_id" = $1 AND (events.active = 'f')[0m  [["user_id", 2]]
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" INNER JOIN "events" ON "events"."id" = "bookings"."event_id" WHERE "bookings"."user_id" = $1 AND (events.active = 't' AND bookings.cancelled = 't')[0m  [["user_id", 2]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 4], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 4], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered users/_event-link-banner.html.erb (1.1ms)
+  Rendered users/_event-banner.html.erb (17.3ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 6], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 6], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered users/_event-link-banner.html.erb (0.2ms)
+  Rendered users/_event-banner.html.erb (11.0ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 8], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 8], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered users/_event-link-banner.html.erb (0.1ms)
+  Rendered users/_event-banner.html.erb (7.6ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 7], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 7], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered users/_event-link-banner.html.erb (0.1ms)
+  Rendered users/_event-banner.html.erb (7.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 3], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 3], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 3], ["cancelled", false], ["on_waiting_list", false]]
+  Rendered users/_event-link-banner.html.erb (0.2ms)
+  Rendered users/_event-banner.html.erb (10.3ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 5], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered users/_event-link-banner.html.erb (0.2ms)
+  Rendered users/_event-banner.html.erb (7.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 2], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 2], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered users/_event-link-banner.html.erb (0.2ms)
+  Rendered users/_event-banner.html.erb (8.0ms)
+  Rendered users/show.html.erb within layouts/application (79.1ms)
+  Rendered shared/_navbar.html.erb (4.6ms)
+  Rendered shared/_flashes.html.erb (0.4ms)
+  Rendered shared/_footer.html.erb (0.3ms)
+Completed 200 OK in 142ms (Views: 115.3ms | ActiveRecord: 6.8ms)
+
+
