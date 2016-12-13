@@ -72,10 +72,10 @@
                 </div>
               <!-- L'activité est à venir et non annulée -->
               <% else %>
-                <div class="text-center margin">
+                <div class="text-center">
                   <i class="fi-wrench"></i>
                 </div>
-                <div class="margin">
+                <div class="margin-edit-button">
                   <%=link_to t('users.show.event-banner.edit'), edit_event_path(event), class: "btn btn-danger" %>
                 </div>
                 <div > <%= link_to t('users.show.event-banner.delete'), event_path(event), method: :delete, class: "margin margin-sides" %> </div>
@@ -129,6 +129,10 @@
                 <!-- Avatar de l'organisateur -->
                 <%= link_to user_path(event.user) do %>
                   <p><%= t('users.show.event-banner.organized_by') %> </p>
+                  <div class="text-center margin">
+                    <%= avatar(event.user, class: "avatar") %>
+                  </div>
+                  <p><strong> <%= event.user.first_name %></strong> </p>
                 <% end %>
                 <!-- Le current user a un booking pour l'event -->
                 <% if has_a_booking_not_cancelled?(current_user, event) %>
@@ -144,7 +148,7 @@
                         <div class="modal-content">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">t('users.show.event-banner.sure') </h4>
+                            <h4 class="modal-title" id="myModalLabel"><%=  t('users.show.event-banner.sure') %></h4>
                           </div>
                           <div class="modal-body">
                             <%= simple_form_for booking, method: :delete do |f| %>
@@ -157,7 +161,7 @@
                     </div>
                   <!-- Le current user est en liste d'attente -->
                   <% else %>
-                    <p class="red-font"><%= t('users.show.event-banner.waiting-list-on') %></p>
+                    <p class="red-font waiting-list"><%= t('users.show.event-banner.waiting-list-on') %></p>
                     <% if event.max_participants - event.validated_bookings_number > 0 %>
                     <div class=margin>
                       <%= simple_form_for booking do |f| %>
