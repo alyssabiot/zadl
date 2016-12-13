@@ -190,7 +190,7 @@ en:
     user_subscription:
       subject: "%{participant_name} subscribed to your event %{event_name}!"
       hello: "Hello %{name}, "
-      event_access: "Access to event page"
+      event_access: "Access event page"
       body: "%{participant_name} subscribed to your %{event_name}, you can check it here :"
     user_unsubscription:
       subject: "%{unsubscribe_participant_name} just unsubscribed from your event %{event_name}"
@@ -216,16 +216,19 @@ en:
       subject: "Your event has been created ! Share it !"
       hello: "Hello %{name},"
       body: "Your event %{event_name} has been created ! Copy this link to share it with your friends : "
-      event_access: "Access to event page"
+      event_access: "Access event page"
     event_updated:
       subject: "%{organizer} has updated the event %{event_name}"
       hello: "Hello %{participant_name},"
       body: "%{organizer} has updated the event %{event_name}. Go to the event page to see the changes : "
-      event_access: "Access to event page"
+      event_access: "Access event page"
 
   message_mailer:
     user_comment:
-    body: "%{comment_user} left a comment on your event %{event_name}, you can check it here :"
+      subject: "%{comment_user} left a comment on your event %{event_name}"
+      hello: "Hello %{name}, "
+      body: "%{comment_user} left a comment on your event %{event_name}, you can see you event here :"
+      event_access: "Access event page"
 
   layouts:
     mailer:
