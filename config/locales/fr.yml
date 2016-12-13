@@ -206,17 +206,21 @@ fr:
       profile_access: "Voir mon profil"
 
   event_mailer:
-    event_edited_cancellation:
-      subject: "%{organizer_name} a annulé l'événement %{event_name}"
-      hello: Bonjour %{participant_name},"
-      body: "%{organizer_name} a annulé l'événement %{event_name}"
-      message: "Vous serez automatiquement remboursé."
+    event_cancelled:
+      subject: "%{organizer} a annulé l'événement %{event_name}"
+      hello: "Bonjour %{participant_name},"
+      body: "%{organizer} a annulé l'événement %{event_name}. Vous serez automatiquement remboursé."
       end: "A bientôt pour une nouvelle activité !"
       profile_access: "Voir mon profil"
     event_created:
       subject: "Votre événement a été créé ! Partagez-le !"
       hello: "Bonjour %{name},"
       body: "Votre événement %{event_name} a été créé ! Copiez le lien suivant pour le partager avec vos amis : "
+      event_access: "Accédez à l'activité"
+    event_updated:
+      subject: "%{organizer} a modifié l'événement %{event_name}"
+      hello: "Bonjour %{participant_name},"
+      body: "%{organizer} a modifié l'événement %{event_name}. Rendez-vous sur la page de l'événement pour voir les changements : "
       event_access: "Accédez à l'activité"
 
   message_mailer:
