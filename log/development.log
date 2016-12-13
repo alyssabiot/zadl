@@ -17714,3 +17714,773 @@ Completed 200 OK in 74ms (Views: 57.3ms | ActiveRecord: 4.7ms)
 
 >>>>>>> 1f0ecd1d3183fb2f0f268434aad495ba5d2180ff
 >>>>>>> b476f409fe3315c3ca0631698054719ff9ab72af
+Started GET "/" for ::1 at 2016-12-13 13:40:21 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PagesController#home as HTML
+Started GET "/" for ::1 at 2016-12-13 13:40:21 +0100
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (11368.4ms)
+  Rendered shared/_navbar.html.erb (13.8ms)
+  Rendered shared/_flashes.html.erb (0.4ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 12570ms (Views: 11547.9ms | ActiveRecord: 0.0ms)
+
+
+  Rendered pages/home.html.erb within layouts/application (11535.5ms)
+  Rendered shared/_navbar.html.erb (2.4ms)
+  Rendered shared/_flashes.html.erb (0.1ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 12296ms (Views: 11594.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-12-13 13:40:36 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (82.4ms)
+  Rendered shared/_navbar.html.erb (3.7ms)
+  Rendered shared/_flashes.html.erb (0.4ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 170ms (Views: 137.9ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2016-12-13 13:40:42 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mVd51S0Pqn1MBwfjB2SrrX1feYa2y3zNpiMHK2/aZAgXR9Y7lWclVYlWUBbNV05EG19wiuNwXNhTa7K/8Gq/WQ==", "user"=>{"email"=>"alyssa.biot@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Connexion"}
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "alyssa.biot@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", 2016-12-13 12:40:43 UTC], ["last_sign_in_at", 2016-12-13 11:05:21 UTC], ["sign_in_count", 6], ["updated_at", 2016-12-13 12:40:43 UTC], ["id", 536]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 186ms (ActiveRecord: 5.2ms)
+
+
+Started GET "/" for ::1 at 2016-12-13 13:40:43 +0100
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  Rendered pages/home.html.erb within layouts/application (17.7ms)
+  Rendered shared/_navbar.html.erb (5.4ms)
+  Rendered shared/_flashes.html.erb (0.5ms)
+  Rendered shared/_footer.html.erb (0.8ms)
+Completed 200 OK in 88ms (Views: 85.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/536" for ::1 at 2016-12-13 13:40:45 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"536"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.8ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" INNER JOIN "events" ON "events"."id" = "bookings"."event_id" WHERE "bookings"."user_id" = $1 AND (events.active = 't' AND bookings.cancelled = 'f')[0m  [["user_id", 536]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 91], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 95], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 96], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.5ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" INNER JOIN "events" ON "events"."id" = "bookings"."event_id" WHERE "bookings"."user_id" = $1 AND (events.active = 'f')[0m  [["user_id", 536]]
+  [1m[36mBooking Load (2.5ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" INNER JOIN "events" ON "events"."id" = "bookings"."event_id" WHERE "bookings"."user_id" = $1 AND (events.active = 't' AND bookings.cancelled = 't')[0m  [["user_id", 536]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 89], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 92], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 90], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 91], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 91], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  Rendered users/_event-link-banner.html.erb (1.2ms)
+  Rendered users/_event-banner.html.erb (44.9ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 95], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 95], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  Rendered users/_event-link-banner.html.erb (0.3ms)
+  Rendered users/_event-banner.html.erb (11.6ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 97], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  Rendered users/_event-link-banner.html.erb (0.4ms)
+  Rendered users/_event-banner.html.erb (16.8ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 96], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 96], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  Rendered users/_event-link-banner.html.erb (0.8ms)
+  Rendered users/_event-banner.html.erb (14.3ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 92], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 92], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 544], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."user_id" = $1[0m  [["user_id", 536]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 91], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 89], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 92], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 90], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 95], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 96], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 92], ["cancelled", false], ["on_waiting_list", false]]
+  Rendered users/_event-link-banner.html.erb (0.3ms)
+  Rendered users/_event-banner.html.erb (20.3ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 89], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 89], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 542], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 89], ["cancelled", false], ["on_waiting_list", false]]
+  Rendered users/_event-link-banner.html.erb (0.2ms)
+  Rendered users/_event-banner.html.erb (9.0ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 90], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 90], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 537], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 90], ["cancelled", false], ["on_waiting_list", false]]
+  Rendered users/_event-link-banner.html.erb (0.3ms)
+  Rendered users/_event-banner.html.erb (13.8ms)
+  Rendered users/show.html.erb within layouts/application (145.5ms)
+  Rendered shared/_navbar.html.erb (4.3ms)
+  Rendered shared/_flashes.html.erb (0.5ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 331ms (Views: 195.2ms | ActiveRecord: 21.5ms)
+
+
+Started GET "/events/91" for ::1 at 2016-12-13 13:41:19 +0100
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"91"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 91], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.9ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 91], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2[0m  [["event_id", 91], ["cancelled", true]]
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT  "bookings".* FROM "bookings" WHERE "bookings"."user_id" = $1 AND "bookings"."event_id" = 91 AND "bookings"."cancelled" = $2 ORDER BY "bookings"."id" ASC LIMIT $3[0m  [["user_id", 536], ["cancelled", false], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT  "bookings".* FROM "bookings" WHERE "bookings"."user_id" = $1 AND "bookings"."event_id" = 91 AND "bookings"."cancelled" = $2 ORDER BY "bookings"."id" ASC LIMIT $3[0m  [["user_id", 536], ["cancelled", true], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."user_id" = $1[0m  [["user_id", 536]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 91], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 89], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 92], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 90], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 95], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 96], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."event_id" = $1[0m  [["event_id", 91]]
+  Rendered events/_messages_count.html.erb (3.7ms)
+  Rendered messages/_form.html.erb (7.2ms)
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2[0m  [["event_id", 91], ["cancelled", true]]
+  Rendered events/show.html.erb within layouts/application (54.9ms)
+  Rendered shared/_navbar.html.erb (4.4ms)
+  Rendered shared/_flashes.html.erb (0.4ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 137ms (Views: 101.4ms | ActiveRecord: 7.9ms)
+
+
+Started GET "/users/536" for ::1 at 2016-12-13 13:41:26 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"536"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.5ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" INNER JOIN "events" ON "events"."id" = "bookings"."event_id" WHERE "bookings"."user_id" = $1 AND (events.active = 't' AND bookings.cancelled = 'f')[0m  [["user_id", 536]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 91], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 95], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 96], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.6ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" INNER JOIN "events" ON "events"."id" = "bookings"."event_id" WHERE "bookings"."user_id" = $1 AND (events.active = 'f')[0m  [["user_id", 536]]
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" INNER JOIN "events" ON "events"."id" = "bookings"."event_id" WHERE "bookings"."user_id" = $1 AND (events.active = 't' AND bookings.cancelled = 't')[0m  [["user_id", 536]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 89], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 92], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 90], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 91], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 91], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  Rendered users/_event-link-banner.html.erb (0.7ms)
+  Rendered users/_event-banner.html.erb (19.2ms)
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 95], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 95], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  Rendered users/_event-link-banner.html.erb (0.3ms)
+  Rendered users/_event-banner.html.erb (14.8ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 97], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  Rendered users/_event-link-banner.html.erb (0.4ms)
+  Rendered users/_event-banner.html.erb (13.8ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 96], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 96], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  Rendered users/_event-link-banner.html.erb (1.1ms)
+  Rendered users/_event-banner.html.erb (22.2ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 92], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 92], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 544], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."user_id" = $1[0m  [["user_id", 536]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 91], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 89], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 92], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 90], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 95], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 96], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 92], ["cancelled", false], ["on_waiting_list", false]]
+  Rendered users/_event-link-banner.html.erb (0.2ms)
+  Rendered users/_event-banner.html.erb (18.4ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 89], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 89], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 542], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 89], ["cancelled", false], ["on_waiting_list", false]]
+  Rendered users/_event-link-banner.html.erb (0.3ms)
+  Rendered users/_event-banner.html.erb (8.5ms)
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 90], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 90], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 537], ["LIMIT", 1]]
+  [1m[36mCACHE (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 90], ["cancelled", false], ["on_waiting_list", false]]
+  Rendered users/_event-link-banner.html.erb (0.3ms)
+  Rendered users/_event-banner.html.erb (11.9ms)
+  Rendered users/show.html.erb within layouts/application (122.6ms)
+  Rendered shared/_navbar.html.erb (6.0ms)
+  Rendered shared/_flashes.html.erb (0.5ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 210ms (Views: 171.6ms | ActiveRecord: 15.4ms)
+
+
+Started GET "/users/536/events/new" for ::1 at 2016-12-13 13:41:28 +0100
+Processing by EventsController#new as HTML
+  Parameters: {"user_id"=>"536"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/new.html.erb within layouts/application (33.7ms)
+  Rendered shared/_navbar.html.erb (6.8ms)
+  Rendered shared/_flashes.html.erb (1.3ms)
+  Rendered shared/_footer.html.erb (0.7ms)
+Completed 200 OK in 133ms (Views: 124.3ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/536/events" for ::1 at 2016-12-13 13:41:50 +0100
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"heQbZuY2RW12t1Sgi8eSz3yUJoAJOnzzcyQs50HYucKxD8UMhHxuhn8StP9I8C4rFIgde8Cw/ht86m/h6TG7fQ==", "event"=>{"name"=>"Escape game", "description"=>"test", "photo"=>#<ActionDispatch::Http::UploadedFile:0x007ffbcd964f80 @tempfile=#<Tempfile:/var/folders/6q/9zht66sj6b526gw0l1fwp7fw0000gn/T/RackMultipart20161213-7696-1fclxxq.jpg>, @original_filename="friends.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"event[photo]\"; filename=\"friends.jpg\"\r\nContent-Type: image/jpeg\r\n">, "photo_cache"=>"", "starts_at"=>"15-12-2016 13:45", "ends_at"=>"17-12-2016 13:45", "location"=>"Paris, France", "max_participants"=>"5", "price"=>"0,00", "notif_subscription"=>"0", "notif_cancellation"=>"1", "notif_message"=>"0"}, "commit"=>"Valider", "user_id"=>"536"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "events" ("name", "description", "user_id", "max_participants", "photo", "location", "created_at", "updated_at", "starts_at", "ends_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Escape game"], ["description", "test"], ["user_id", 536], ["max_participants", 5], ["photo", "rntxssagdphpckgu5oor.jpg"], ["location", "Paris, France"], ["created_at", 2016-12-13 12:41:53 UTC], ["updated_at", 2016-12-13 12:41:53 UTC], ["starts_at", 2016-12-15 13:45:00 UTC], ["ends_at", 2016-12-17 13:45:00 UTC]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "events" SET "photo" = 'image/upload/v1481632914/rntxssagdphpckgu5oor.jpg' WHERE "events"."id" = $1[0m  [["id", 98]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering event_mailer/event_created.html.erb within layouts/mailer
+  Rendered event_mailer/event_created.html.erb within layouts/mailer (1.1ms)
+  Rendering event_mailer/event_created.text.erb within layouts/mailer
+  Rendered event_mailer/event_created.text.erb within layouts/mailer (0.5ms)
+EventMailer#event_created: processed outbound mail in 197.7ms
+Sent mail to alyssa.biot@gmail.com (86.5ms)
+Date: Tue, 13 Dec 2016 13:41:54 +0100
+From: hello@zadl.fr
+To: alyssa.biot@gmail.com
+Message-ID: <584fec92b79c0_1e103ffdedfa53cc155aa@MacBook-Pro-de-Alyssa.local.mail>
+Subject: translation missing: fr.event_mailer.event.created.subject
+Mime-Version: 1.0
+Content-Type: multipart/mixed;
+ boundary="--==_mimepart_584fec92b4981_1e103ffdedfa53cc15445";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_584fec92b4981_1e103ffdedfa53cc15445
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_584fec92b4322_1e103ffdedfa53cc15321";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_584fec92b4322_1e103ffdedfa53cc15321
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Event#event_created
+
+Hi, find me in app/views/event_mailer/event_created.text.erb
+
+
+----==_mimepart_584fec92b4322_1e103ffdedfa53cc15321
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-=
+8" />
+   <style>
+     /* Email styles need to be inline */
+   </style>
+ </head>
+
+ <body style=3D"font-family: Verdana; color: #62676A ;">
+     <center>
+       <img style=3D"width: 100px;" src=3D"cid:584fec92b223e_1e103ffdedfa=
+53cc1527d@MacBook-Pro-de-Alyssa.local.mail" />
+       <h3 style=3D"margin: 0;">Don't paddle, ZA:DL !</h3>
+     </center>
+     <br><br>
+     <p> Bonjour Alyssa, </p>
+
+<p> Votre =C3=A9v=C3=A9nement Escape game a =C3=A9t=C3=A9 cr=C3=A9=C3=A9 =
+! Copiez le lien suivant pour le partager avec vos amis :  </p>
+<p style=3D"color: #DA4167; font-weight: bolder;">http://localhost:3000/e=
+vents/98</p>
+<a style=3D"text-decoration: none;" href=3D"http://localhost:3000/events/=
+98">
+ <button style=3D"background-color: #DA4167 ; border: 2px solid #DA4167 ;=
+ border-radius: 5px; color: white; font-size: 16px;">
+   Acc=C3=A9dez =C3=A0 l&#39;activit=C3=A9
+ </button>
+</a>
+     <br><br><br>
+     A bient=C3=B4t,<br><strong>L'=C3=A9quipe ZA:DL</strong>
+ </body>
+</html>
+
+----==_mimepart_584fec92b4322_1e103ffdedfa53cc15321--
+
+----==_mimepart_584fec92b4981_1e103ffdedfa53cc15445
+Content-Type: image/png;
+ filename=logo.png
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename=logo.png
+Content-ID: <584fec92b223e_1e103ffdedfa53cc1527d@MacBook-Pro-de-Alyssa.local.mail>
+
+iVBORw0KGgoAAAANSUhEUgAAAg8AAAGjCAYAAACrE/aqAAAEDWlDQ1BJQ0Mg
+UHJvZmlsZQAAOI2NVV1oHFUUPrtzZyMkzlNsNIV0qD8NJQ2TVjShtLp/3d02
+bpZJNtoi6GT27s6Yyc44M7v9oU9FUHwx6psUxL+3gCAo9Q/bPrQvlQol2tQg
+KD60+INQ6Ium65k7M5lpurHeZe58853vnnvuuWfvBei5qliWkRQBFpquLRcy
+4nOHj4g9K5CEh6AXBqFXUR0rXalMAjZPC3e1W99Dwntf2dXd/p+tt0YdFSBx
+H2Kz5qgLiI8B8KdVy3YBevqRHz/qWh72Yui3MUDEL3q44WPXw3M+fo1pZuQs
+4tOIBVVTaoiXEI/MxfhGDPsxsNZfoE1q66ro5aJim3XdoLFw72H+n23BaIXz
+bcOnz5mfPoTvYVz7KzUl5+FRxEuqkp9G/Ajia219thzg25abkRE/BpDc3pqv
+phHvRFys2weqvp+krbWKIX7nhDbzLOItiM8358pTwdirqpPFnMF2xLc1WvLy
+OwTAibpbmvHHcvttU57y5+XqNZrLe3lE/Pq8eUj2fXKfOe3pfOjzhJYtB/yl
+l5SDFcSDiH+hRkH25+L+sdxKEAMZahrlSX8ukqMOWy/jXW2m6M9LDBc31B9L
+Fuv6gVKg/0Szi3KAr1kGq1GMjU/aLbnq6/lRxc4XfJ98hTargX++DbMJBSiY
+MIe9Ck1YAxFkKEAG3xbYaKmDDgYyFK0UGYpfoWYXG+fAPPI6tJnNwb7ClP7I
+yF+D+bjOtCpkhz6CFrIa/I6sFtNl8auFXGMTP34sNwI/JhkgEtmDz14ySfaR
+cTIBInmKPE32kxyyE2Tv+thKbEVePDfW/byMM1Kmm0XdObS7oGD/MypMXFPX
+rCwOtoYjyyn7BV29/MZfsVzpLDdRtuIZnbpXzvlf+ev8MvYr/Gqk4H/kV/G3
+csdazLuyTMPsbFhzd1UabQbjFvDRmcWJxR3zcfHkVw9GfpbJmeev9F08WW8u
+DkaslwX6avlWGU6NRKz0g/SHtCy9J30o/ca9zX3Kfc19zn3BXQKRO8ud477h
+LnAfc1/G9mrzGlrfexZ5GLdn6ZZrrEohI2wVHhZywjbhUWEy8icMCGNCUdiB
+lq3r+xafL549HQ5jH+an+1y+LlYBifuxAvRN/lVVVOlwlCkdVm9NOL5BE4wk
+Q2SMlDZU97hX86EilU/lUmkQUztTE6mx1EEPh7OmdqBtAvv8HdWpbrJS6tJj
+3n0CWdM6busNzRV3S9KTYhqvNiqWmuroiKgYhshMjmhTh9ptWhsF7970j/Sb
+MrsPE1suR5z7DMC+P/Hs+y7ijrQAlhyAgccjbhjPygfeBTjzhNqy28EdkUh8
+C+DU9+z2v/oyeH791OncxHOs5y2AtTc7nb/f73TWPkD/qwBnjX8BoJ98VVBg
+/m8AAAAJcEhZcwAAFxIAABcSAWef0lIAAEAASURBVHgB7d0JnBxlmfjx962e
+yR0IRwiHcmcl0zPTEwMIiwIeIHhwmZ5MggREDIec6/5XVl0d1N1Vwd112UVF
+UQ4hx0RWRQVdj4gnq9mZnpme4AKCgAjhyD1nd73/p0KQXJPp6a6qft/qX38+
++STTXfW+z/t9O9NPV72HUjwQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAA
+AQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAA
+AQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAA
+AQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAA
+AQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAA
+AQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAA
+AQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAA
+AQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAA
+AQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAA
+AQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAA
+AQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAA
+AQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAA
+AQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAA
+AQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAA
+AQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAA
+AQQQQAABBBBAAAEEEECg+gK6+iEQAQKjC3Q3Zef5vkqNfgSvOCVQp/7Ukuv4
+k1MxRxzsmuMX7ze0ZeCoiKvZpXij1PDcfEfXLi/wBAIlCNSVcAyHIFA1gWLR
+PKiMmlK1AKg4XIER7wYpsD3cQt0ubWjz4I3GmPfF3Qr55mi6mxY2NPcsfTju
+uqnPfQHP/SbQAgQQQMBNgUfmZmcq4y+qRvRy5UH7fuFvq1E3dbovQPLgfh/S
+AgQQcFRgy7C6XD7EJ1YrfOOrRcFtk2rVT73uCpA8uNt3RI4AAg4LmHlL6o1v
+LqtuE8zkoS2DV1Q3Bmp3UYDkwcVeI2YEEHBeoGvgpVZpxEFVb4hvLg0SmarH
+QQBOCZA8ONVdBIsAAkkRkAGLV9nQFqPMIbmB9QtsiIUY3BEgeXCnr4gUAQQS
+IpBrXnCCMeoN1jTHmA9aEwuBOCFA8uBENxEkAggkScCMmGtsao9cfTihM916
+kk0xEYvdAiQPdvcP0SGAQMIEHp7bdrDR5j3WNcv4ViU01vkQ0A4CJA87cPAD
+AgggEK3A0HDxCmWMhQMU9TlBYhNt6yk9KQIkD0npSdqBAALWCzxy5lUTZbn1
+JVYGKgnN4DBXH6zsGwuDInmwsFMICQEEkimw5Y9/ltUkzUxbWyfrTlz8+KkX
+TbI1PuKyR4DkwZ6+IBIEEEi8gL7a7iaa/Tes3Xyh3TESnQ0CJA829AIxIIBA
+4gVkh9hTZAOsFusbajTTNq3vpOoHSPJQ/T4gAgQQqAEBv2Asv+rwcifItM2m
+rsYFp9dAl9DECgRIHirA41QEEECgFIF8OnuoUfrsUo614RjjM3DShn6wOQaS
+B5t7h9gQQCARAsPGyFLUJuVKY7RRZ/Q0LjjKlXiJM34Bkof4zakRAQRqSOCZ
+eUumaKXf71KT5daFVywWr3MpZmKNV4DkIV5vakMAgRoTWDuwfrEMlNzHtWbL
+bZYLHj7p4umuxU288QiQPMTjTC0IIFCzAv6Vbjbd7DW4ftMH3IydqKMWIHmI
+WpjyEUCgZgV6GrOnye6ZaVcBJPYrTHs7nxOudmCEcfOmiBCXohFAoLYFikXl
+9mZTxhyVW5l3ZpZIbb/b4m09yUO83tSGAAI1IrBttsKZrjfXuJ4Aud4BlsZP
+8mBpxxAWAgi4LVD0i1cHsxbcbkUQvTkl17yg0f120IIwBRLwxg6Tg7IQQACB
+ygWCWQrG6IsqL8mOEkzB/5AdkRCFLQIkD7b0BHEggEBiBIbWbX6ffGPfKzEN
+MqptzfGL90tMe2hIxQIkDxUTUgACCCDwqoCs6aB95er0zFfbsf2/5PbLpKEt
+A2yYtT1Kjf+b5KHG3wA0HwEEwhXoamp9hzJqdrilWlCar5aYU9vrLIiEECwQ
+IHmwoBMIAQEEEiSQ0NkJcvXhkNzavrYE9RRNqUCA5KECPE5FAAEEtheQ6Zlz
+tDJv2/65ZP07WbdjktU38baG5CFeb2pDAIEEC7w8PVPppDZRVpx8Q2e69aSk
+to92lS5A8lC6FUcigECFAp7yTYVFWHt6Z8tFM5RsJmVtgGEFZny3V80My6HG
+yyF5qPE3AM1HIC4BrdXaejPh9rjqi72eoS0fkJkWU2OvN/4Kz+3KZA+Jv1pq
+tEmAkbM29Qax7CLgaf2vRuv6XV6o1SeMSskH1BWyhsBklwi01sMpL3VuQ+89
+f3Qp7lJjNdlsKtcrm0iVeoLLxxlVpwr6amnCh11uBrFXJpDYe3OVsXA2AnYK
+dDVkb5bkwbktnuWqw8UtfSu/bqdq5VF1NS44zxSL36y8JGdKeHHGrGmvOWLV
+7YPOREygoQpw2yJUTgpDIDqBrobWy9xMHLzPJzlxCHrcFP3gm3gtPfbbsHbz
+hbXUYNq6owDJw44e/ISAlQLdc1rfZpR/s5XB7SEouV3xQCZtEn15u6dxYXOw
+edQeGJL5ktHOXQFLZkdUp1UkD9Vxp1YEShboblp4jK/9Dlm10KkxSnKr4uHp
+k1Wb7ugoltxYBw+U6ZnXOhh2xSHLolGNcrvm9IoLogAnBUgenOw2gq4VgWAz
+omKx8F2ZXy/TAN15yBWHdfVav/uo1R0b3Il6/JH+ft7C/ZUxC8d/ZjLOMD7T
+NpPRk+NvBcnD+M04A4FYBPLp7ITBzQP3yofTUbFUGFYlWsbiq1Q2ne94NKwi
+bS2nv79wabBplK3xRR2XNuoMWVXTrfdn1Cg1Uj7JQ410NM10T2DE6C9J4nCy
+a5F7Wl2T6Vv2Y9fiHm+8wSZRMl3t8vGel6TjJXHyisXidUlqE20pTYDkoTQn
+jkIgVoFcw/y/N8Z/X6yVhlCZ1t6XM/mVt4RQlPVFdD/fOz/YLMr6QKMPcPEj
+bzh/r+iroQabBEgebOoNYkFABDrntJ5jjP60axjyLXxVZvKMq1yLu9x4ja9Z
+plnwZGGs6Vs2DX2gXEfOc1OA5MHNfiPqhAp0NbTN1dp8I7gc7FITZWbFHyZO
+nzJfr751xKW4y421p7HtWOmjE8o9P2nnGaUvN+3tTr1nk9YHcbeHzo5bnPoQ
+GEWgb957D1Kq8B3X9keQKw6blKo/a87/3PniKE1L3NNF36/J6ZmjdqQM6s2t
+zJ896uu8kDgBkofEdSkNclHgqROzk4f6ByVxUK9xKX6ttK9SqUUtfUvzLsVd
+SawyC+ZAuVifraSMJJ5rfEVClcSOHaVNJA+jwPA0AnEJyJUG/cIGdafUd2xc
+dYZVj9zvvr6ld/l3wyrPhXJGjLpc+myCC7HGGqPMDOpMZ1tirZPKqiZA8lA1
+eipG4GWBXLr1n2RK5nzXPGScwzfmrum40bW4K4k3WHtDzr+0kjKSfK6s+8Ag
+0iR38HZtI3nYDoN/IhC3QNec7AXyLfb6uOuttD5JHB6aethBl1RajmvnF5Re
+KP01y7W4Y4vXqLatq27GViEVVUuA5KFa8tRb8wKd6daT5N75V1yDkMThaVl6
++pzZ99885FrslcZrfFMzU1HLsZIZKJMGBgtXlHMu57glQPLgVn8RbUIEcs3Z
+I5Rv/kvGDEx0q0l6QNelzpalp591K+7Ko+1KZ98oH47zKi8p2SXIwMlLzbwl
+9cluJa0jeeA9gEDMAsFqfH5BySBDMzPmqiuuTja8uijTvfx/Ky7IwQLkdsXV
+DoZdhZDNwbmB9QuqUDFVxihA8hAjNlUhYLLZ1JZNw8tlgGSDcxrau6Glb8UK
+5+IOIeBc8/nBFNpzQygqtCIkkbsv2L00tAJDLYjbO6FyWlgYyYOFnUJIyRXI
+5dW/yTfYM1xroSwEdW9LfvkNrsUdVrxmZOhKWYe5Lqzywign5amb5erVXWGU
+FXYZ8h4//uUxPWGXTHm2CJA82NITxJF4ga6G+VfJL9UrXWuofLvt0vWTF8vf
+MkSj9h7BAl7ScLtmlmj1x8b56R97Kf1Va3vE+EzbtLZzKg+M5KFyQ0pAYEyB
+rsYFp8taUP865oGWHSAzK9bWa3V2pvuuLZaFFls4L2zU75XK9outwhIqkt1L
+b9Pt7X5zT0ePrPL5mxJOqcYh53Zlsuw6Wg35GOokeYgBmSpqW6CnccEcU/Rl
+rIBJuSQhVxqGU17duTKz4kmX4g47Vm3Z9MxgSXCdqv/6X9qpza1/+bdN/whu
+8xQ0g0xt6pMQYyF5CBGTohDYWSBYMKfoF4OZFXvv/JrtPxutLm3qXfYr2+OM
+Mr5cOvsWmZ7ZFGUd4y1b+uWBTPfdT79ynq6bvOLlzcleecaev43vvz+47WNP
+REQSlgDJQ1iSlIPATgLBUsYDA4X/ks2ujtzpJft/1OqmufmO2+0PNNoIfQuX
+W9ae2mGcw9ZbSlrdHa1E2aXv9+IGfWHZZ3OitQIkD9Z2DYG5LjDs66/IAMk3
+OtcOre5vaW38sHNxhxxwsJCXDBF9V8jFVlSc3Ep6LjNxn102IrN64KTynRsk
+XFEn1cjJJA810tE0M16BzjnZjyrlL4631hBq03rNtOkT24LBeCGU5nQRZsRc
+Jbcs7PodqfUdevWtIzvDysDJ1TIWwsrFu+TKWzoYMLxzzPzstoBd/zHctiR6
+BLYKyC/K87Qyn3KNQ77VvjRBq7NmP3T3RtdiDzteueU0zSh9cdjlVlxenb5t
+1DK0tnafFOMXrx01bl5wUoDkwcluI2hbBbqbsvPkF+Vdsi6AjGFz6KFlXLxK
+tcrMikcdijqyUIdVcJ/eskGuWj/Yklv+f6M1eur0+nvkXdc/2uvVfF5u/5wh
+CdnR1YyBusMVIHkI15PSalggmNNeLKjvyEqEU1xj8LS6JtO37MeuxR1FvDJO
+Rds2PTNop3wA7zBQcue2B1eMJGNdtvPzNvwcJNMjvuHqgw2dEVIMJA8hQVJM
+bQs8M2/JFDUsiYMyB7smIQtBfSmTX3mLa3FHFW9Puu0MGevwuqjKL6dc6aP1
++81QK8c6V3Y8tfbWhcS+ONgUbqw28LobAiQPbvQTUVosEHxTXdu/7hvygfN6
+i8PcbWjyTXVV5oDGq3b7Yo0+6SvfuoWNjPHuee2vOwbG6hLZ8fQ3MnCyd6zj
+qvG6XH2YvmXT0AeqUTd1hi9A8hC+KSXWmECuccFnJHGwasfFUrpAvs3+YeL0
+KfP1qvZCKcfXwjFdmQV/JTuevt22tspy1Hu8ZbF9vDLw1earD1eY9nY+d7bv
+MEf/TSc62nGEbYdALt16oayi93d2RFN6FC+vSFh/1pz/ufPF0s+qgSOHi1fb
+NthVriSsbulb1lmqvk7V3SXnDJZ6fJzHBQum5Vbmz46zTuqKRoDkIRpXSq0B
+gVxD25vkloWd+wrswV8+WHyVSi1q6Vua38NhNffSY/Oyeytt4WqIenw7Zzb3
+3LNORleOOT6iWh1sfMXAyWrhh1gvyUOImBRVOwLdTYuO9E3xXkkeJrjWavlm
+fX1L7/JdVil0rR1hx7tpUL1f+nNa2OVWVJ5MvZw+2Swdbxme8ey9dWHMyT2N
+C5vH2yaOt0uA5MGu/iAaBwSCb6jF4kiw2dX+DoS7Q4ja03fNXdNx4w5P8oPa
+eh/emA9aR2FUx1GrOzaMN67mNSselCtMo64JMd7ywj6+6BeuC7tMyotXgOQh
+Xm9qc1zAnNpet7FfdcigujmuNUU+TH4z9dADGe2+m47rWbHm3TZuYCbJXskD
+JXdultUDJ41qe2RudubOMfOzOwIkD+70FZFaIND1fP7f5YrDaRaEMq4QZGbF
+0/WeOnf2/TcPjevEGjlYpmdeY1tTJdn7fUu+4xflxjVlorlDEojhcs+P8jyZ
+nTRpy7C6PMo6KDtaAZKHaH0pPUECuTnZa5Rv3PuFJ/fNZfGgs2Xp6WcT1B2h
+NSXXvKBRxjq8ObQCQypIPvjLvuoQhDC7s+N5SXS/FVI4oRcjAycvNfOW1Ide
+MAXGIkDyEAszlbgukEtnz5BtJj/vWjtkSqaMj1QXyeJBVu64aIOnP2Ksu+og
+sz5GVN3EOyv1sXrgpKzGmutf11ZpGzm/OgIkD9Vxp1aHBLoaFqZ9Xy2Xz+GU
+Q2FvDdVo75Nz+1Z2uBZ3XPHKZk37Sr+eH1d9pdYjSd93Mt13rS31+NGOa+pb
+/mO5/fH4aK9X+3mjFaubVrsTyqyf5KFMOE6rDYGtg7pMIZhZ4dya/HLZ+5st
++eU31EZPldfKEaWWSN9OLu/s6M6SMSoV3bJ4JTJ5D8guX5Xd/nilrEj+Nua4
+znTrSZGUTaGRCpA8RMpL4S4LPHLmVRM3D5pvyeCuw11rh3xgdB0weZ/FwYeH
+a7HHFW8wc0Zu6lwRV30l16P1k83Z9A9LPn6MA+snT/i6bNVdGOOw6r1s2G2z
+evjl10zyUL4dZyZcYMsf/xx8+/tr15opCcNzKS911sGrb+13LfY44+1a23uu
+DJR8bZx1llaX/rpub5chNuE8GlZ/489y68LiRcHMObnm818TTmspJS4Bkoe4
+pKnHKYGudOs/yLz/9zoVtAQr98qHJHE4r6l32VOuxR53vPKBat1ASYnJn6DN
+18K28IzFm2UZVWeKI4x9CLvTIy6P5CFiYIp3T6CzYX5W+b6TYwW0510qicOv
+3FOPN2KZnvl6uepg3712rf5bptQ+GbZG04KGB+SKlL0JpTGXPHVi1rqxJ2H3
+Q5LKI3lIUm/SlooFetMLjlNG3yEDBeRLvGMPrW7K5Ffc4VjUVQnXyumZIhHW
+QMmdUYPbIEbp0K9o7FxPuT9LIrfvixss3JSs3AbVwHkkDzXQyTSxNIHgvuuI
+X/y2jaPvx2yB1t9vaW388JjHcYDKNV9wgFb+Avso9PPNk/aR9180jzrPuy24
+LRJN6WGU6l8ZRimUEY8AyUM8ztRiuYB8oEw1heH7JMyDLA911/C0XjNt+oSF
+YQ6y27WS5DxjioOXyZWlida1SMty0qtvldmj0TyCcTCyrsID0ZReeakyxijd
+1bjg9MpLooQ4BEge4lCmDqsFgh0V/cLA3XLptMXqQHcTnNzHfkm+Ub579kN3
+b9zNyzy1k0CwHLLxzWU7PW3Fj6lU/W2RB2LzwElpvPGL10ZuQAWhCJA8hMJI
+IS4LdK3o/azM9z/buTbI3H25R55t6l3+mHOxVyng3MD64HaFdVeXJAn8RXPP
+0oejZmmZ1fBdqcvaPU5kVZIz+uYsmh21A+VXLkDyULkhJTgs0NXQerEkDn/r
+YhM8ra7J5Dt+4mLs1YpZFvy6ulp176le+UAP1hSJ/KFXtRdk4OTXI6+ozAqC
+gcrDati6KbRlNifRp5E8JLp7adyeBLqbsqfIh8mX9nSMta95+ouZ/MpbrI3P
+wsCkv09UshyyfaHpjTMnzYht/5FUqu6rMpVIPqctfWh94WPzsntbGh1hbROo
+QwKBWhSQDZGOHimqe+XDxLktgeVb6k8zM9PyDTq2z5tEvEVkczMrv9HKCuJP
+Pdf/0pWdc+bH4lwsDMuUUP2cvPcPjKXCcVYiY4+mbRpQl8hpzu1iO86mOn24
+e3PZneYmeBsEOlsumqGHtvxGrjq8zoZ4xhWD1o9N0Op4WUjopXGdV+MHd2Wy
+h5gR84R83+YLkwPvBZlS+nhmQfpoZhDZ21nctrC3b4gsAoFgMyQ9vHmlk4mD
+0hslcTiLxGH8bwxJHK4gcRi/W7XOkP+fR+RWrjmnWvVT79gCJA9jG3FEggRy
+a/v+Q+aTv9W1Jm1d3CelFkni0Oda7NWO9/FTL5okq4bK1ts8XBIwvm/lbSaX
+DKOMleQhSl3KtkpANru6zhj/UquCKjEYuUf94bm9Hd8r8XAO205gw9r+RTI+
+cP/tnuKfLggYc7IsF59xIdRajJHkoRZ7vQbb3NmYfafyzU1uNt27M9O3wtHY
+qy8ul8CtnJ5ZfRn7I5Dl4q+zP8rajJDkoTb7vaZaLVP0mnTRLJUPEQff7/rX
+0w6fxSX3Mt+xwXRcmVXAt9cy/ap9mozob3tkbnZmteOg/l0FHPxlumsjeAaB
+0QSCTZCKRXOfTGqfPtoxtj4vtyqeqkvVnTv7/puHbI3R9rj8gp3TM213syU+
++X87ccuwutyWeIjjVQGSh1ct+FfCBIKBcmZk8Nsyyv4w55qmVb9SqbObepc+
+51zslgQsyxwfJh8+Z1kSDmGUKRDsRRLsSVLm6ZwWkQDJQ0SwFFt9gfXPbf6a
+3Ko4ofqRjC+CYPU/T1bZa+lb1jm+Mzl6e4EhPSxbPJvU9s/xbycFDsr1r2tz
+MvIEB03ykODOreWm5Rrmf0Lav9BFA9ns6gbZs2Kli7HbEvMz85ZMkemt77cl
+HuKoTIBBr5X5RXE2yUMUqpRZVYGuOdkFspZDkDy499B6ZXO+45PuBW5XxGsH
+1i+WZY73sSsqoqlA4NjOdOtJFZzPqSELkDyEDEpx1RXINbS9QSK4Xe51O7f0
+ulxx6Jw1eZ8LZaCkhM+jEgG+qVaiZ+m5xlxraWQ1GZZzv2BrspdodEkCstnV
+oSNGPSTfOK3c8GdPjQg2Kkp5qeOaepc9tafjeG1sga7GBaebYvEHYx/JEU4J
+aFWo8+qO5P+IHb3GlQc7+oEoKhSQxGHasC9TMl1MHJQa8lLqXH4pVvgmeOX0
+os+iUK9YJOlv2dSsaHwZBMvDBgGSBxt6gRgqEjDt7Z5ccbhHCmmuqKAqnaw9
+taS5p+PXVao+UdUGW63LDIt3JKpRNOZVAWMuCQbDvvoE/6qWAMlDteSpNzSB
+3Ir8jXLF4d2hFRhjQZ6nb8zkV94ZY5WJrmrE6KtdHO+S6E4JsXHy/3zfYDBs
+iEVSVJkCJA9lwnGaHQK59PxL5BfK39gRzfiikKmE32vOpq8f31kcPZrAwydd
+PF0Z/6LRXuf5ZAjIYNirktESt1tB8uB2/9V09LJL5pt9o29xEkHrvql7TVik
+29t9J+O3MOihlzZdLFcdnFuG3EJKu0MypkH+77/d7iCTHx3JQ/L7OJEt7Mos
++CvZ8Oib8se5ZWtlZsVLdZ531uyH7t6YyM6pQqPk6pP2tWIwXRXsq1GlMf41
+1aiXOl8VIHl41YJ/OSLQ3bRoHzNS/K58YLi3CJBMN1Naz2/qXf6YI9xOhJlr
+anunJJIyWJJHLQjISihnbP0CUQuNtbSNJA+Wdgxh7V4g2CDHL47IFQc1e/dH
+2P2sJwP6WvIrfmp3lO5FZ3y+ibrXa+VHHAyKNcOGqw/lE1Z8JslDxYQUEKdA
+V//6W+SKw5vjrDO8urxbMms6vhheeZQUCMj0zAa56vA2NGpLQBZiXfzYvOze
+tdVqe1pL8mBPXxDJGAJdDfM/pJR/yRiHWfmyjHP4ScusBr4pRdA7wfTMCIql
+SMsF5EvEtE0DxsnfB5bTlhQeyUNJTBxUbYFcuvXdyujPVTuOsurX+rF6rbJ6
+VXuhrPM5aVSBreNflH/BqAfwQrIFjP5gsEhcshtpZ+tAt7NfiGo7gd70gox8
+y7hH5nc7+H7VG2VmxbvT+Y6XtmsS/wxJoFgYuUTGv7DiYEierhUjvxOOyK1c
+c45rcSchXgd/GSeBnTaUKiD3sw8sGD/Ys2JaqefYcpwsAuWnlF4oMyvW2BJT
+kuIw2azwmg8mqU20ZfwCDJYdv1kYZ5A8hKFIGZEIPH7qRZNkz4pvS+Lw2kgq
+iLhQGefw4eY1K74fcTU1W3xujXe2XHU4rGYBaPjLAsac3JnOtsARrwDJQ7ze
+1FaigCQMesPzW26Xv48v8RTbDrsj07fiJtuCSlI8fONMUm9W2BbfXFthCZw+
+TgE9zuM5HIFYBLoasjdI4vDxWCqLoJJgdoXcjx2KoOjEFDm3b2XZu19u/abp
+m87EYNCQigTkg2xI108+NNN919qKCuLkkgXqSj6SAxGISUA2u2rzfXcTh4BJ
+Ep+3xMRVk9XorbtnylJBPBAQAXknTFTFwcvkn58EJB4BblvE40wt4xDwjTpv
+HIdzaI0JPDI3O1Oys4U11myaO5aAUZfLAOsJYx3G6+EIcOUhHEdKCUGge07r
+yUXPHCnbKh8uq8+GUCJFJFFgy6C5VL5pTkpi22hT+QJyte9AWTBsgZRwV/ml
+cGapAiQPpUpxXOQCRW0uVb5ZROIQObWzFQR7m3T1r7t864VqZ1tReuCTUnVv
+nja9+FDpZ0R35Asb9Iclsf9EdDVUXrKMMwpWGyV5qJxyzBJIHsYk4gAEELBF
+oHtw/XxJHA62JZ6o45AlSYdf++uOgajrKaX8h+e23Tow5H9UBhjY/LlxbFc6
++8aWfMcvSmkTx5QvwJiH8u04EwEEYhYw/tZvljHXSnWBwDGdy56RrbC/Y7uG
+MYo9ZGLoJJKHGJCpAgEEKheQb5THy2XpEyoviRLKFUil9JfKPTe284w6t6ex
+zcmF5WIzCqEikocQECkCAQSiF+AbZfTGY9XQ2LPiR0o2ehvruOq+blK+KV5V
+3RiSXzvJQ/L7mBYi4LxA37z3HiSNyDrfEMcbIIufycUf9WXbmyGJ5iXPzFvC
+hmkRdhTJQ4S4FI0AAuEIDPcPXi5rO9SHUxqlVCIwZUrd14MVHSspI+pzZdrm
+PmsH1i+Oup5aLp/koZZ7n7Yj4IDAI2deNVGW/bjUgVBrIsTXrV76gtH6m7Y3
+Npi2KUkEC8ZE1FEkDxHBUiwCCIQj0P/kc21yGfqAcEqjlDAEPJVyYOCkmZNr
+XHB6GO2ljF0FSB52NeEZBBCwSIDpmRZ1xrZQMn3Lfq61ytsX2Y4RGeMzbXNH
+ktB+InkIjZKCEEAgbIFgwR+5/Pz6sMulvBAEtP3TNmV45xldmQV/FUJrKWIn
+AZKHnUD4EQEE7BFgeqY9fbFzJNMnyTLQWvXv/LxNP8seKNoMG64+RNApJA8R
+oFIkAghULrB1oR9Z8KfykighCoGjVndskKmbS6MoO8wyZXbphZ0tF80Is0zK
+UorkgXcBAghYKVAsFj4o+1ikrAyOoLYKpLT9AydlxsVUPbz5/XRZuAIkD+F6
+UhoCCIQg8NSJ2cmykuEHQiiKIiIUaOpd9jut9OoIqwinaKOvNNksiWg4mltL
+IXkIEZOiEEAgHIEXN6oL5BvjvuGURilRCmjPWD9tUwbdHp5b450dpUOtlU3y
+UGs9TnsRcEHAV+xN4EI/BTGmJsu4B73R9nCNz7TNMPuI5CFMTcpCAIGKBXIN
+bW+Vb4qNFRdEAbEIZLrv2qKVuSuWyiqpxJiTO9PZlkqK4NxXBUgeXrXgXwgg
+YIGAr4pXWxAGIYxDQNfbP3Bya3N8c+04msWhexAgedgDDi8hgEC8At1Ni46U
+hX3eFW+t1FapQKZ7ea9M2/xlpeVEfb5sdNGWa76Apc5DgCZ5CAGRIhBAIBwB
+UyhcJbcs+L0UDmfMpdi/4qQsGjVRFQYujxkmkdXxnzSR3UqjEHBPIJ/OTvOV
+udi9yIk4EJh62KwO+etF2zWM0pfJe22C7XHaHh/Jg+09RHwI1IjAiFIXyaJQ
+e9VIcxPXzNn33zyktXe77Q2TKcAHjvhqge1x2h4fyYPtPUR8CNSAgPxC14rp
+mc739ART92UZVyB3B6x/sN9FhV1E8lAhIKcjgEDlAj3ptjNkrAO7H1ZOWdUS
+Gtbc84hslvWTqgZRQuXyXpsX7NhawqEcMooAycMoMDyNAALRCsjMin1eqcFX
+LODzioXrf8utiy+60AZ2bK2sl0geKvPjbAQQKFOgWBz51iNnXjWxu2nhMcqY
+08sshtMsE2ie2fBtmbb5rGVh7RqO7NgqAycP3fUFnilFgOShFCWOQQCB8AVk
+xb8tf3zutmKhKNMz5WI3j0QI6FXtBdnU7Kv2N8akCkpdaX+cdkZI8mBnvxAV
+AjUhYIx/vtY+2yUnrLfrlfmK7Lbp294suXVxyTPzlkyxPU4b4yN5sLFXiAmB
+GhKQX+ATa6i5NdHUdL7jSZl08X3bGyuzfPZ5vn/dhbbHaWN8JA829goxIYAA
+Ao4LmJT9K04GxEabq7dOFXbcO+7w6+KukPoQQACBUQRWpXTqc6O8FunTMnVv
+rm/8f4y0khorvGV++v6eFWve4UKzn/7r1kkS54ALsdoSI8mDLT1BHAggcGpR
+FW+Z27cyWOY41kdPY7bgF2OtMvGV6fb2YMzD/YlvaI02kNsWNdrxNBsBKwWM
+vqWnceEsK2MjKAQQ+IsAVx7+QsE/ENidgN6otbp3d6+U+lxwP1Urb6LSJrg0
+OkkGCE6WO61T5ckDZZOeWbLGQX2pZSX/OLN/0R+5Sdp5QfLbSgsRcFeA5MHd
+viPyOAS0ea6lb+X7oqoqSCy6M4tnporDB/lGHS733tOys2Ra6ktrY47ZuoVw
+VJVbWq4kV+/NNbTdmulb9nNLQyQsBGpegOSh5t8CAFRTQFbiCzYRWrvtT07+
+/vYr8ZhT2+t6X3i4pWiKJ0uScbLMm3+T/L3vK68n+W9jiv8p7X/91gWHktxQ
+2oaAowIkD452HGEnX2DbB+fvpKXBn38JrlLk0gtbtC6+R/4tf9QxSVWQKzBN
+3c/3LpH23ZLUNtIuBFwWIHlwufeIvaYEtl2l6JRGB38+1tWwUG5vFFolibhE
+xlAcnDQMyZX+QVb/u/3g1bf2J61ttAcB1wWYbeF6DxJ/zQq09C3Nt/R1fKJl
+VvowuaXRJsnFL5OEIVdXDlw7uO7qJLWJtiCQFAGSh6T0JO2oWYHg9kbLmo7l
+kki8sS5Vd5xsSvSjxGAY9XedLRfNSEx7aAgCCREgeUhIR9IMBAKBpt5lv5vb
+13GaTqXeLlciulxXkasP++iRLZe53g7iRyBpAiQPSetR2oOACLT0Lv9hJr/i
+9drTl0oSsdllFOOrq/Lp7ASX20DsCCRNgAGTCenRYCR+X2PrnGFj0pIRHi2D
+6GZqpaYFzZO5gJtlMaIX5edHdb2Xb84ty28bfJeQ1tOM3Qls6+NbO1vafqiG
+irfLO+GU3R1n/3Pm4ILyFkqcd9gfKxEiUBsCJA8O93PwbaxovDN97S/samh9
+q3w47B80J1hQPngECwi8+pDJb/KDGSmqXLr1pa6G7E/lw2XpXjOnfO+IVbcP
+vnoc/0qawNyuZU9IcvnmXDr7N5JjflbeBSnX2ugbc53ETPLgWscRb2IFuG3h
+YNcGA8hyDa0fGTHmKVlA6FvGNwteSRxKaY58kOwrf97j+/7K9c9tfrqzobV9
+zfGL9yvlXI5xUyC4CiErZX7e89S7lNIbnWuFMZlc84LXOxc3ASOQUAGSB4c6
+1rS3e13p7BI1tPnRYPtguTVxQAjh76eM/4mhzf2PSkJytclmnftWGoJBzRSR
+yXc84NV7J8mMjCdda7QpFC90LWbiRSCpAiQPjvRsVyZ7SNfy/E/kKsOXJeTQ
+rxJIIjJDEpIv5HrVL/rmLDrMERbCLEMg0728d/LE1ImyNsTjZZxetVPklssi
+M28Jm4hVrQeoGIFXBUgeXrWw9l9yufYEM6xk2l30A95kZMQJw3q4q7Ox7VRr
+QQisYoFjOpc9k0p5p8ntjGcrLiy2Asz+3YPrzoytOipCAIFRBUgeRqWx44Wu
+dOvb/ULxx+MZ01Bp5MFVCF0sPNA5p/WcSsvifHsFmnqXP5by6mQ9CLXe3ih3
+jEzG6py94zP8hAAC1RAgeaiGeol1br3iYPx7ZZrElBJPCe0wmZkxUSt/mSQv
+bw6tUAqyTqCpd2m30l6bTOOVLnfhod8pCYSEywMBBKopQPJQTf091B2McfBH
+/PuqkTi8ElaQQMgYi//qblp05CvP8XfyBFryK36gPO9GF1omicOsXGPrcS7E
+SowIJFmA5MHC3g1mVZgRdU+ctypGZzB7F4sjyxioNrpQEl7JTJrxMbl98ZAT
+bfGNTDflgQAC1RQgeaim/ih151b0LVHGnDzKy/E/bcxx3QPrr4m/YmqMS0Cv
+vnUk5aXOl/sBQ3HVWXY9WnMrrWw8TkQgHAGSh3AcQytFbhHsI1cc/jG0AkMq
+yBj/4z2NC2eFVBzFWCgQDKA02vsXC0PbMSSjjmWvix1J+AmBuAVIHuIWH6M+
+3y9cKfd19x3jsNhflvEP0+X2RbBEMI8EC0zQ5p+keX+2uYkynXiSr1PH2hwj
+sSGQdAGSB4t6+JEzrwoGKF5lUUg7hCKba10u3/i2bra1wwv8kBiBdL5js/L0
+R2xvUKFYeKPtMRIfAkkWIHmwqHe3PLX2nXLLYqZFIe0UitmroMx5Oz3JjwkT
+aMmm75Tlqx+1ullaM+PC6g4iuKQLkDxY1MPG94Nth61+yBR762O0GtCB4HR7
+u6+VucnmULVRTTbHR2wIJF2A5MGSHg4WvpGR7m+xJJxRw5D7zSczbXNUnsS8
+oOsmf0Pej5tsbZCMwTn68VMvmmRrfMSFQNIFSB4s6eGe5tZGGwdK7sIjq132
+DK9jsNouMMl6ItN91xajvOX2tsqkNqwdnGNvfESGQLIFSB4s6V8ZKJm2JJQx
+w3Ap1jEbwwGjCtSlzIpRX7ThBVNstCEMYkCgFgVIHizpdfmWN9uSUMYMw6VY
+x2wMB4wq0Dhxn1VK6Q2jHlDtFzx1RLVDoH4EalWA5MGWnjfK4lkWOyG5FOtO
+ofNj6QLBqpNKm1WlnxH7kYfGXiMVIoDAVgGSB3veCM6sn2CU70ys9nSvm5Fo
+7f3M1shl6/jDbI2NuBBIugDJgzU97NI2w8HEEB61IOB55je2tlOma3LlwdbO
+Ia7EC5A82NPFm+0JZc+RSObgTKx7bgmvjiWQ8lWP9LfMjLTvYbR5jX1REREC
+tSFA8mBJP8uiPC9YEsqYYchaD87EOmZjOGCPAluXq1b6iT0eVK0XZdpwsKR7
+taqnXgRqWYDkwZLe95Wyezng7Zzkm6gzsW4XNv8sV0Crx8s9NerzRtaus24T
+uajbTPkI2CBA8mBDL0gMWtX1WRLKmGG4FOuYjeGAEgTMEyUcVJVDzOCQbGHP
+AwEE4hYgeYhbfJT6Mulit6QQG0d52Zqn5arD0F4HTPqtNQERSAwCem0MlZRV
+xYhSXHkoS46TEKhMgOShMr/QztYdHUW5/LAqtAKjKkjrXx6x6vbBqIqnXPsE
+ZErkS/ZF9XJEnq/3sjU24kIgyQIkDxb1rqf1MovC2W0osn2X9THuNnCeLFtA
+a2PtFbGiUhPKbhgnIoBA2QIkD2XThX/izEkzvm31csBa9av6KR3ht5wSLRcY
+tjY+7ddbGxuBIZBgAZIHizr34NW39iutb7EopB1C0cq7bW7X7et3eJIfakDA
+k6EF1j648mBt1xBYkgVIHizrXa9u4r/JoMRNloUlwzH0YMrzbrQtLuKJXkDW
+E01FX0t5Ncj/FZKH8ug4C4GKBEgeKuIL/+RM911rZT+BT4ZfcmUlyliHzzb1
+LnuqslI4200Be28NaKP5Hebmm4qoHRfgP56FHdg8ecYX5Jv+altCk2+e+RkH
+TPmMLfEQR+wC1n67l3Wz7R2PEXs3USEC8QmQPMRnXXJNwVbI9Z5qs+P2hR5Q
+qn4B0zNL7r7kHWjU3hY3iuTB4s4htOQKkDxY2reyp8CjKpWaLwMoqzhYTRdT
+2lvY0rc0bykTYcUgIHcGZsRQTXlVpLjyUB4cZyFQmQDJQ2V+kZ7d0rv8h3L7
+4r3VSSB0UXnqkua+5TJ9lEdtC5j9bG0/ty1s7RniSroAyYPlPdzSt2KF1vrd
+8ifGbbD1gFxxeM/cfMftlvMQXhwCRlm79bU2akMcBNSBAAI7CpA87Ohh5U8t
++RU/UPXePEkguiIPUOs+r947nisOkUs7U4F8u3+trcFKkvuirbERFwJJFiB5
+cKR3W3LL/2/qYQee4Gnvo7LoQn/YYQfrOMgAzU/tv7c6NtO9vDfs8inPTQFj
+jLwtzOG2Ru97E0gebO0c4kq0QF2iW5ewxs2+/+YhadI/dWWyd6hh8yEZC7FE
+frlPrayZekAr87UJqv7GhjX3/LGysjg7aQLdmdbDlVFTbG1X875HWbtpl61m
+xIVAGAIkD2EoxlxGS67jT1Ll3zw2L3vD5n4932izUH7Bv1EuL08sJRS5/TGs
+jPmVXMFYVq9VRzq/kl/ApcDV4DHG99JKyfZTdj5e1KvaC3aGRlQIJFuA5MHh
+/j1qdUcwWOy24M/jp140adNz/ccbZdJyofloSQxmKl9N29o8T23Wvn7R99Sj
+Snv5/aYXH3rtr1fK+g08EBhDwPePG+OIqr0st9qeqFrlVIxAjQuQPCTkDbBt
+EacHpTnBHx4IhCNgzAnhFBR+KZIkPx5+qZSIAAKlCDBgshQljkGgBgXMvCXB
+dtcn2tp0j+TB1q4hrhoQ4MpDDXQyTUSgHIGuoY0nyXnTyzk3jnNkIsgf4qiH
+OhBAYFcBrjzsasIzCCAgAtr332UzhNy26LE5PmJDIMkCJA9J7l3ahkCZAtvW
+d2gt8/TITwsWn5g8Y1p35BVRAQII7FaA2xa7ZeFJBGpboKtp4SkyndfalSWN
+1n845pdf21TbvUTrEaieAFceqmdPzQhYK6D9wuXWBieByZWH6JdqtxmA2BCo
+sgDJQ5U7gOoRsE0g13z+a2TBsfNsi2uHeLT+5Q4/8wMCCMQqwG2LWLmpDAH7
+BczI0PUSpdW/G3RK/8x+SSJEILkCXHlIbt/SMgTGLdDT2BaMc7hk3CfGeoLe
+0HzeHG5bxGpOZQjsKGD1t4sdQ+UnBBCIWqDgFz8jdZS0R0rUsYxWvmzk9nPd
+3u6P9jrPI4BA9AJceYjemBoQcEIg19D2Jplhscj6YLX3PetjJEAEEi5A8pDw
+DqZ5CJQi8PBJF083qnB7KcdW85hgfYdJE73vVDMG6kYAAaVIHngXIICAGly3
++QvGqCOtp9D6t8d0LnvG+jgJEIGEC5A8JLyDaR4CYwl0NS44zxj/fWMdZ8Xr
+Wt9rRRwEgUCNC5A81PgbgObXtkBP48JmU/S/5oKClt02dKr+bhdiJUYEki5A
+8pD0HqZ9CIwi0NnSdnihOPKADCPYe5RD7Hpaq//OdN/9tF1BEQ0CtSlA8lCb
+/U6ra1zgkbnZmWq48ENhOMgdCu3EFRJ3PIkUgfIFSB7Kt+NMBJwUCK44bB5S
+q5RRs11pgNZq7dTDZn3blXiJE4GkC5A8JL2HaR8C2wnIWg5v0MOFh2Q9h4bt
+nrb/n9r7j9n33zxkf6BEiEBtCJA81EY/00oEVC49v803xZ/KlMwDnOLQqn/i
+1Em3OBUzwSKQcAGWp054B9M8BNYcv3i/wU39N/u+WiiDI50DkVkWX5vzP3e+
+6FzgBIxAggVIHhLcuTQNga7G7LlDmwe+KBKzXNSQxGFQ1034rIuxEzMCSRYg
+eUhA7z51Ynbyixv1Cdr4J8tuQWn5hSsD4cz+0rRpxmgZa6Y2G61ekL8flXvd
+fZ7yHtx/yoxfHbz61v4ENJ8m7EZAdsc8tugXP22K5u27edmdp7S6hemZ7nQX
+kdaOAMmDw33d05g9rejrC1/cYM6RFQKnvnJB2uxwaXrrT3vLU4fI6xlp7nuK
+ylfP9a8b6GqYf59nvDua+pbfLynGK6c7LELoueYFjWbE/2ShWDjXdQ1JdjdN
+nlz3z663g/gRSKIAyYODvRpcipbP/48Xiqal/HvYZrIMnGuVRKI1l87mZTDd
+pzP5lcsc5Kj5kPPp7IRhY85WRn/AjBTfJlmgfO4m4vG5161e+kIiWkIjEEiY
+AMmDQx0qHxJHjxjzJbkU/dYww5YkIi1/lsqViCvqtb4sne/oC7N8ygpfwLS3
+e90rHj7OqGLrsK8WSw1ym2rHa07h1xpjiVo/NvWwA29Ua2Ksk6oQQKBkAZKH
+kqmqe2Bnw/zzR4z6knzIT4sqEin7TcNG/U6uQlwtVyG+GlU9lFuegOxDMUvG
+MZwmKcKZXcvzp28b11JeYZafpT3vWtZ1sLyTCK+mBUgeHOj+rnTrp4zvfyye
+75Vmskzp+0rXnPkNmb6ODzEWojpvkFzzBQd4/mDG982xktQdK+Nej5V9KA6t
+TjTx1irvuftaepd/N95aqQ0BBMYjQPIwHq0qHCu3Er4gicPVcVct982vk7EQ
+wYZJ74+77iTXZ05tr+t+6bF9TaEw00sV9je+minjV2ZKYniYJAhHyWCFo2VG
+zFH+yMB0mTnz6kMyiNp46A0yNfOK2mgrrUTAXYGkDKxytwf2EHnnnOxH5dL0
+p/dwSOQvybfAz7T0dfx95BVJBZ0N2bvlg3NRHHWVXIdWBTn2TyUfv92BMmVW
+VnA1E+WpCTJlduvf8nNqu0P4584Cnn7f3HzH7Ts/HfXPwcwlGYAcbBRm1UP+
+/z0riWXNLMstH0g3tPSt/LpVnUAwuxXgysNuWar/pHzrP8P45lPV/r5pjLm+
+q3HBb+Uy8r3VV6lCBEYF/0cOK6fmHW8zVbsny2lBvOdIsvW9liokDvG2cny1
+yf+/A8d3httHy3tgL7dbUDvRs7eFhX39+3kL95dfGnfIx40dV4b84m1dmewh
+FlIRUnIE/qzrJ12cnObQEgSSLUDyYGH/9vcX/1lucVuzeZHEMkMN65sspCKk
+RAjoYqpOL8x037U2Ec2hEQjUgADJg2Wd3N2UbdLKWPcNzCi/TVYvPMEyLsJJ
+gIC839ubezp+loCm0AQEakaA5MGyri4W1fVyr9zKfvELxest4yIcxwXkvty9
+MiX4Hx1vBuEjUHMCVn5I1VwvbGuwrCApg6NMq63tl90vzupuWnSkrfERl1sC
+Mjjufw+Ysu8FrCXiVr8RLQKBAMmDRe+DYWXaZIVha2fABAM4/cKwXVMpLeo/
+QhmPgH5GTVBnsbPreMw4FgF7BEge7OkLpY2eb1E4uw1FFjKyPsbdBs6T1gjI
+lYaXtK47vSXXUdb6GdY0hEAQqGEBkgdLOv+ZeUumyDf74y0JZ9QwtDHNcntl
+31EP4AUE9iAgYxw21WnvjJa+pfk9HMZLCCBguQDJgyUd9EL/+mNldcV6S8IZ
+NYzg1kXR18y6GFWIF0YV0KrfpOrOaswv/+2ox/ACAgg4IUDyYEk3FT31OktC
+GTMM36FYx2wMB8QkoDd6qu6Mub3LVsVUIdUggECEAtYOzouwzVYWLbcDjpRv
+9W48jDrCjUCJ0gaBYIxDcKuiMb+MKw42dAgxIBCCAFceQkAMowijVbCDpRsP
+bWa4EShRVl1A6yd1nXcKtyqq3hMEgECoAiQPoXJWUJivp1Zwdryn+sadWOOV
+obbtBbT+7QSt3pDpXt67/dP8GwEE3BcgebCnD4ftCWWsSDyHYh2rLbwehYDc
+qvjm/nurU9L5jmejKJ8yEUCgugKMeaiu/19qlyxus/+Xn+z+h1b+JrsjJLqq
+CWhVUEZ/pKWv48aqxUDFCCAQuQDJQ+TEJVag1Z9kdUknHr72nnEiUIKMW+DP
+KeO1Na9Z8WDcFVMfAgjEK8Bti3i9R61N1vl/ZNQXrXvBdyhW6/CSGZDW3/Hq
+J7eQOCSze2kVAjsLcOVhZ5Eq/ZzSfmfRkSsPE7TurBIT1VomIGMbNmttrsvk
+O75qWWiEgwACEQpw5SFC3PEULQPLnpSrD0+M55zqHKufl1j7qlM3tdokIEtN
+/1DXqeZMfiWJg00dQywIxCDAlYcYkEutwij9fdmS+4pSj6/Ocfr+6tRLrbYI
+aK3Welpf15zvuMeWmIgDAQTiFeDKQ7zee6ytLuXdvccDLHhRp7T1MVrAlMwQ
+tB6RxOHfvdSEY0gcktnFtAqBUgVIHkqViuG4xp6lv5ZfztbuNii3VR7PzPF/
+HAMFVdgmIAMidb3X2NK38prmnnvW2RYe8SCAQLwCJA/xeu+xNhl8ZiR5+Nwe
+D6rii9ozN+mOjmIVQ6DqmAXkPflTT9edPLev4+yW3PL/i7l6qkMAAUsFSB4s
+65jmmY332Hj1QWL6w5RDD7rNMi7CiUggSBpSyjtFFnt6S6Zv2c8jqoZiEUDA
+UQGSB8s6Tq9qL8gv7qstC0tp7V07+/6bh2yLi3hCFAhWh1RqaV2q7rggaWDN
+hhBtKQqBhAmQPFjYoTJn/icyDe4/bQlNkpnbM/kV99kSD3GEKyD9+6z8+Uyd
+V3fk3DUrFzX1LvtduDVQGgIIJE2AqZqW9ujUww/60JYnnj3BKDOvmiEGt1B0
+3aQrqxkDdUchoItKqx9oT301s3/6vuCKVxS1UCYCCCRTgOTB0n4NbhHkmi94
+hykM/koZc1Q1wpRvo0/puglnZLrv2lKN+qkzXAG5miVLiehfStKwPKXrOpp6
+lz73cg0d4VZEaQggkHgBkgeLu1g+tNf2zVn01mE18gO5AvG6OEMNpmVOMPVv
+b+i+++k466WucAUkYRiShOGnMo3nuyntfUduSTwVbg2UhgACtShA8mB5rzes
+ueePv5+38I39A4VvyhWIk+MIV25VPFSv1TkN+XuejaM+6ghX4OXZOjLFUnk/
+MnUTfsSVo3B9KQ0BBJQieXDgXfC61UtfMNnsW3J5/XG5AvERufgcUb/povb0
+5zOTZnxMr751xAEaQlR6QO5GdMoVhoeU9n6j6yauCq5YAYMAAghEKRDRh1CU
+Iddm2dsWZ/pEPp1dPqzUF+QqxNtCldD6wXrtXd2YX54LtVwKC0Vg23iFp6Ww
+vFxZ6JGEodeYup7MAcf0MNgxFGIKQQCBcQiQPIwDy4ZDt+1oeVp3U/ZEv6D+
+n9HqXZJI1JcVm8zr10Y94NXpm5p7On5WVhmcVJFAMCZBRjFulEGMG6Uf18lY
+k+eUp56V5+WWkXlGm9Tjps7/w5RDDnxit+tssL9pRf6cjAAC5QnI7ygeLgus
+OX7xfkNbBt5jjDpNOvNNxphZe26PfkEr86BM0fuxSk1eadMlbhnbsX+xX0/d
+c/zuvjpSr4t1xeGCN3XyyITiQGFwUA1IMigXknhUW+DxUy+aNPDc8Bj/d6od
+ZfLr9/ad9NIxv/zapuS31P0Wkjy434c7tCBIJoYHh2aropkpL0zb9uJm2Zfi
+hcl16tHZnR3P73ACPyCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCA
+AAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCA
+AAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCA
+AAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCA
+AAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCA
+AAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCA
+AAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCA
+AAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCA
+AAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCA
+AAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCA
+AAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIICfvsLoAAABSUlE
+QVQAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAII
+IIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAII
+IIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAII
+IIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAII
+IIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAII
+IIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAII
+IIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAII
+IIAAAggggIDdAv8fs9naD04275EAAAAASUVORK5CYII=
+
+----==_mimepart_584fec92b4981_1e103ffdedfa53cc15445--
+
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBooking Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "bookings" WHERE "bookings"."user_id" = $1 AND "bookings"."event_id" = $2 LIMIT $3[0m  [["user_id", 536], ["event_id", 98], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "bookings" ("user_id", "event_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 536], ["event_id", 98], ["created_at", 2016-12-13 12:41:54 UTC], ["updated_at", 2016-12-13 12:41:54 UTC]]
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/events/98
+Completed 302 Found in 4628ms (ActiveRecord: 15.7ms)
+
+
+Started GET "/events/98" for ::1 at 2016-12-13 13:41:54 +0100
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"98"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 98], ["LIMIT", 1]]
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.5ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2 AND "bookings"."on_waiting_list" = $3[0m  [["event_id", 98], ["cancelled", false], ["on_waiting_list", false]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2[0m  [["event_id", 98], ["cancelled", true]]
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT  "bookings".* FROM "bookings" WHERE "bookings"."user_id" = $1 AND "bookings"."event_id" = 98 AND "bookings"."cancelled" = $2 ORDER BY "bookings"."id" ASC LIMIT $3[0m  [["user_id", 536], ["cancelled", false], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.7ms)[0m  [1m[34mSELECT  "bookings".* FROM "bookings" WHERE "bookings"."user_id" = $1 AND "bookings"."event_id" = 98 AND "bookings"."cancelled" = $2 ORDER BY "bookings"."id" ASC LIMIT $3[0m  [["user_id", 536], ["cancelled", true], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 536], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.9ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."user_id" = $1[0m  [["user_id", 536]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 91], ["LIMIT", 1]]
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 89], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 92], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 90], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 95], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 96], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 98], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."event_id" = $1[0m  [["event_id", 98]]
+  Rendered events/_messages_count.html.erb (2.1ms)
+  Rendered messages/_form.html.erb (5.5ms)
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."event_id" = $1 AND "bookings"."cancelled" = $2[0m  [["event_id", 98], ["cancelled", true]]
+  Rendered events/show.html.erb within layouts/application (78.4ms)
+  Rendered shared/_navbar.html.erb (5.5ms)
+  Rendered shared/_flashes.html.erb (1.5ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 161ms (Views: 133.0ms | ActiveRecord: 11.9ms)
+
+
