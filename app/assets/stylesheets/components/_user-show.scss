@@ -9,7 +9,7 @@
 }
 
 .container-list p {
-  font-size: 16px;
+  font-size: 1em;
   margin-top: 0px;
   margin-bottom: 0px;
 }
@@ -34,7 +34,7 @@
 }
 
 .content-box-item i {
-  font-size: 40px;
+  font-size: 2.5em;
 }
 
 .content-box-item-participants {
@@ -45,7 +45,7 @@
 }
 
 .content-box-item-participants i {
-  font-size: 40px;
+  font-size: 2.5em;
 }
 
 .border-bottom {
@@ -75,10 +75,8 @@
 
 @media (min-width: 768px) {
   .event-photo {
-    height: 157px;
   }
   .event-photo-container {
-    height: 274px;
     display: flex;
     align-items: center;
     margin-bottom: 10px;
@@ -124,5 +122,77 @@
 }
 
 h3 {
-  font-size: 30px;
+  font-size: 1.5em;
 }
+
+.event-photo-bs {
+}
+
+.event-title-bs {
+}
+
+@media (max-width: 600px) {
+  .event-calendar-bs {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .event-participants-bs {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .event-status-bs {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+
+
+.event-participants-bs {
+  margin-bottom: 10px;
+}
+
+.event-status-bs {
+}
+
+.event-link-bs {
+  margin-bottom: 10px;
+}
+
+.container-list i {
+  font-size: 40px;
+}
+
+.space-bottom-btn {
+  margin-bottom: 10px;
+}
+
+.fi-wrench {
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
