@@ -7,10 +7,20 @@
   <!-- Cas où current user est sur sa propre page de profil -->
   <% if @user == current_user %>
     <div class="text-center">
-      <%= link_to new_user_event_path(@user) do %>
-        <button class = "btn btn-danger margin margin-sides"> <%= t('users.show.create')%></button>
-      <% end %>
-      <%= link_to t('users.show.edit'), edit_user_registration_path, class: "margin margin-sides" %>
+      <div class="container create-edit-container">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <%= link_to new_user_event_path(@user) do %>
+                <button class = "btn btn-danger"> <%= t('users.show.create')%></button>
+              <% end %>
+            </div>
+            <div class="col-xs-12 col-sm-6 edit-profile-link">
+            <%= link_to t('users.show.edit'), edit_user_registration_path, class: "margin margin-sides" %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- Affichage des events non archivés -->
     <% unless @bookings_not_archived.empty? %>

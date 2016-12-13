@@ -2,9 +2,12 @@
   <div class = "event-link-banner">
     <div class="col-xs-12 col-sm-10">
       <div class="event-link" id="copy_<%=event.id%>"><p id="copy"><%= event_url(event.id) %></p></div>
+      <div class="alert-copy-link" id="alert_<%=event.id%>">
+        <p><%= t('copy-link.notification') %></p>
+      </div>
     </div>
     <div class="col-xs-12 col-sm-2">
-      <div class="btn btn-primary" data-clipboard-target="#copy_<%=event.id%>" id="btn-copy">
+      <div class="btn btn-primary btn-copy-link" data-clipboard-target="#copy_<%=event.id%>" id="btn_<%=event.id%>">
         <%= t('users.show.event-banner.event-link-banner.copy') %>
       </div>
     </div>

@@ -1,3 +1,8 @@
+.alert-copy-link {
+  display: none;
+  color: $red;
+}
+
 .container-list {
   background-color: white;
   margin-top: 20px;
@@ -12,6 +17,29 @@
   font-size: 1em;
   margin-top: 0px;
   margin-bottom: 0px;
+}
+
+.container .create-edit-container {
+  margin-top: 20px;
+}
+
+.fi-wrench {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.margin-edit-button {
+ margin-left: 10px;
+ margin-right: 10px;
+}
+
+.edit-profile-link {
+  height: 36px;
+  padding-top: 8px;
+}
+
+.waiting-list {
+  margin-top: 20px !important;
 }
 
 .event-link {

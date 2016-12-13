@@ -235,3 +235,5 @@ fr:
       start_html: "<strong>Date de début :</strong> %{start}"
       price: "Prix : %{price}"
 
+  copy-link:
+    notification: "Votre lien a bien été copié, partagez-le vite !"
