@@ -1,5 +1,13 @@
-<h1>Booking#reimbursement_status</h1>
+<p> <%= t('booking_mailer.reimbursement_status.hello', name: @booking.user.first_name.capitalize) %> </p>
 
-<p>
-  <%= @greeting %>, find me in app/views/booking_mailer/reimbursement_status.html.erb
-</p>
+<% if @booking.reimbursed == "reimbursed" %>
+  <p> <%= t('booking_mailer.reimbursement_status.body_accepted', organizer: @event.user.first_name.capitalize, event_name: @event.name) %> </p>
+<% else %>
+  <p> <%= t('booking_mailer.reimbursement_status.body_refused', organizer: @event.user.first_name.capitalize, event_name: @event.name) %> </p>
+<% end %>
+
+<%= link_to user_url(id: @booking.user.id), style: "text-decoration: none;" do %>
+ <button style="background-color: #DA4167 ; border: 2px solid #DA4167 ; border-radius: 5px; color: white; font-size: 16px;">
+   <%= t('booking_mailer.reimbursement_status.profile_access')%>
+ </button>
+<% end %>

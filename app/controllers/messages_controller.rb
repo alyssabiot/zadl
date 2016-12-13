@@ -11,7 +11,6 @@ class MessagesController < ApplicationController
        format.html { redirect_to event_path(@event) }
        format.js  # <-- will render `app/views/messages/create.js.erb`
       end
-      flash[:notice] = "Votre message a bien été pris en compte !"
     else
       respond_to do |format|
       format.html { render 'events/show'}

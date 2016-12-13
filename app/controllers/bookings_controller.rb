@@ -12,7 +12,7 @@ class BookingsController < ApplicationController
     if @booking.on_waiting_list || @booking.amount == 0
       if @booking.save
         if @event.notif_subscription
-          BookingMailer.user_subscription(current_user,@event).deliver_now
+          BookingMailer.user_subscription(current_user, @event).deliver_now
         end
         flash[:notice] = t('controllers.bookings.subscription')
         redirect_to event_path(@event)
@@ -56,6 +56,7 @@ class BookingsController < ApplicationController
     else
       @booking.save
       authorize @booking
+      BookingMailer.reimbursement_status(@booking.user, @booking).deliver_now
       flash[:notice] = t('controllers.bookings.reimbursement', name: @booking.user.first_name)
       redirect_to event_path(@booking.event)
     end
