@@ -39,6 +39,12 @@ class EventsController < ApplicationController
   def update
     @event.update(event_params)
     if @event.save
+      @participants = @event.bookings.where(cancelled: false, on_waiting_list: false).map(&:user)
+      @participants.each do |participant|
+        if !participant.nil?
+          EventMailer.event_updated(participant, @event).deliver_now
+        end
+      end
       flash[:notice] = t('controllers.events.update')
       redirect_to event_path(@event)
     else
@@ -87,7 +93,7 @@ class EventsController < ApplicationController
     @event.save
     @participants.each do |participant|
       if !participant.nil?
-        EventMailer.event_edited_cancellation(current_user,@event).deliver_now
+        EventMailer.event_cancelled(participant, @event).deliver_now
       end
     end
     flash[:notice] = t('controllers.events.cancellation')

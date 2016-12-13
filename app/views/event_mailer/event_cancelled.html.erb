@@ -1,0 +1,11 @@
+<p> <%= t('event_mailer.event_cancelled.hello', participant_name: @participant.first_name.capitalize) %> </p>
+
+<p> <%= t('event_mailer.event_cancelled.body', event_name: @event.name, organizer: @event.user.first_name.capitalize) %> </p>
+<p> <%= t('event_mailer.event_cancelled.end') %> </p>
+<%= link_to user_url(id: @participant.id), style: "text-decoration: none;" do %>
+  <button style="background-color: #DA4167 ; border: 2px solid #DA4167 ; border-radius: 5px; color: white; font-size: 16px;">
+    <%= t('event_mailer.event_cancelled.profile_access')%>
+  </button>
+<% end %>
+
+

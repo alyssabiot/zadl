@@ -192,13 +192,13 @@ en:
       hello: "Hello %{name}, "
       event_access: "Access to event page"
       body: "%{participant_name} subscribed to your %{event_name}, you can check it here :"
-  user_unsubscription:
-    subject: "%{unsubscribe_participant_name} just unsubscribed from your event %{event_name}"
-    hello: Hello %{name}, "
-    body: "%{unsubscribe_participant_name} just unsubscribed from your event %{event_name}"
-    message: "The participant sent the following message: '%{message}'"
-    end: "You can decide to reimburse %{unsubscribe_participant_name} (or not!)"
-  reimbursement_status:
+    user_unsubscription:
+      subject: "%{unsubscribe_participant_name} just unsubscribed from your event %{event_name}"
+      hello: "Hello %{name}, "
+      body: "%{unsubscribe_participant_name} just unsubscribed from your event %{event_name}"
+      message: "The participant sent the following message: '%{message}'"
+      end: "You can decide to reimburse %{unsubscribe_participant_name} (or not!)"
+    reimbursement_status:
       subject: "%{organizer} updated your reimbursement demand for the event %{event_name}"
       hello: "Hello %{name}, "
       body_accepted: "%{organizer} accepted your reimbursement demand for the event %{event_name}"
@@ -206,13 +206,22 @@ en:
       profile_access: "Go to my profile"
 
   event_mailer:
-    event_edited_cancellation:
-      subject: "%{organizer_name} has cancelled the event %{event_name}"
-      hello: Hello %{participant_name}, "
-      body: "%{organizer_name} has cancelled the event %{event_name}"
-      message: "You will be automatically reimbursed."
+    event_cancelled:
+      subject: "%{organizer} has cancelled the event %{event_name}"
+      hello: "Hello %{participant_name}, "
+      body: "%{organizer} has cancelled the event %{event_name}. You will be automatically reimbursed."
       end: "See you soon for a new event!"
       profile_access: "Go to my profile"
+    event_created:
+      subject: "Your event has been created ! Share it !"
+      hello: "Hello %{name},"
+      body: "Your event %{event_name} has been created ! Copy this link to share it with your friends : "
+      event_access: "Access to event page"
+    event_updated:
+      subject: "%{organizer} has updated the event %{event_name}"
+      hello: "Hello %{participant_name},"
+      body: "%{organizer} has updated the event %{event_name}. Go to the event page to see the changes : "
+      event_access: "Access to event page"
 
   message_mailer:
     user_comment:
