@@ -38,6 +38,26 @@
   font-size: 20px;
 }
 
+
+// @media (max-width: 800px) {
+//   .event-calendar-bs {
+//     display: flex;
+//     justify-content: space-around;
+//     align-items: center;
+//   }
+//   .event-participants-bs {
+//     display: flex;
+//     justify-content: space-around;
+//     align-items: center;
+//   }
+//   .event-status-bs {
+//     display: flex;
+//     justify-content: space-around;
+//     align-items: center;
+//   }
+// }
+
+
 .title-event h1{
   margin-top: 0px !important;
   margin-bottom: 0px !important;
@@ -78,9 +98,38 @@
   .title-event h1 {
   font-size: 58px;
   }
+
+  .add-calendar {
+   margin-left: 35px;
+  }
 }
 
-//
+@media (max-width: 600px) {
+  .calendar-ebs {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .price-ebs {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .description-ebs {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    p {
+      max-width:150px;
+    }
+  }
+
+  .container-list {
+    margin: 5px;
+  }
+}
 
 .flex-container{
   padding: 0;
@@ -91,7 +140,7 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
-  space-around:center;
+  space-around: center;
   align-items: center;
 }
 
@@ -119,10 +168,6 @@
     margin: 0px;
   }
   height: 37px;
-}
-
-.add-calendar {
-  margin-left: 35px;
 }
 
 .url-copy-button {
