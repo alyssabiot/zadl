@@ -1,8 +1,9 @@
 class MessageMailer < ApplicationMailer
- def user_comment(user, booking)
+ def user_comment(user, message)
    @greeting = "Hi"
    @user = user
-   @event = booking.event
-   mail(to: @event.user.email, subject: 'Quelqu\'un a ajouté un commentaire à votre événement', comment_user: @user.first_name.capitalize, event_name: @event.name)
+   @message = message
+   @event = @message.event
+   mail(to: @event.user.email, subject: t('message_mailer.user_comment.subject', comment_user: @user.first_name.capitalize, event_name: @event.name)
  end
 end

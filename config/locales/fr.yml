@@ -225,7 +225,10 @@ fr:
 
   message_mailer:
     user_comment:
+      subject: "%{comment_user} a laissé un commentaire sur votre événement %{event_name}"
+      hello: "Bonjour %{name}, "
       body: "%{comment_user} a laissé un commentaire sur votre événement %{event_name}, vous pouvez consulter votre événement ici :"
+      event_access: "Accédez à l'activité"
 
   layouts:
     mailer:
