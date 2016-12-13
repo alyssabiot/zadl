@@ -224,4 +224,6 @@ en:
       start_html: "<strong>Starting at:</strong> %{start}"
       price: "Prix: %{price}"
 
+  copy-link:
+    notification: "Your link has been copied, share it with your friends!"
 
