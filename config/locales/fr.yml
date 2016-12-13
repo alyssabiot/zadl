@@ -148,8 +148,8 @@ fr:
   users:
     show:
       create: "Créer une activité"
-      bookings: "Mes réservations"
-      events: "Mes activités"
+      unhide_archives: "Afficher mes activités archivées"
+      hide_archives: "Masquer mes activités archivées"
       edit: "Modifier votre profil"
       event-banner:
         beginning: "Début :"
@@ -171,12 +171,21 @@ fr:
         waiting-list-subscribe: "Etre placé en liste d'attente"
         event-link-banner:
           copy: "Copier le lien"
+        past_activity: "Activité passée"
+        cancelled_activity: "Activité annulée"
+        cancelled_by: "Activité annulée par %{organizer}"
+        duplicate: "Dupliquer"
+        organized_by: "Organisé par"
+        sure: "Etes-vous sûr de vouloir vous désinscrire ?"
+        unsubscribe_title: "Envoyez un message d'explication à %{organizer}"
+        send: "Confirm and send your message"
 
   user_mailer:
     welcome:
       subject: "Bienvenue sur ZA:DL !"
-      hello: "Bonjour %{name} "
+      hello: "Bonjour %{name}, "
       body: "Votre compte a bien été créé, vous pouvez dès à présent créer votre première activité ! "
+
   booking_mailer:
     user_subscription:
       subject: "%{participant_name} s'est inscrit à votre événement %{event_name}"
@@ -189,6 +198,7 @@ fr:
       body: "%{unsubscribe_participant_name} s'est désinscrit de votre événement %{event_name}"
       message: "Le participant vous a envoyé le message suivant : '%{message}'"
       end: "Vous pouvez décider de rembourser %{unsubscribe_participant_name} (ou pas !)"
+
   event_mailer:
     event_edited_cancellation:
       subject: "%{organizer_name} a annulé l'événement %{event_name}"
@@ -197,6 +207,14 @@ fr:
       message: "Vous serez automatiquement remboursé."
       end: "A bientôt pour une nouvelle activité !"
       profile_access: "Voir mon profil"
+
+  message_mailer:
+    user_comment:
+      body: "%{comment_user} a laissé un commentaire sur votre événement %{event_name}, vous pouvez consulter votre événement ici :"
+
+  layouts:
+    mailer:
+      signature_html: "A bientôt,<br><strong>L'équipe ZA:DL</strong>"
 
   payments:
     new:
