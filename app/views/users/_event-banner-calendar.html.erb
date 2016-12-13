@@ -1,0 +1,15 @@
+<div class="event-calendar-bs">
+  <div class="text-center">
+    <i class="fi-calendar"></i>
+  </div>
+  <div class="align-left">
+    <div>
+      <p><strong> <%= t('users.show.event-banner.beginning') %></strong></p>
+      <p> <%= event.starts_at.strftime('%d/%m/%Y - %H:%M') %> </p>
+    </div>
+    <div>
+      <p><strong> <%= t('users.show.event-banner.end') %></strong></p>
+      <p> <%= event.ends_at.strftime('%d/%m/%Y - %H:%M') %> </p>
+    </div>
+  </div>
+</div>

@@ -28,6 +28,10 @@
   margin-right: 10px;
 }
 
+.cancel-event {
+  margin-top: 15px;
+}
+
 .margin-edit-button {
  margin-left: 10px;
  margin-right: 10px;
@@ -36,10 +40,6 @@
 .edit-profile-link {
   height: 36px;
   padding-top: 8px;
-}
-
-.waiting-list {
-  margin-top: 20px !important;
 }
 
 .event-link {
@@ -101,6 +101,8 @@
   }
 }
 
+// Gestion de l'event photo en fonction de la taille de l'écran
+
 @media (min-width: 768px) {
   .event-photo {
   }
@@ -138,6 +140,60 @@
   }
 }
 
+// Gestion des infos sur l'event en fonction de la taille de l'écran
+
+// Infos à droite de l'icone pour les écrans jusqu'à lg et en dessous sinon :
+
+@media (max-width: 1200px) {
+  .event-calendar-bs {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .event-participants-bs {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .event-organizer-bs {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+// event status et event participant au dessous de la photo pour les tailles sm et md
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  .participants-xs-lg {
+    display: none;
+  }
+  .organizer-xs-lg {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .participants-sm-md {
+    display: none;
+  }
+  .organizer-sm-md {
+    display: none;
+  }
+ }
+
+@media (min-width:1200px) {
+  .participants-sm-md {
+    display: none;
+  }
+  .organizer-sm-md {
+    display: none;
+  }
+}
+
+
+//other
+
 .annulations{
   .flex-center-column{
     padding-top: 15px;
@@ -158,26 +214,6 @@ h3 {
 
 .event-title-bs {
 }
-
-@media (max-width: 600px) {
-  .event-calendar-bs {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  .event-participants-bs {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  .event-status-bs {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-}
-
-
 
 .event-participants-bs {
   margin-bottom: 10px;
