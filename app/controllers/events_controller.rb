@@ -19,6 +19,7 @@ class EventsController < ApplicationController
 
     authorize @event
     if @event.save
+      EventMailer.event_created(current_user, @event).deliver_now
       @booking = Booking.new
       @booking.event = @event
       @booking.user = current_user

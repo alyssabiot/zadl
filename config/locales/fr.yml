@@ -194,10 +194,16 @@ fr:
       event_access: "Accéder à l'activité"
     user_unsubscription:
       subject: "%{unsubscribe_participant_name} s'est désinscrit de votre événement %{event_name}"
-      hello: "Bonjour %{name} "
+      hello: "Bonjour %{name}, "
       body: "%{unsubscribe_participant_name} s'est désinscrit de votre événement %{event_name}"
       message: "Le participant vous a envoyé le message suivant : '%{message}'"
       end: "Vous pouvez décider de rembourser %{unsubscribe_participant_name} (ou pas !)"
+    reimbursement_status:
+      subject: "%{organizer} a mis à jour votre demande de remboursement pour l'événement %{event_name}"
+      hello: "Bonjour %{name}, "
+      body_accepted: "%{organizer} a accepté votre demande de remboursement pour l'événement %{event_name}"
+      body_refused: "%{organizer} a refusé votre demande de remboursement pour l'événement %{event_name}"
+      profile_access: "Voir mon profil"
 
   event_mailer:
     event_edited_cancellation:
@@ -207,6 +213,11 @@ fr:
       message: "Vous serez automatiquement remboursé."
       end: "A bientôt pour une nouvelle activité !"
       profile_access: "Voir mon profil"
+    event_created:
+      subject: "Votre événement a été créé ! Partagez-le !"
+      hello: "Bonjour %{name},"
+      body: "Votre événement %{event_name} a été créé ! Copiez le lien suivant pour le partager avec vos amis : "
+      event_access: "Accédez à l'activité"
 
   message_mailer:
     user_comment:

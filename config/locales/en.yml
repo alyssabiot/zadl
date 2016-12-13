@@ -183,26 +183,32 @@ en:
   user_mailer:
     welcome:
       subject: "Welcome to ZA:DL !"
-      hello: "Hello %{name}"
+      hello: "Hello %{name}, "
       body: "Your account has been successfully created, you can now created your first event!"
 
   booking_mailer:
     user_subscription:
       subject: "%{participant_name} subscribed to your event %{event_name}!"
-      hello: "Hello %{name}"
+      hello: "Hello %{name}, "
       event_access: "Access to event page"
       body: "%{participant_name} subscribed to your %{event_name}, you can check it here :"
   user_unsubscription:
     subject: "%{unsubscribe_participant_name} just unsubscribed from your event %{event_name}"
-    hello: Hello %{name},"
+    hello: Hello %{name}, "
     body: "%{unsubscribe_participant_name} just unsubscribed from your event %{event_name}"
     message: "The participant sent the following message: '%{message}'"
     end: "You can decide to reimburse %{unsubscribe_participant_name} (or not!)"
+  reimbursement_status:
+      subject: "%{organizer} updated your reimbursement demand for the event %{event_name}"
+      hello: "Hello %{name}, "
+      body_accepted: "%{organizer} accepted your reimbursement demand for the event %{event_name}"
+      body_refused: "%{organizer} refused your reimbursement demand for the event %{event_name}"
+      profile_access: "Go to my profile"
 
   event_mailer:
     event_edited_cancellation:
       subject: "%{organizer_name} has cancelled the event %{event_name}"
-      hello: Hello %{participant_name},"
+      hello: Hello %{participant_name}, "
       body: "%{organizer_name} has cancelled the event %{event_name}"
       message: "You will be automatically reimbursed."
       end: "See you soon for a new event!"
