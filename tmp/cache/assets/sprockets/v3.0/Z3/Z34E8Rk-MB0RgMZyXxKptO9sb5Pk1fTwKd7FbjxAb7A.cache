@@ -1,4 +1,8 @@
 {:uriI"zfile://app/assets/images/jane.jpg?type=image/jpeg&id=4603c6f1063c550f154ea7bbf7b83dc21f9b4c9fa81cf468ad7aa0fb9b6a49b0:ET:load_pathI"app/assets/images;T:filenameI"app/assets/images/jane.jpg;T:	nameI"	jane;T:logical_pathI"jane.jpg;T:content_typeI"image/jpeg;T:source0:metadata{:digest"%ù*pÙ+ôBÜ±‹rìíiE»­äÐC’¼‚c:¢Û9§:lengthi?X:dependencieso:Set:
 @hash}
 I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"4processors:type=image/jpeg&file_type=image/jpeg;TTI"-file-digest://app/assets/images/jane.jpg;TTF:dependencies_digest"%Èq\$I‹2ç·=g4ñZ9ü¾·½„G`ùGõ}vxšÿ:idI"E4603c6f1063c550f154ea7bbf7b83dc21f9b4c9fa81cf468ad7aa0fb9b6a49b0;F:
+<<<<<<< HEAD
+mtimel+4;OX
+=======
 mtimel+uÀOX
+>>>>>>> 03b19920ccdf8d079f7012f2810b0acca3b63ed0
