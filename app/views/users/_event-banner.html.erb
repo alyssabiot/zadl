@@ -1,211 +1,33 @@
 <div class="container-list">
-  <div class="row">
-    <div class="col-xs-12 col-sm-5 col-lg-3">
-      <div class="event-photo-bs">
+  <div class="photo-info-box">
+    <div class="event-photo-mq">
+      <%= link_to event_path(event) do %>
+        <div class="margin event-photo" style="background-image: url('<%= url_photo(event) %>');">
+        </div>
+      <% end %>
+    </div>
+    <div class="event-box-right">
+      <div class="event-title-mq">
         <%= link_to event_path(event) do %>
-          <div class="margin event-photo" style="background-image: url('<%= url_photo(event) %>');">
-          </div>
+          <h3 class="border-bottom"> <strong> <%= event.name %> </strong> </h3>
         <% end %>
       </div>
-    </div>
-    <div class="col-xs-12 col-sm-7 col-lg-9">
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-lg-12">
-          <div class="event-title-bs">
-            <%= link_to event_path(event) do %>
-              <h3 class="border-bottom"> <strong> <%= event.name %> </strong> </h3>
-            <% end %>
-          </div>
+      <div class="top-boxes">
+        <div class="calendar">
+          <%= render partial: "event-banner-calendar", locals: {event: event} %>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-lg-3">
-          <div class="event-calendar-bs text-center">
-            <div class="text-center margin">
-              <i class="fi-calendar"></i>
-            </div>
-            <div class="calendar-details text-center">
-              <div>
-                <p><strong> <%= t('users.show.event-banner.beginning') %></strong></p>
-                <p> <%= event.starts_at.strftime('%d/%m/%Y - %H:%M') %> </p>
-              </div>
-              <div class= "margin margin-sides">
-                <p><strong> <%= t('users.show.event-banner.end') %></strong></p>
-                <p> <%= event.ends_at.strftime('%d/%m/%Y - %H:%M') %> </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-lg-6">
-          <div class="event-participants-bs">
-              <div class="text-center margin">
-                <i class="fi-male"></i>
-              </div>
-              <div class="participant-details text-center">
-                <p> <strong> <%= t('users.show.event-banner.participants', count: event.validated_bookings_number) %> </strong> </p>
-                <% if event.max_participants? %>
-                  <p> <%= t('users.show.event-banner.places', count: event.max_participants - event.validated_bookings_number) %> </p>
-                <% end %>
-              </div>
-          </div>
+        <div class="participants-md-lg">
+          <%= render partial: "event-banner-participants", locals: {event: event} %>
         </div>
         <!-- Partie de droite qui dépend de l'organisateur -->
-        <div class="col-xs-12 col-sm-12 col-lg-3">
-          <div class="event-status-bs text-center margin">
-            <!-- Le current user est l'organisateur -->
-            <% if current_user == event.user %>
-              <!-- L'activité est passée -->
-              <% if Time.now() > event.starts_at%>
-                <h3><strong><%= t('users.show.event-banner.past_activity') %></strong></h3>
-                <div>
-                  <%= link_to '#', data: {toggle: "modal", target: "#ModalDupplicate_"+event.id.to_s}, class: "btn btn-danger" do %>
-                    <%=  t('users.show.event-banner.duplicate')%>
-                  <% end %>
-                </div>
-              <!-- L'activité est annulée -->
-              <% elsif event.active == false%>
-                <h3><strong><%= t('users.show.event-banner.cancelled_activity') %></strong></h3>
-                <div>
-                  <%= link_to '#', data: {toggle: "modal", target: "#ModalDupplicate_"+event.id.to_s}, class: "btn btn-danger" do %>
-                    <%=  t('users.show.event-banner.duplicate')%>
-                  <% end %>
-                </div>
-              <!-- L'activité est à venir et non annulée -->
-              <% else %>
-                <div class="text-center">
-                  <i class="fi-wrench"></i>
-                </div>
-                <div class="margin-edit-button">
-                  <%=link_to t('users.show.event-banner.edit'), edit_event_path(event), class: "btn btn-danger" %>
-                </div>
-                <div > <%= link_to t('users.show.event-banner.delete'), event_path(event), method: :delete, class: "margin margin-sides" %> </div>
-              <% end %>
-              <!-- Modal en cas de duplication -->
-              <div class="modal fade" id="ModalDupplicate_<%=event.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel"> <%= t('events.show.date_pick') %> </h4>
-                    </div>
-                    <div class="modal-body">
-                      <%= simple_form_for [current_user, @duplicated_event], method: :post do |f| %>
-                        <div class="col-xs-6">
-                          <%= f.input :starts_at, label: false, placeholder: t('events.new.starts_at'), as: :string, input_html: { class: "datetimepicker" } %>
-                        </div>
-                        <div class="col-xs-6">
-                          <%= f.input :ends_at, label: false, placeholder: t('events.new.ends_at'), as: :string, input_html: { class: "datetimepicker" } %>
-                        </div>
-                        <%= f.hidden_field :name, value: event.name %>
-                        <%= f.hidden_field :description, value: event.description %>
-                        <% if event.max_participants %>
-                          <%= f.hidden_field :max_participants, value: event.max_participants %>
-                        <% end %>
-                        <%= f.hidden_field :price, value: event.price %>
-                        <% if event.photo %>
-                          <%= f.hidden_field :photo, value: event.photo %>
-                          <%= f.hidden_field :photo_cache, value: event.photo_cache %>
-                        <% end %>
-                        <%= f.hidden_field :location, value: event.location %>
-                        <%= f.hidden_field :notif_subscription, value: event.notif_subscription %>
-                        <%= f.hidden_field :notif_cancellation, value: event.notif_cancellation %>
-                        <%= f.hidden_field :notif_message, value: event.notif_message %>
-                        <%= f.submit t('events.show.duplicate_confirm') , class: "btn btn-danger" %>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <!-- Le current user n'est pas l'organisateur -->
-            <% else %>
-              <!-- L'activité est passée -->
-              <% if Time.now() > event.starts_at %>
-                <h3><strong><%= t('users.show.event-banner.past_activity') %></strong></h3>
-              <!-- L'activité est annulée -->
-              <% elsif event.active == false%>
-                <h3><strong><%= t('users.show.event-banner.cancelled_by', organizer: event.user.first_name) %></strong></h3>
-              <!-- L'activité est à venir et non annulée -->
-              <% else %>
-                <!-- Avatar de l'organisateur -->
-                <%= link_to user_path(event.user) do %>
-                  <p><%= t('users.show.event-banner.organized_by') %> </p>
-                  <div class="text-center margin">
-                    <%= avatar(event.user, class: "avatar") %>
-                  </div>
-                  <p><strong> <%= event.user.first_name %></strong> </p>
-                <% end %>
-                <!-- Le current user a un booking pour l'event -->
-                <% if has_a_booking_not_cancelled?(current_user, event) %>
-                  <% booking = booking_find_by_user_and_event(current_user, event) %>
-                  <!-- Le booking est validé -->
-                  <% if booking.on_waiting_list == false %>
-                    <button type="button" class="margin btn btn-danger" data-toggle="modal" data-target="#ModalUnsubscribe_<%=booking.id%>">
-                      <%= t('users.show.event-banner.unsubscribe') %>
-                    </button>
-                    <!-- Modal en cas de désinscription -->
-                    <div class="modal fade" id="ModalUnsubscribe_<%=booking.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel"><%=  t('users.show.event-banner.sure') %></h4>
-                          </div>
-                          <div class="modal-body">
-                            <%= simple_form_for booking, method: :delete do |f| %>
-                              <%= f.input :cancellation_message, label: t('users.show.event-banner.unsubscribe_title', organizer: event.user.first_name) %>
-                              <%= f.submit t('users.show.event-banner.send'), class: "btn btn-danger" %>
-                            <% end %>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  <!-- Le current user est en liste d'attente -->
-                  <% else %>
-                    <p class="red-font waiting-list"><%= t('users.show.event-banner.waiting-list-on') %></p>
-                    <% if event.max_participants - event.validated_bookings_number > 0 %>
-                    <div class=margin>
-                      <%= simple_form_for booking do |f| %>
-                         <%= f.hidden_field :on_waiting_list, value: false %>
-                         <%= f.hidden_field :reimbursed, value: "pending" %>
-                         <%= f.submit t('users.show.event-banner.participate'), class: "btn btn-danger" %>
-                       <% end %>
-                    </div>
-                    <% end %>
-                  <% end %>
-                <!-- Le current user n'a pas encore de booking pour l'event -->
-                <% else %>
-                  <!-- Il reste des places -->
-                  <% if !event.max_participants? || (event.max_participants - event.validated_bookings_number > 0) %>
-                    <div >
-                      <%= simple_form_for [event, @booking], method: :post do |f| %>
-                          <%= f.hidden_field :on_waiting_list, value: false %>
-                          <%= f.hidden_field :reimbursed, value: "pending" %>
-                          <%= f.submit t('users.show.event-banner.participate'), class: "btn btn-danger" %>
-                      <% end %>
-                    </div>
-                  <!-- L'événement est complet -->
-                  <% else %>
-                    <div >
-                      <%= simple_form_for [event, @booking], method: :post do |f| %>
-                        <%= f.hidden_field :on_waiting_list, value: true %>
-                        <%= f.hidden_field :reimbursed, value: "pending" %>
-                        <%= f.submit t('users.show.event-banner.waiting-list-subscribe'), class: "btn btn-danger" %>
-                      <% end %>
-                    </div>
-                  <% end %>
-                <% end %>
-              <% end %>
-            <% end %>
-          </div>
+        <div class="organizer-lg">
+          <%= render partial: "event-banner-organizer", locals: {event: event, duplicated_event: @duplicated_event} %>
         </div>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-lg-12">
-      <div class="event-link-bs text-center">
-          <%= render partial: "event-link-banner", locals: {event: event} %>
-      </div>
-    </div>
+  <!-- lien à copier -->
+  <div class="event-link-mq text-center">
+      <%= render partial: "event-link-banner", locals: {event: event} %>
   </div>
 </div>
