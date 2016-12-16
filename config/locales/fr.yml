@@ -30,8 +30,8 @@ fr:
   root:
     organize: "Organisez vos "
     clicks: " en 3 clics"
-    create_banner: "Créer une activité"
-    activity: "Quelle activité ?"
+    create_banner: "Créer"
+    activity: "Nom de votre activité"
     how: "Comment ça marche ?"
     create: "1. Créez"
     personnalize: "Personnalisez votre activité en 3 clics"

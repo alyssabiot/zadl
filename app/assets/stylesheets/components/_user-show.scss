@@ -96,266 +96,268 @@
  opacity: 1;
 }
 
-// all screen sizes
+.event-banner-user-show {
 
-.icon-user-show {
-  text-align: center;
-}
+  // all screen sizes
 
-.item-user-show {
-  text-align: left;
-}
-
-.event-photo-mq {
-  width: 100%;
-  background-size: cover;
-  margin-right: 30px;
-}
-
-// smart-phones (xs)
-
-@media (max-width: $screen-sm-min) {
-  // Tailles de polices
-  p, a, .btn {
-    font-size: 14px !important;
-  }
-  .container-list {
-    i {
-      font-size: 40px !important;
-    }
-  }
-  // Hauteur de la photo de l'event
-  .event-photo {
-    height: 40vh;
-  }
-  // Photo de l'event à gauche ou au dessous
-  .photo-info-box {
-  }
-  .event-box-right {
-  }
-  // Infos à droite de l'icone ou au dessous
-  .event-calendar-mq, .event-participants-mq, .event-organizer-mq {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
   .icon-user-show {
-    width: 82px;
-    flex: 0 0 30%;
-  }
-  .item-user-show {
-    flex: 1 0 auto;
-    text-align: left;
-  }
-  // Boutons / lien admin centré ou avec marge
-  .edit-button, .delete-link {
-    text-align: left;
-  }
-  .event-link {
-    min-height: 33px;
-    margin-bottom: 10px;
-  }
-}
-
-// tablettes (sm)
-
-@media (min-width: $screen-sm-min) and (max-width: $screen-md-min) {
-  // Tailles de polices
-  p, a, .btn {
-    font-size: 14px !important;
-  }
-  .container-list {
-    i {
-      font-size: 40px !important;
-    }
-  }
-  // Hauteur de la photo de l'event
-  .event-photo {
-    height: 40vh;
-    width: 40vh;
-  }
-  // Photo de l'event à gauche ou au dessous
-  .photo-info-box {
-    display: flex;
-    justify-content: space-around;
-    // align-items: center;
-  }
-  .event-photo-mq {
-    flex: 0 0 40vh;
-  }
-  .event-box-right {
-    flex: 1 0 auto;
-  }
-  // Boites à droite de la photo
-  .top-boxes {
-  }
-  // Infos à droite de l'icone ou au dessous
-  .event-calendar-mq, .event-participants-mq, .event-organizer-mq {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  .icon-user-show {
-    width: 82px;
-    flex: 0 0 30%;
-  }
-  .item-user-show {
-    flex: 1 0 auto;
-    display: flex;
-    p, .btn {
-      margin-right: 20px;
-    }
-    align-items: center;
-  }
-  // Boutons / lien admin centré ou avec marge
-  .edit-button, .delete-link {
-    text-align: left;
-  }
-  .event-link {
-    min-height: 33px;
-    margin-bottom: 20px;
-  }
-}
-
-// small laptop (md)
-
-@media (min-width: $screen-md-min) and (max-width: $screen-lg-min) {
-  // Tailles de polices
-  p, a, .btn {
-    font-size: 14px !important;
-  }
-  .container-list {
-    i {
-      font-size: 40px !important;
-    }
-  }
-  // Hauteur de la photo de l'event
-  .event-photo {
-    height: 30vh;
-    width: 30vh;
-  }
-  // Photo de l'event à gauche ou au dessous
-  .photo-info-box {
-    display: flex;
-    justify-content: space-around;
-    // align-items: center;
-  }
-  .event-photo-mq {
-    flex: 0 0 30vh;
-  }
-  .event-box-right {
-    flex: 1 0 auto;
-  }
-  // Boites à droite de la photo
-  .top-boxes {
-    display: flex;
-    justify-content: space-around;
-  }
-  // Infos à droite de l'icone ou au dessous
-  .event-calendar-mq, .event-participants-mq, .event-organizer-mq {
-    display: inline;
-    text-align: center;
-    padding-top: 0px;
-  }
-  .icon-user-show {
-    width: auto;
-    flex: 1 0 auto;
-    margin-top: 0px;
-    margin-bottom: 10px;
-  }
-  .item-user-show {
-    flex: 1 0 auto;
-  }
-  // Boutons / lien admin centré ou avec marge
-  .edit-button, .delete-link {
     text-align: center;
   }
-  .event-organizer-mq {
-    .btn, p {
+
+  .item-user-show {
+    text-align: left;
+  }
+
+  .event-photo-mq {
+    width: 100%;
+    background-size: cover;
+    margin-right: 30px;
+  }
+
+  // smart-phones (xs)
+
+  @media (max-width: $screen-sm-min) {
+    // Tailles de polices
+    p, a, .btn {
+      font-size: 14px !important;
+    }
+    .container-list {
+      i {
+        font-size: 40px !important;
+      }
+    }
+    // Hauteur de la photo de l'event
+    .event-photo {
+      height: 40vh;
+    }
+    // Photo de l'event à gauche ou au dessous
+    .photo-info-box {
+    }
+    .event-box-right {
+    }
+    // Infos à droite de l'icone ou au dessous
+    .event-calendar-mq, .event-participants-mq, .event-organizer-mq {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .icon-user-show {
+      width: 82px;
+      flex: 0 0 30%;
+    }
+    .item-user-show {
+      flex: 1 0 auto;
+      text-align: left;
+    }
+    // Boutons / lien admin centré ou avec marge
+    .edit-button, .delete-link {
+      text-align: left;
+    }
+    .event-link {
+      min-height: 33px;
+      margin-bottom: 10px;
+    }
+  }
+
+  // tablettes (sm)
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-md-min) {
+    // Tailles de polices
+    p, a, .btn {
+      font-size: 14px !important;
+    }
+    .container-list {
+      i {
+        font-size: 40px !important;
+      }
+    }
+    // Hauteur de la photo de l'event
+    .event-photo {
+      height: 40vh;
+      width: 40vh;
+    }
+    // Photo de l'event à gauche ou au dessous
+    .photo-info-box {
+      display: flex;
+      justify-content: space-around;
+      // align-items: center;
+    }
+    .event-photo-mq {
+      flex: 0 0 40vh;
+    }
+    .event-box-right {
+      flex: 1 0 auto;
+    }
+    // Boites à droite de la photo
+    .top-boxes {
+    }
+    // Infos à droite de l'icone ou au dessous
+    .event-calendar-mq, .event-participants-mq, .event-organizer-mq {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .icon-user-show {
+      width: 82px;
+      flex: 0 0 30%;
+    }
+    .item-user-show {
+      flex: 1 0 auto;
+      display: flex;
+      p, .btn {
+        margin-right: 20px;
+      }
+      align-items: center;
+    }
+    // Boutons / lien admin centré ou avec marge
+    .edit-button, .delete-link {
+      text-align: left;
+    }
+    .event-link {
+      min-height: 33px;
+      margin-bottom: 20px;
+    }
+  }
+
+  // small laptop (md)
+
+  @media (min-width: $screen-md-min) and (max-width: $screen-lg-min) {
+    // Tailles de polices
+    p, a, .btn {
+      font-size: 14px !important;
+    }
+    .container-list {
+      i {
+        font-size: 40px !important;
+      }
+    }
+    // Hauteur de la photo de l'event
+    .event-photo {
+      height: 30vh;
+      width: 30vh;
+    }
+    // Photo de l'event à gauche ou au dessous
+    .photo-info-box {
+      display: flex;
+      justify-content: space-around;
+      // align-items: center;
+    }
+    .event-photo-mq {
+      flex: 0 0 30vh;
+    }
+    .event-box-right {
+      flex: 1 0 auto;
+    }
+    // Boites à droite de la photo
+    .top-boxes {
+      display: flex;
+      justify-content: space-around;
+    }
+    // Infos à droite de l'icone ou au dessous
+    .event-calendar-mq, .event-participants-mq, .event-organizer-mq {
+      display: inline;
+      text-align: center;
+      padding-top: 0px;
+    }
+    .icon-user-show {
+      width: auto;
+      flex: 1 0 auto;
+      margin-top: 0px;
+      margin-bottom: 10px;
+    }
+    .item-user-show {
+      flex: 1 0 auto;
+    }
+    // Boutons / lien admin centré ou avec marge
+    .edit-button, .delete-link {
       text-align: center;
     }
-  }
-  .delete-link {
-    margin-top: 5px;
-  }
-  .btn-duplicate {
-    margin-top: 10px;
-  }
-  .event-link {
-    min-height: 33px;
-    margin-bottom: 20px;
-  }
-}
-
-// large laptops (lg and xl)
-
-@media (min-width: $screen-lg-min) {
-  // Tailles de polices
-  p, a, .btn {
-    font-size: 16px !important;
-  }
-  .container-list {
-    i {
-      font-size: 50px !important;
+    .event-organizer-mq {
+      .btn, p {
+        text-align: center;
+      }
+    }
+    .delete-link {
+      margin-top: 5px;
+    }
+    .btn-duplicate {
+      margin-top: 10px;
+    }
+    .event-link {
+      min-height: 33px;
+      margin-bottom: 20px;
     }
   }
-  // Hauteur de la photo de l'event
-  .event-photo {
-    height: 40vh;
-    width: 40vh;
-  }
-  // Photo de l'event à gauche ou au dessous
-  .photo-info-box {
-    display: flex;
-    justify-content: space-around;
-    // align-items: center;
-  }
-  .event-photo-mq {
-    flex: 0 0 40vh;
-  }
-  .event-box-right {
-    flex: 1 0 auto;
-  }
-  // Boites à droite de la photo
-  .top-boxes {
-    display: flex;
-    justify-content: space-around;
-  }
-  // Infos à droite de l'icone ou au dessous
-  .event-calendar-mq, .event-participants-mq, .event-organizer-mq {
-    display: inline;
-    text-align: center;
-    margin-top: 20px;
-  }
-  .icon-user-show {
-    width: auto;
-    flex: 1 0 auto;
-    margin-top: 20px;
-  }
-  .item-user-show {
-    flex: 1 0 auto;
-  }
-  // Boutons / lien admin centré ou avec marge
-  .edit-button, .delete-link {
-    text-align: center;
-  }
-  .event-organizer-mq {
-    .btn, p {
+
+  // large laptops (lg and xl)
+
+  @media (min-width: $screen-lg-min) {
+    // Tailles de polices
+    p, a, .btn {
+      font-size: 16px !important;
+    }
+    .container-list {
+      i {
+        font-size: 50px !important;
+      }
+    }
+    // Hauteur de la photo de l'event
+    .event-photo {
+      height: 40vh;
+      width: 40vh;
+    }
+    // Photo de l'event à gauche ou au dessous
+    .photo-info-box {
+      display: flex;
+      justify-content: space-around;
+      // align-items: center;
+    }
+    .event-photo-mq {
+      flex: 0 0 40vh;
+    }
+    .event-box-right {
+      flex: 1 0 auto;
+    }
+    // Boites à droite de la photo
+    .top-boxes {
+      display: flex;
+      justify-content: space-around;
+    }
+    // Infos à droite de l'icone ou au dessous
+    .event-calendar-mq, .event-participants-mq, .event-organizer-mq {
+      display: inline;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .icon-user-show {
+      width: auto;
+      flex: 1 0 auto;
+      margin-top: 20px;
+    }
+    .item-user-show {
+      flex: 1 0 auto;
+    }
+    // Boutons / lien admin centré ou avec marge
+    .edit-button, .delete-link {
       text-align: center;
     }
-  }
-  .delete-link {
-    margin-top: 10px;
-  }
-  .btn-duplicate {
-    margin-top: 10px;
-  }
-  .event-link {
-    min-height: 37px;
-    margin-bottom: 20px;
+    .event-organizer-mq {
+      .btn, p {
+        text-align: center;
+      }
+    }
+    .delete-link {
+      margin-top: 10px;
+    }
+    .btn-duplicate {
+      margin-top: 10px;
+    }
+    .event-link {
+      min-height: 37px;
+      margin-bottom: 20px;
+    }
   }
 }
-
 //other
 
 .event-link-banner {
