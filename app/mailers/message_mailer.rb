@@ -4,6 +4,6 @@ class MessageMailer < ApplicationMailer
    @user = user
    @message = message
    @event = @message.event
-   mail(to: @event.user.email, subject: t('message_mailer.user_comment.subject', comment_user: @user.first_name.capitalize, event_name: @event.name)
+   mail(to: @event.user.email, subject: t('message_mailer.user_comment.subject', comment_user: @user.first_name.capitalize, event_name: @event.name))
  end
 end
