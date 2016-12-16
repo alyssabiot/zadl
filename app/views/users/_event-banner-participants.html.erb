@@ -1,8 +1,8 @@
-<div class="event-participants-bs">
-    <div class="text-center">
+<div class="event-participants-mq">
+    <div class="icon-user-show">
       <i class="fi-male"></i>
     </div>
-    <div class="align-left">
+    <div class="item-user-show">
       <p> <strong> <%= t('users.show.event-banner.participants', count: event.validated_bookings_number) %> </strong> </p>
       <% if event.max_participants? %>
         <p> <%= t('users.show.event-banner.places', count: event.max_participants - event.validated_bookings_number) %> </p>

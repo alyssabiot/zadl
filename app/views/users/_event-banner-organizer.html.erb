@@ -1,33 +1,49 @@
-<div class="event-organizer-bs">
+<div class="">
   <!-- Le current user est l'organisateur -->
   <% if current_user == event.user %>
     <!-- L'activité est passée -->
     <% if Time.now() > event.starts_at%>
-      <h3><strong><%= t('users.show.event-banner.past_activity') %></strong></h3>
-      <div>
-        <%= link_to '#', data: {toggle: "modal", target: "#ModalDupplicate_"+event.id.to_s}, class: "btn btn-danger" do %>
-          <%=  t('users.show.event-banner.duplicate')%>
-        <% end %>
+      <div class="event-organizer-mq text-center">
+        <div class="icon-user-show">
+          <i class="fi-clock"></i>
+        </div>
+        <div class="item-user-show">
+          <p class="red-font"><strong><%= t('users.show.event-banner.past_activity') %></strong></p>
+          <div class= "btn-duplicate">
+            <%= link_to '#', data: {toggle: "modal", target: "#ModalDupplicate_"+event.id.to_s}, class: "btn btn-danger" do %>
+              <%=  t('users.show.event-banner.duplicate')%>
+            <% end %>
+          </div>
+        </div>
       </div>
     <!-- L'activité est annulée -->
     <% elsif event.active == false%>
-      <h3><strong><%= t('users.show.event-banner.cancelled_activity') %></strong></h3>
-      <div>
-        <%= link_to '#', data: {toggle: "modal", target: "#ModalDupplicate_"+event.id.to_s}, class: "btn btn-danger" do %>
-          <%=  t('users.show.event-banner.duplicate')%>
-        <% end %>
+      <div class="event-organizer-mq text-center">
+        <div class="icon-user-show">
+          <i class="fi-prohibited"></i>
+        </div>
+        <div class="item-user-show">
+          <p class="red-font"><strong><%= t('users.show.event-banner.cancelled_activity') %></strong></p>
+          <div class= "btn-duplicate">
+            <%= link_to '#', data: {toggle: "modal", target: "#ModalDupplicate_"+event.id.to_s}, class: "btn btn-danger" do %>
+              <%=  t('users.show.event-banner.duplicate')%>
+            <% end %>
+          </div>
+        </div>
       </div>
     <!-- L'activité est à venir et non annulée -->
     <% else %>
-      <div class="row">
-        <div class="event-organizer-bs">
-          <div class="text-center">
-            <i class="fi-wrench"></i>
-          </div>
-          <div class="margin-edit-button">
+      <div class="event-organizer-mq text-center">
+        <div class="icon-user-show">
+          <i class="fi-wrench"></i>
+        </div>
+        <div class="item-user-show">
+          <div class = "edit-button">
             <%=link_to t('users.show.event-banner.edit'), edit_event_path(event), class: "btn btn-danger" %>
           </div>
-          <div > <%= link_to t('users.show.event-banner.delete'), event_path(event), method: :delete, class: "margin margin-sides" %> </div>
+          <div class="delete-link">
+            <%= link_to t('users.show.event-banner.delete'), event_path(event), method: :delete%>
+          </div>
         </div>
       </div>
     <% end %>
@@ -71,17 +87,31 @@
   <% else %>
     <!-- L'activité est passée -->
     <% if Time.now() > event.starts_at %>
-      <h3><strong><%= t('users.show.event-banner.past_activity') %></strong></h3>
+      <div class="event-organizer-mq text-center">
+        <div class="icon-user-show">
+          <i class="fi-clock"></i>
+        </div>
+        <div class="item-user-show">
+          <p class="red-font"><strong><%= t('users.show.event-banner.past_activity') %></strong></p>
+        </div>
+      </div>
     <!-- L'activité est annulée -->
     <% elsif event.active == false%>
-      <h3><strong><%= t('users.show.event-banner.cancelled_by', organizer: event.user.first_name) %></strong></h3>
+      <div class="event-organizer-mq text-center">
+        <div class="icon-user-show">
+          <i class="fi-prohibited"></i>
+        </div>
+        <div class="item-user-show">
+          <p class="red-font"><strong><%= t('users.show.event-banner.cancelled_by', organizer: event.user.first_name) %></strong></p>
+        </div>
+      </div>
     <!-- L'activité est à venir et non annulée -->
     <% else %>
-      <div class="row">
-        <div class="event-organizer-bs">
-          <!-- Avatar de l'organisateur -->
+      <div class="event-organizer-mq">
+        <!-- Avatar de l'organisateur -->
+        <div class="icon-user-show">
           <%= link_to user_path(event.user) do %>
-            <div class="event-avatar-bs text-center">
+            <div class="event-avatar-mq text-center">
               <p><%= t('users.show.event-banner.organized_by') %> </p>
               <div class="text-center">
                 <%= avatar(event.user, class: "avatar") %>
@@ -89,6 +119,8 @@
               <p><strong> <%= event.user.first_name %></strong> </p>
             </div>
           <% end %>
+        </div>
+        <div class="item-user-show">
           <!-- Le current user a un booking pour l'event -->
           <% if has_a_booking_not_cancelled?(current_user, event) %>
             <% booking = booking_find_by_user_and_event(current_user, event) %>
@@ -116,7 +148,7 @@
               </div>
             <!-- Le current user est en liste d'attente -->
             <% else %>
-              <p class="red-font margin-top text-center"><%= t('users.show.event-banner.waiting-list-on') %></p>
+              <p class="red-font margin-top align-left"><%= t('users.show.event-banner.waiting-list-on') %></p>
               <% if event.max_participants - event.validated_bookings_number > 0 %>
               <div class=margin>
                 <%= simple_form_for booking do |f| %>
