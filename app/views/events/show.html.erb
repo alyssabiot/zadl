@@ -264,7 +264,7 @@
   <div class="row container-list">
     <div class="col-xs-12 col-sm-3">
       <!-- photo de l'admin -->
-      <%= link_to user_path(@event.user), class: "event-photo-container flex-center-column" do %>
+      <%= link_to user_path(@event.user), class: "event-organizer-container flex-center-column" do %>
         <div><%= avatar(@event.user, class: "avatar-large") %></div>
         <p><%= t('events.show.organized_by', name: @event.user.first_name) %></p>
       <% end %>
@@ -332,7 +332,7 @@
   <div class="row container-list">
     <div class="col-xs-12 col-sm-3">
       <!-- photo de l'admin -->
-      <div class="event-photo-container flex-center-column">
+      <div class="event-organizer-container flex-center-column">
           <i class="fi-torsos-all" style="font-size: 100px;"></i>
           <% if @event.max_participants %>
             <h3 class="color-red"><strong> <%= @participants_number %>/<%= @event.max_participants %></strong> </h3>
