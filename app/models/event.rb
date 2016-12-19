@@ -16,6 +16,6 @@ class Event < ApplicationRecord
   monetize :price_cents
 
   def validated_bookings_number
-    bookings.where(cancelled: false, on_waiting_list: false).count
+    bookings.where(cancelled: false, on_waiting_list: false, state: 'paid').count
   end
 end

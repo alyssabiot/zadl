@@ -9,14 +9,24 @@ class BookingsController < ApplicationController
     @booking.amount = @event.price
     @booking.state = "pending"
     authorize @booking
-    if @booking.on_waiting_list || @booking.amount == 0
+    if @booking.on_waiting_list
       if @booking.save
         if @event.notif_subscription
           BookingMailer.user_subscription(current_user, @event).deliver_now
         end
         flash[:notice] = t('controllers.bookings.subscription')
         redirect_to event_path(@event)
-
+      else
+        redirect_to event_path(@event)
+      end
+    elsif @booking.amount == 0
+      @booking.state = 'paid'
+      if @booking.save
+        if @event.notif_subscription
+          BookingMailer.user_subscription(current_user, @event).deliver_now
+        end
+        flash[:notice] = t('controllers.bookings.subscription')
+        redirect_to event_path(@event)
       else
         redirect_to event_path(@event)
       end

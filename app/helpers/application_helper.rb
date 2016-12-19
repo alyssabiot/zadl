@@ -43,7 +43,7 @@ module ApplicationHelper
   def booking_find_by_user_and_event(user,event)
     result = "No booking"
     user.bookings.each do |booking|
-      if booking.event == event
+      if (booking.event == event && booking.state == 'paid') || (booking.event == event && booking.on_waiting_list == true)
         result = booking
       end
     end
