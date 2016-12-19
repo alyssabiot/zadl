@@ -108,8 +108,11 @@ fr:
       edit: "Modifier"
       cancel: "Annuler"
       withdraw: "Collecter"
+      cancelled_activity: "Activité annulée"
+      money_collected: "Cagnotte collectée - Fermée à l'inscription"
       withdraw_title: "Etes-vous sûre de vouloir collecter l'argent de l'activité ?"
       withdraw_warning: "L'argent collecté sera transféré sur votre compte en banque et l'activité fermée à toute nouvelle inscription."
+      withdraw_btn: "Collecter"
       withdraw_notification: "L'argent collecté va être versé sur votre compte !"
       unsubscribe: "Se désinscrire"
       sure: "Etes-vous sûr de vouloir vous désinscrire ?"
@@ -183,6 +186,7 @@ fr:
         sure: "Etes-vous sûr de vouloir vous désinscrire ?"
         unsubscribe_title: "Envoyez un message d'explication à %{organizer}"
         send: "Confirm and send your message"
+        money_collected: "Cagnotte collectée - Fermée à l'inscription"
 
   user_mailer:
     welcome:

@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_user, only: [:new, :create]
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :ics_export]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :ics_export, :withdraw]
   skip_before_action :authenticate_user!, only: [ :show ]
 
   def new
@@ -120,7 +120,9 @@ class EventsController < ApplicationController
 
   def withdraw
     @event.withdrawed = true
-    flash[:notice] = t('controllers.events.withdraw_notification', event: @event.name)
+    @event.save
+    redirect_to event_path(@event)
+    flash[:notice] = t('events.show.withdraw_notification', event: @event.name)
   end
 
   private

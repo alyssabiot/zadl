@@ -9,6 +9,10 @@ class EventPolicy < ApplicationPolicy
     true
   end
 
+  def withdraw?
+    true
+  end
+
   def show?
     true
   end

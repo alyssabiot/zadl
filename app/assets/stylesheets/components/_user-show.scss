@@ -111,9 +111,20 @@
   .event-photo-mq {
     width: 100%;
     background-size: cover;
-    margin-right: 30px;
   }
 
+  .calendar {
+    flex: 1 0 auto;
+  }
+  .participants-md-lg {
+    flex: 0 0 40%;
+  }
+  .organizer-lg {
+    flex: 0 0 30%;
+  }
+  .event-box-right {
+    padding-left: 30px;
+  }
   // smart-phones (xs)
 
   @media (max-width: $screen-sm-min) {
@@ -132,8 +143,6 @@
     }
     // Photo de l'event à gauche ou au dessous
     .photo-info-box {
-    }
-    .event-box-right {
     }
     // Infos à droite de l'icone ou au dessous
     .event-calendar-mq, .event-participants-mq, .event-organizer-mq {
@@ -202,12 +211,12 @@
       flex: 0 0 30%;
     }
     .item-user-show {
-      flex: 1 0 auto;
+      flex: 0 0 70%;
       display: flex;
-      p, .btn {
-        margin-right: 20px;
-      }
       align-items: center;
+      .half-width {
+        flex: 0 0 50%;
+      }
     }
     // Boutons / lien admin centré ou avec marge
     .edit-button, .delete-link {
@@ -246,7 +255,7 @@
       flex: 0 0 30vh;
     }
     .event-box-right {
-      flex: 1 0 auto;
+      flex: 1 1 auto;
     }
     // Boites à droite de la photo
     .top-boxes {
@@ -267,6 +276,9 @@
     }
     .item-user-show {
       flex: 1 0 auto;
+      .half-width {
+        flex: 0 0 50%;
+      }
     }
     // Boutons / lien admin centré ou avec marge
     .edit-button, .delete-link {
@@ -274,6 +286,9 @@
     }
     .event-organizer-mq {
       .btn, p {
+        text-align: center;
+      }
+      .item-user-show {
         text-align: center;
       }
     }
@@ -336,6 +351,9 @@
     }
     .item-user-show {
       flex: 1 0 auto;
+      .half-width {
+        flex: 0 0 50%;
+      }
     }
     // Boutons / lien admin centré ou avec marge
     .edit-button, .delete-link {
@@ -343,6 +361,9 @@
     }
     .event-organizer-mq {
       .btn, p {
+        text-align: center;
+      }
+      .item-user-show {
         text-align: center;
       }
     }
