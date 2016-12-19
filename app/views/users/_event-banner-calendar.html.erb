@@ -3,11 +3,11 @@
     <i class="fi-calendar"></i>
   </div>
   <div class="item-user-show">
-    <div>
+    <div class="half-width">
       <p><strong> <%= t('users.show.event-banner.beginning') %></strong></p>
       <p> <%= event.starts_at.strftime('%d/%m/%Y - %H:%M') %> </p>
     </div>
-    <div>
+    <div class="half-width">
       <p><strong> <%= t('users.show.event-banner.end') %></strong></p>
       <p> <%= event.ends_at.strftime('%d/%m/%Y - %H:%M') %> </p>
     </div>

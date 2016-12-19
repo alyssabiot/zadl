@@ -1,47 +1,62 @@
 <div class="">
   <!-- Le current user est l'organisateur -->
   <% if current_user == event.user %>
-    <!-- L'activité est passée -->
-    <% if Time.now() > event.starts_at%>
-      <div class="event-organizer-mq text-center">
-        <div class="icon-user-show">
-          <i class="fi-clock"></i>
-        </div>
-        <div class="item-user-show">
-          <p class="red-font"><strong><%= t('users.show.event-banner.past_activity') %></strong></p>
-          <div class= "btn-duplicate">
-            <%= link_to '#', data: {toggle: "modal", target: "#ModalDupplicate_"+event.id.to_s}, class: "btn btn-danger" do %>
-              <%=  t('users.show.event-banner.duplicate')%>
-            <% end %>
-          </div>
-        </div>
-      </div>
     <!-- L'activité est annulée -->
-    <% elsif event.active == false%>
+    <% if event.active == false%>
       <div class="event-organizer-mq text-center">
         <div class="icon-user-show">
           <i class="fi-prohibited"></i>
         </div>
         <div class="item-user-show">
-          <p class="red-font"><strong><%= t('users.show.event-banner.cancelled_activity') %></strong></p>
-          <div class= "btn-duplicate">
+          <p class="red-font half-width"><strong><%= t('users.show.event-banner.cancelled_activity') %></strong></p>
+          <div class= "btn-duplicate half-width">
             <%= link_to '#', data: {toggle: "modal", target: "#ModalDupplicate_"+event.id.to_s}, class: "btn btn-danger" do %>
               <%=  t('users.show.event-banner.duplicate')%>
             <% end %>
           </div>
         </div>
       </div>
-    <!-- L'activité est à venir et non annulée -->
+    <!-- La cagnotte a été collectée -->
+    <% elsif event.withdrawed == true %>
+      <div class="event-organizer-mq text-center">
+        <div class="icon-user-show">
+          <i class="fi-checkbox"></i>
+        </div>
+        <div class="item-user-show">
+          <p class="red-font half-width"><strong><%= t('users.show.event-banner.money_collected') %></strong></p>
+          <div class= "btn-duplicate half-width">
+            <%= link_to '#', data: {toggle: "modal", target: "#ModalDupplicate_"+event.id.to_s}, class: "btn btn-danger" do %>
+              <%=  t('users.show.event-banner.duplicate')%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <!-- L'activité est passée -->
+    <% elsif Time.now() > event.starts_at%>
+      <div class="event-organizer-mq text-center">
+        <div class="icon-user-show">
+          <i class="fi-clock"></i>
+        </div>
+        <div class="item-user-show">
+          <p class="red-font half-width"><strong><%= t('users.show.event-banner.past_activity') %></strong></p>
+          <div class= "btn-duplicate half-width">
+            <%= link_to '#', data: {toggle: "modal", target: "#ModalDupplicate_"+event.id.to_s}, class: "btn btn-danger" do %>
+              <%=  t('users.show.event-banner.duplicate')%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <!-- L'activité est à venir et non annulée et non collectée -->
     <% else %>
       <div class="event-organizer-mq text-center">
         <div class="icon-user-show">
           <i class="fi-wrench"></i>
         </div>
         <div class="item-user-show">
-          <div class = "edit-button">
+          <div class = "edit-button half-width">
             <%=link_to t('users.show.event-banner.edit'), edit_event_path(event), class: "btn btn-danger" %>
           </div>
-          <div class="delete-link">
+          <div class="delete-link half-width">
             <%= link_to t('users.show.event-banner.delete'), event_path(event), method: :delete%>
           </div>
         </div>
@@ -85,18 +100,8 @@
     </div>
   <!-- Le current user n'est pas l'organisateur -->
   <% else %>
-    <!-- L'activité est passée -->
-    <% if Time.now() > event.starts_at %>
-      <div class="event-organizer-mq text-center">
-        <div class="icon-user-show">
-          <i class="fi-clock"></i>
-        </div>
-        <div class="item-user-show">
-          <p class="red-font"><strong><%= t('users.show.event-banner.past_activity') %></strong></p>
-        </div>
-      </div>
     <!-- L'activité est annulée -->
-    <% elsif event.active == false%>
+    <% if event.active == false%>
       <div class="event-organizer-mq text-center">
         <div class="icon-user-show">
           <i class="fi-prohibited"></i>
@@ -105,9 +110,29 @@
           <p class="red-font"><strong><%= t('users.show.event-banner.cancelled_by', organizer: event.user.first_name) %></strong></p>
         </div>
       </div>
-    <!-- L'activité est à venir et non annulée -->
+    <!-- L'activité est fermée à l'inscription car collectée -->
+    <% elsif event.withdrawed == true %>
+      <div class="event-organizer-mq text-center">
+        <div class="icon-user-show">
+          <i class="fi-checkbox"></i>
+        </div>
+        <div class="item-user-show">
+          <p class="red-font"><strong><%= t('users.show.event-banner.money_collected')%></strong></p>
+        </div>
+      </div>
+    <!-- L'activité est passée -->
+    <% elsif Time.now() > event.starts_at %>
+      <div class="event-organizer-mq text-center">
+        <div class="icon-user-show">
+          <i class="fi-clock"></i>
+        </div>
+        <div class="item-user-show">
+          <p class="red-font"><strong><%= t('users.show.event-banner.past_activity') %></strong></p>
+        </div>
+      </div>
+    <!-- L'activité est à venir et non annulée et non collectée -->
     <% else %>
-      <div class="event-organizer-mq">
+      <div class="event-organizer-mq text-center">
         <!-- Avatar de l'organisateur -->
         <div class="icon-user-show">
           <%= link_to user_path(event.user) do %>
@@ -148,9 +173,9 @@
               </div>
             <!-- Le current user est en liste d'attente -->
             <% elsif booking.on_waiting_list == true %>
-              <p class="red-font margin-top align-left"><%= t('users.show.event-banner.waiting-list-on') %></p>
+              <p class="red-font margin-top align-left half-width"><%= t('users.show.event-banner.waiting-list-on') %></p>
               <% if event.max_participants - event.validated_bookings_number > 0 %>
-              <div class=margin>
+              <div class="margin half-width">
                 <%= simple_form_for booking do |f| %>
                    <%= f.hidden_field :on_waiting_list, value: false %>
                    <%= f.hidden_field :reimbursed, value: "pending" %>

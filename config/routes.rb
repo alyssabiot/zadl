@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
 
     get 'events/:id/calendar' => 'events#ics_export'
+    get 'events/:id/withdraw' => 'events#withdraw'
     resources :events, only: [:index, :show, :edit, :update, :destroy] do
       resources :bookings, only: [:create, :show] do
         resources :payments, only: [:new, :create]
