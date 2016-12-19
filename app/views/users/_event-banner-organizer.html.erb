@@ -125,7 +125,7 @@
           <% if has_a_booking_not_cancelled?(current_user, event) %>
             <% booking = booking_find_by_user_and_event(current_user, event) %>
             <!-- Le booking est validé -->
-            <% if booking.on_waiting_list == false %>
+            <% if booking.on_waiting_list == false && booking.state == 'paid' %>
               <button type="button" class="margin btn btn-danger" data-toggle="modal" data-target="#ModalUnsubscribe_<%=booking.id%>">
                 <%= t('users.show.event-banner.unsubscribe') %>
               </button>
@@ -147,7 +147,7 @@
                 </div>
               </div>
             <!-- Le current user est en liste d'attente -->
-            <% else %>
+            <% elsif booking.on_waiting_list == true %>
               <p class="red-font margin-top align-left"><%= t('users.show.event-banner.waiting-list-on') %></p>
               <% if event.max_participants - event.validated_bookings_number > 0 %>
               <div class=margin>
