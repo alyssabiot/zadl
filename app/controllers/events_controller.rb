@@ -118,6 +118,11 @@ class EventsController < ApplicationController
     end
   end
 
+  def withdraw
+    @event.withdrawed = true
+    flash[:notice] = t('controllers.events.withdraw_notification', event: @event.name)
+  end
+
   private
 
 
