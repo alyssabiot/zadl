@@ -131,7 +131,7 @@
         <!-- Le current user a un booking non annulé pour l'event -->
         <% if has_a_booking_not_cancelled?(current_user, @event) %>
           <!-- Le booking est validé -->
-          <% if @existing_booking.on_waiting_list == false %>
+          <% if @existing_booking.on_waiting_list == false && @existing_booking.state == 'paid' %>
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalUnsubscribe">
               <%= t('events.show.unsubscribe') %></button>
             <!-- Modal en cas de désinscription -->
@@ -151,9 +151,13 @@
                 </div>
               </div>
             </div>
-          <!-- Le current user est en liste d'attente -->
+          <!-- Le current user est en liste d'attente ou avait engagé une inscription mais pas payé -->
           <% else %>
-            <p><%= t('events.show.currently_waiting_list') %></p>
+            <!-- Le current user est en liste d'attente -->
+            <% if @existing_booking.on_waiting_list == true %>
+              <p><%= t('events.show.currently_waiting_list') %></p>
+            <% end %>
+            <!-- Le current peut s'inscrire -->
             <% if @event.max_participants %>
               <% if @event.max_participants - @event.validated_bookings_number > 0 %>
                 <%= simple_form_for @existing_booking, method: :patch do |f| %>
@@ -162,8 +166,15 @@
                       <%= f.submit t('events.show.subscribe'), class: "btn btn-danger" %>
                 <% end %>
               <% end %>
+            <% else %>
+              <%= simple_form_for @existing_booking, method: :patch do |f| %>
+                    <%= f.hidden_field :on_waiting_list, value: false %>
+                    <%= f.hidden_field :reimbursed, value: "pending" %>
+                    <%= f.submit t('events.show.subscribe'), class: "btn btn-danger" %>
+              <% end %>
             <% end %>
           <% end %>
+
         <!-- Le current user a un booking annulé pour l'event -->
         <% elsif has_a_booking_cancelled?(current_user, @event) %>
           <!-- L'événement a un nombre limité de places -->
@@ -318,9 +329,6 @@
     </div>
   </div>
 </div>
-
-
-
 
 <div class="container">
   <div class="row container-list">

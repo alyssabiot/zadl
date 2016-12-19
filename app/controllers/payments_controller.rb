@@ -27,6 +27,7 @@ class PaymentsController < ApplicationController
     )
     authorize @booking
 
+
     @booking.update(payment: charge.to_json, state: 'paid')
     if @event.notif_subscription
       BookingMailer.user_subscription(current_user,@event).deliver_now

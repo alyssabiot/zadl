@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @booking = Booking.new
     @duplicated_event = Event.new
     # Tous les bookings en cours de l'user (yc. lorsqu'il organise ou lorsqu'il est en liste d'attente)
-    @all_bookings_active = @user.bookings.joins(:event).where("events.active = ? AND bookings.cancelled = ?", true, false)
+    @all_bookings_active = @user.bookings.joins(:event).where("events.active = ? AND bookings.cancelled = ? AND bookings.state = ?", true, false, 'paid') + @user.bookings.joins(:event).where("events.active = ? AND bookings.cancelled = ? AND bookings.on_waiting_list = ?", true, false, true)
     # Tous les bookings en cours de l'user à venir
     @bookings_active_to_come = @all_bookings_active.select do |booking|
       booking.event.starts_at >= DateTime.now()
