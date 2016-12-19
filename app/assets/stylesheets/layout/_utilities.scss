@@ -42,6 +42,10 @@ a:hover {
   margin-right: 3px;
 }
 
+.margin-top {
+  margin-top: 10px !important;
+}
+
 .flex-center-column {
   display:flex;
   flex-direction: column;
@@ -51,6 +55,10 @@ a:hover {
 
 .red-font {
   color: $red;
+}
+
+.align-left {
+  text-align: left;
 }
 
 // modal

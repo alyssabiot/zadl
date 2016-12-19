@@ -1,0 +1,8 @@
+<p> <%= t('event_mailer.event_updated.hello', participant_name: @participant.first_name.capitalize) %> </p>
+
+<p> <%= t('event_mailer.event_updated.body', event_name: @event.name, organizer: @event.user.first_name.capitalize) %> </p>
+<%= link_to event_url(id: @event.id), style: "text-decoration: none;" do %>
+  <button style="background-color: #DA4167 ; border: 2px solid #DA4167 ; border-radius: 5px; color: white; font-size: 16px;">
+    <%= t('event_mailer.event_updated.event_access')%>
+  </button>
+<% end %>

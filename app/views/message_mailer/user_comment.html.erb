@@ -1,5 +1,8 @@
-<h1>Message#user_comment</h1>
+<p> <%= t('message_mailer.user_comment.hello', name: @user.first_name.capitalize) %> </p>
 
-<p>
-  <%= @greeting %>, find me in app/views/message_mailer/user_comment.html.erb
-</p>
+<p> <%= t('message_mailer.user_comment.body', comment_user: @message.user.first_name.capitalize) %> </p>
+<%= link_to event_url(id: @event.id), style: "text-decoration: none;" do %>
+ <button style="background-color: #DA4167 ; border: 2px solid #DA4167 ; border-radius: 5px; color: white; font-size: 16px;">
+   <%= t('booking_mailer.user_subscription.event_access')%>
+ </button>
+<% end %>

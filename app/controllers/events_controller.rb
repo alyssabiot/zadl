@@ -19,9 +19,11 @@ class EventsController < ApplicationController
 
     authorize @event
     if @event.save
+      EventMailer.event_created(current_user, @event).deliver_now
       @booking = Booking.new
       @booking.event = @event
       @booking.user = current_user
+      @booking.state = 'paid'
       @booking.save
       authorize @booking
       flash[:notice] = t('controllers.events.creation')
@@ -38,6 +40,12 @@ class EventsController < ApplicationController
   def update
     @event.update(event_params)
     if @event.save
+      @participants = @event.bookings.where(cancelled: false, on_waiting_list: false, state: 'paid').map(&:user)
+      @participants.each do |participant|
+        if !participant.nil?
+          EventMailer.event_updated(participant, @event).deliver_now
+        end
+      end
       flash[:notice] = t('controllers.events.update')
       redirect_to event_path(@event)
     else
@@ -48,7 +56,7 @@ class EventsController < ApplicationController
   def show
     @booking = Booking.new
     @duplicated_event = Event.new
-    @participants = @event.bookings.where(cancelled: false, on_waiting_list: false).map(&:user)
+    @participants = @event.bookings.where(cancelled: false, on_waiting_list: false, state: 'paid').map(&:user)
     @participants_number = @participants.count
     @message = Message.new
     if @event.max_participants
@@ -82,11 +90,11 @@ class EventsController < ApplicationController
 
   def destroy
     @event.active = false
-    @participants = @event.bookings.where(cancelled: false, on_waiting_list: false).map(&:user)
+    @participants = @event.bookings.where(cancelled: false, on_waiting_list: false, state: 'paid').map(&:user)
     @event.save
     @participants.each do |participant|
       if !participant.nil?
-        EventMailer.event_edited_cancellation(current_user,@event).deliver_now
+        EventMailer.event_cancelled(participant, @event).deliver_now
       end
     end
     flash[:notice] = t('controllers.events.cancellation')

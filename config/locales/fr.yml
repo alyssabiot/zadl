@@ -30,8 +30,8 @@ fr:
   root:
     organize: "Organisez vos "
     clicks: " en 3 clics"
-    create_banner: "Créer une activité"
-    activity: "Quelle activité ?"
+    create_banner: "Créer"
+    activity: "Nom de votre activité"
     how: "Comment ça marche ?"
     create: "1. Créez"
     personnalize: "Personnalisez votre activité en 3 clics"
@@ -148,8 +148,8 @@ fr:
   users:
     show:
       create: "Créer une activité"
-      bookings: "Mes réservations"
-      events: "Mes activités"
+      unhide_archives: "Afficher mes activités archivées"
+      hide_archives: "Masquer mes activités archivées"
       edit: "Modifier votre profil"
       event-banner:
         beginning: "Début :"
@@ -162,8 +162,8 @@ fr:
           zero: "Plus de places disponibles"
           one: "%{count} place disponible !"
           other: "%{count} places disponibles"
-        edit: "Modifier votre activité"
-        delete: "Annuler votre activité"
+        edit: "Modifier"
+        delete: "Annuler l'activité"
         organized: "Organisé par"
         unsubscribe: "Se désinscire"
         waiting-list-on: "Vous êtes sur la liste d'attente"
@@ -171,12 +171,21 @@ fr:
         waiting-list-subscribe: "Etre placé en liste d'attente"
         event-link-banner:
           copy: "Copier le lien"
+        past_activity: "Activité passée"
+        cancelled_activity: "Activité annulée"
+        cancelled_by: "Activité annulée par %{organizer}"
+        duplicate: "Dupliquer"
+        organized_by: "Organisé par"
+        sure: "Etes-vous sûr de vouloir vous désinscrire ?"
+        unsubscribe_title: "Envoyez un message d'explication à %{organizer}"
+        send: "Confirm and send your message"
 
   user_mailer:
     welcome:
       subject: "Bienvenue sur ZA:DL !"
-      hello: "Bonjour %{name} "
+      hello: "Bonjour %{name}, "
       body: "Votre compte a bien été créé, vous pouvez dès à présent créer votre première activité ! "
+
   booking_mailer:
     user_subscription:
       subject: "%{participant_name} s'est inscrit à votre événement %{event_name}"
@@ -185,18 +194,45 @@ fr:
       event_access: "Accéder à l'activité"
     user_unsubscription:
       subject: "%{unsubscribe_participant_name} s'est désinscrit de votre événement %{event_name}"
-      hello: "Bonjour %{name} "
+      hello: "Bonjour %{name}, "
       body: "%{unsubscribe_participant_name} s'est désinscrit de votre événement %{event_name}"
       message: "Le participant vous a envoyé le message suivant : '%{message}'"
       end: "Vous pouvez décider de rembourser %{unsubscribe_participant_name} (ou pas !)"
+    reimbursement_status:
+      subject: "%{organizer} a mis à jour votre demande de remboursement pour l'événement %{event_name}"
+      hello: "Bonjour %{name}, "
+      body_accepted: "%{organizer} a accepté votre demande de remboursement pour l'événement %{event_name}"
+      body_refused: "%{organizer} a refusé votre demande de remboursement pour l'événement %{event_name}"
+      profile_access: "Voir mon profil"
+
   event_mailer:
-    event_edited_cancellation:
-      subject: "%{organizer_name} a annulé l'événement %{event_name}"
-      hello: Bonjour %{participant_name},"
-      body: "%{organizer_name} a annulé l'événement %{event_name}"
-      message: "Vous serez automatiquement remboursé."
+    event_cancelled:
+      subject: "%{organizer} a annulé l'événement %{event_name}"
+      hello: "Bonjour %{participant_name},"
+      body: "%{organizer} a annulé l'événement %{event_name}. Vous serez automatiquement remboursé."
       end: "A bientôt pour une nouvelle activité !"
       profile_access: "Voir mon profil"
+    event_created:
+      subject: "Votre événement a été créé ! Partagez-le !"
+      hello: "Bonjour %{name},"
+      body: "Votre événement %{event_name} a été créé ! Copiez le lien suivant pour le partager avec vos amis : "
+      event_access: "Accédez à l'activité"
+    event_updated:
+      subject: "%{organizer} a modifié l'événement %{event_name}"
+      hello: "Bonjour %{participant_name},"
+      body: "%{organizer} a modifié l'événement %{event_name}. Rendez-vous sur la page de l'événement pour voir les changements : "
+      event_access: "Accédez à l'activité"
+
+  message_mailer:
+    user_comment:
+      subject: "%{comment_user} a laissé un commentaire sur votre événement %{event_name}"
+      hello: "Bonjour %{name}, "
+      body: "%{comment_user} a laissé un commentaire sur votre événement %{event_name}, vous pouvez consulter votre événement ici :"
+      event_access: "Accédez à l'activité"
+
+  layouts:
+    mailer:
+      signature_html: "A bientôt,<br><strong>L'équipe ZA:DL</strong>"
 
   payments:
     new:
@@ -206,3 +242,5 @@ fr:
       start_html: "<strong>Date de début :</strong> %{start}"
       price: "Prix : %{price}"
 
+  copy-link:
+    notification: "Votre lien a bien été copié, partagez-le vite !"

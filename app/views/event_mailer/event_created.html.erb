@@ -1,5 +1,9 @@
-<h1>Event#event_created</h1>
+<p> <%= t('event_mailer.event_created.hello', name: @user.first_name.capitalize) %> </p>
 
-<p>
-  <%= @greeting %>, find me in app/views/event_mailer/event_created.html.erb
-</p>
+<p> <%= t('event_mailer.event_created.body', event_name: @event.name) %> </p>
+<p style="color: #DA4167; font-weight: bolder;"><%= event_url(id: @event.id) %></p>
+<%= link_to event_url(id: @event.id), style: "text-decoration: none;" do %>
+ <button style="background-color: #DA4167 ; border: 2px solid #DA4167 ; border-radius: 5px; color: white; font-size: 16px;">
+   <%= t('event_mailer.event_created.event_access')%>
+ </button>
+<% end %>

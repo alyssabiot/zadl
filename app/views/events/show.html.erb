@@ -7,8 +7,10 @@
     <h1><%= @event.name %></h1>
   </div>
   <div class="title-btn flex-item">
+    <!-- Evenement passé -->
     <% if Time.now() > @event.starts_at %>
       <h3 class="passed-event"><strong><%= t('events.show.past_activity') %></strong></h3>
+      <!-- Bouton 'duplicate' pour l'organisateur -->
       <% if current_user == @event.user %>
         <div class="right-bottom">
           <%= link_to '#', data: {toggle: "modal", target: "#ModalDupplicate"}, class: "margin margin-sides link_admin" do %>
@@ -54,107 +56,117 @@
       <% end %>
     <!-- L'activitée n'est pas passée -->
     <% else %>
-    <!-- Il n'y a pas de current user (user non loggé) -->
-    <% if !current_user %>
-      <!-- Le nombre de places est limité -->
-      <% if @event.max_participants %>
-        <!-- Il reste des places -->
-        <% if @event.max_participants - @event.validated_bookings_number > 0 %>
-          <%= simple_form_for [@event, @booking], method: :post do |f| %>
+      <!-- Il n'y a pas de current user (user non loggé) -->
+      <% if !current_user %>
+        <!-- Le nombre de places est limité -->
+        <% if @event.max_participants %>
+          <!-- Il reste des places -->
+          <% if @event.max_participants - @event.validated_bookings_number > 0 %>
+            <%= simple_form_for [@event, @booking], method: :post do |f| %>
+                <%= f.hidden_field :on_waiting_list, value: false %>
+                <%= f.submit t('events.show.subscribe'), class: "btn btn-danger" %>
+            <% end %>
+          <!-- L'événement est complet -->
+          <% else %>
+            <p><%= t('events.show.no_places_left') %></p>
+            <%= simple_form_for [@event, @booking], method: :post do |f| %>
+                <%= f.hidden_field :on_waiting_list, value: true %>
+                <%= f.submit t('events.show.subscribe_waiting_list'), class: "btn btn-danger" %>
+            <% end %>
+          <% end %>
+        <!-- L'évenement a un nombre de places illimitées -->
+        <% else %>
+          <%= simple_form_for [@event, @booking], method: :patch do |f| %>
               <%= f.hidden_field :on_waiting_list, value: false %>
               <%= f.submit t('events.show.subscribe'), class: "btn btn-danger" %>
           <% end %>
-        <!-- L'événement est complet -->
-        <% else %>
-          <p><%= t('events.show.no_places_left') %></p>
-          <%= simple_form_for [@event, @booking], method: :post do |f| %>
-              <%= f.hidden_field :on_waiting_list, value: true %>
-              <%= f.submit t('events.show.subscribe_waiting_list'), class: "btn btn-danger" %>
-          <% end %>
         <% end %>
-      <!-- L'évenement a un nombre de places illimitées -->
-      <% else %>
-        <%= simple_form_for [@event, @booking], method: :patch do |f| %>
-            <%= f.hidden_field :on_waiting_list, value: false %>
-            <%= f.submit t('events.show.subscribe'), class: "btn btn-danger" %>
-        <% end %>
-      <% end %>
-    <!-- Le current user est l'organisateur -->
-    <% elsif current_user == @event.user %>
-      <div class="right-bottom">
-        <%=link_to t('events.show.edit'), edit_event_path(@event), class: "btn btn-danger" %>
-        <%= link_to t('events.show.cancel'), event_path(@event), method: :delete, class: "margin margin-sides link_admin" %>
-        <%= link_to '#', data: {toggle: "modal", target: "#ModalDupplicate"}, class: "margin margin-sides link_admin" do %>
-            <%=  t('events.show.duplicate')%>
-          <% end %>
-      </div>
-      <!-- Modal en cas de duplication -->
-      <div class="modal fade" id="ModalDupplicate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel"> <%= t('events.show.date_pick') %> </h4>
-            </div>
-            <div class="modal-body">
-              <%= simple_form_for [current_user, @duplicated_event], method: :post do |f| %>
-                <div class="col-xs-6">
-                  <%= f.input :starts_at, label: false, placeholder: t('events.new.starts_at'), as: :string, input_html: { class: "datetimepicker" } %>
-                </div>
-                <div class="col-xs-6">
-                  <%= f.input :ends_at, label: false, placeholder: t('events.new.ends_at'), as: :string, input_html: { class: "datetimepicker" } %>
-                </div>
-                <%= f.hidden_field :name, value: @event.name %>
-                <%= f.hidden_field :description, value: @event.description %>
-                <% if @event.max_participants %>
-                  <%= f.hidden_field :max_participants, value: @event.max_participants %>
-                <% end %>
-                <%= f.hidden_field :price, value: @event.price %>
-                <% if @event.photo %>
-                  <%= f.hidden_field :photo, value: @event.photo %>
-                  <%= f.hidden_field :photo_cache, value: @event.photo_cache %>
-                <% end %>
-                <%= f.hidden_field :location, value: @event.location %>
-                <%= f.hidden_field :notif_subscription, value: @event.notif_subscription %>
-                <%= f.hidden_field :notif_cancellation, value: @event.notif_cancellation %>
-                <%= f.hidden_field :notif_message, value: @event.notif_message %>
-                <%= f.submit t('events.show.duplicate_confirm') , class: "btn btn-danger" %>
-              <% end %>
-            </div>
-          </div>
+      <!-- Le current user est l'organisateur -->
+      <% elsif current_user == @event.user %>
+        <div class="right-bottom">
+          <%=link_to t('events.show.edit'), edit_event_path(@event), class: "btn btn-danger" %>
+          <%= link_to t('events.show.cancel'), event_path(@event), method: :delete, class: "margin margin-sides link_admin" %>
+          <%= link_to '#', data: {toggle: "modal", target: "#ModalDupplicate"}, class: "margin margin-sides link_admin" do %>
+              <%=  t('events.show.duplicate')%>
+            <% end %>
         </div>
-      </div>
-    <!-- Le current user n'est pas l'organisateur -->
-    <% else %>
-      <!-- Le current user a un booking non annulé pour l'event -->
-      <% if has_a_booking_not_cancelled?(current_user, @event) %>
-        <!-- Le booking est validé -->
-        <% if @existing_booking.on_waiting_list == false %>
-          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalUnsubscribe">
-            <%= t('events.show.unsubscribe') %>
-          </button>
-          <!-- Modal en cas de désinscription -->
-          <div class="modal fade" id="ModalUnsubscribe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel"><%= t('events.show.sure') %> </h4>
-                </div>
-                <div class="modal-body">
-                  <%= simple_form_for @existing_booking, method: :delete do |f| %>
-                    <%= f.input :cancellation_message, label: t('events.show.message_title', user: @event.user.first_name)   %>
-                    <%= f.submit t('events.show.send'), class: "btn btn-danger" %>
+        <!-- Modal en cas de duplication -->
+        <div class="modal fade" id="ModalDupplicate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"> <%= t('events.show.date_pick') %> </h4>
+              </div>
+              <div class="modal-body">
+                <%= simple_form_for [current_user, @duplicated_event], method: :post do |f| %>
+                  <div class="col-xs-6">
+                    <%= f.input :starts_at, label: false, placeholder: t('events.new.starts_at'), as: :string, input_html: { class: "datetimepicker" } %>
+                  </div>
+                  <div class="col-xs-6">
+                    <%= f.input :ends_at, label: false, placeholder: t('events.new.ends_at'), as: :string, input_html: { class: "datetimepicker" } %>
+                  </div>
+                  <%= f.hidden_field :name, value: @event.name %>
+                  <%= f.hidden_field :description, value: @event.description %>
+                  <% if @event.max_participants %>
+                    <%= f.hidden_field :max_participants, value: @event.max_participants %>
                   <% end %>
-                </div>
+                  <%= f.hidden_field :price, value: @event.price %>
+                  <% if @event.photo %>
+                    <%= f.hidden_field :photo, value: @event.photo %>
+                    <%= f.hidden_field :photo_cache, value: @event.photo_cache %>
+                  <% end %>
+                  <%= f.hidden_field :location, value: @event.location %>
+                  <%= f.hidden_field :notif_subscription, value: @event.notif_subscription %>
+                  <%= f.hidden_field :notif_cancellation, value: @event.notif_cancellation %>
+                  <%= f.hidden_field :notif_message, value: @event.notif_message %>
+                  <%= f.submit t('events.show.duplicate_confirm') , class: "btn btn-danger" %>
+                <% end %>
               </div>
             </div>
           </div>
-        <!-- Le current user est en liste d'attente -->
-        <% else %>
-          <p><%= t('events.show.currently_waiting_list') %></p>
-          <% if @event.max_participants %>
-            <% if @event.max_participants - @event.validated_bookings_number > 0 %>
+        </div>
+      <!-- Le current user n'est pas l'organisateur -->
+      <% else %>
+        <!-- Le current user a un booking non annulé pour l'event -->
+        <% if has_a_booking_not_cancelled?(current_user, @event) %>
+          <!-- Le booking est validé -->
+          <% if @existing_booking.on_waiting_list == false && @existing_booking.state == 'paid' %>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalUnsubscribe">
+              <%= t('events.show.unsubscribe') %></button>
+            <!-- Modal en cas de désinscription -->
+            <div class="modal fade" id="ModalUnsubscribe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><%= t('events.show.sure') %> </h4>
+                  </div>
+                  <div class="modal-body">
+                    <%= simple_form_for @existing_booking, method: :delete do |f| %>
+                      <%= f.input :cancellation_message, label: t('events.show.message_title', user: @event.user.first_name)   %>
+                      <%= f.submit t('events.show.send'), class: "btn btn-danger" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- Le current user est en liste d'attente ou avait engagé une inscription mais pas payé -->
+          <% else %>
+            <!-- Le current user est en liste d'attente -->
+            <% if @existing_booking.on_waiting_list == true %>
+              <p><%= t('events.show.currently_waiting_list') %></p>
+            <% end %>
+            <!-- Le current peut s'inscrire -->
+            <% if @event.max_participants %>
+              <% if @event.max_participants - @event.validated_bookings_number > 0 %>
+                <%= simple_form_for @existing_booking, method: :patch do |f| %>
+                      <%= f.hidden_field :on_waiting_list, value: false %>
+                      <%= f.hidden_field :reimbursed, value: "pending" %>
+                      <%= f.submit t('events.show.subscribe'), class: "btn btn-danger" %>
+                <% end %>
+              <% end %>
+            <% else %>
               <%= simple_form_for @existing_booking, method: :patch do |f| %>
                     <%= f.hidden_field :on_waiting_list, value: false %>
                     <%= f.hidden_field :reimbursed, value: "pending" %>
@@ -162,13 +174,33 @@
               <% end %>
             <% end %>
           <% end %>
-        <% end %>
-      <!-- Le current user a un booking annulé pour l'event -->
-      <% elsif has_a_booking_cancelled?(current_user, @event) %>
-        <!-- L'événement a un nombre limité de places -->
-        <% if @event.max_participants %>
-          <!-- Il reste des places -->
-          <% if @event.max_participants - @event.validated_bookings_number > 0 %>
+
+        <!-- Le current user a un booking annulé pour l'event -->
+        <% elsif has_a_booking_cancelled?(current_user, @event) %>
+          <!-- L'événement a un nombre limité de places -->
+          <% if @event.max_participants %>
+            <!-- Il reste des places -->
+            <% if @event.max_participants - @event.validated_bookings_number > 0 %>
+              <%= simple_form_for @cancelled_booking, method: :patch do |f| %>
+                    <%= f.hidden_field :on_waiting_list, value: false %>
+                    <%= f.hidden_field :reimbursed, value: "pending" %>
+                    <%= f.hidden_field :state, value: "paid" %>
+                    <%= f.hidden_field :cancellation_message, value: "" %>
+                    <%= f.submit t('events.show.subscribe'), class: "btn btn-danger" %>
+              <% end %>
+            <!-- L'événement est complet -->
+            <% else %>
+              <p><%= t('events.show.no_places_left') %></p>
+              <%= simple_form_for @cancelled_booking, method: :patch do |f| %>
+                <%= f.hidden_field :on_waiting_list, value: true %>
+                <%= f.hidden_field :reimbursed, value: "pending" %>
+                <%= f.hidden_field :state, value: "paid" %>
+                <%= f.hidden_field :cancellation_message, value: "" %>
+                <%= f.submit t('events.show.subscribe_waiting_list'), class: "btn btn-danger" %>
+              <% end %>
+            <% end %>
+          <!-- L'évenement a un nombre de places illimitées -->
+          <% else %>
             <%= simple_form_for @cancelled_booking, method: :patch do |f| %>
                   <%= f.hidden_field :on_waiting_list, value: false %>
                   <%= f.hidden_field :reimbursed, value: "pending" %>
@@ -176,57 +208,37 @@
                   <%= f.hidden_field :cancellation_message, value: "" %>
                   <%= f.submit t('events.show.subscribe'), class: "btn btn-danger" %>
             <% end %>
-          <!-- L'événement est complet -->
-          <% else %>
-            <p><%= t('events.show.no_places_left') %></p>
-            <%= simple_form_for @cancelled_booking, method: :patch do |f| %>
-              <%= f.hidden_field :on_waiting_list, value: true %>
-              <%= f.hidden_field :reimbursed, value: "pending" %>
-              <%= f.hidden_field :state, value: "paid" %>
-              <%= f.hidden_field :cancellation_message, value: "" %>
-              <%= f.submit t('events.show.subscribe_waiting_list'), class: "btn btn-danger" %>
-            <% end %>
           <% end %>
-        <!-- L'évenement a un nombre de places illimitées -->
+        <!-- Le current user n'a pas encore de booking pour l'event -->
         <% else %>
-          <%= simple_form_for @cancelled_booking, method: :patch do |f| %>
+          <!-- L'événement a un nombre limité de places -->
+          <% if @event.max_participants %>
+            <!-- Il reste des places -->
+            <% if @event.max_participants - @event.validated_bookings_number > 0 %>
+              <%= simple_form_for [@event, @booking], method: :post do |f| %>
+                  <%= f.hidden_field :on_waiting_list, value: false %>
+                  <%= f.hidden_field :reimbursed, value: "pending" %>
+                  <%= f.submit t('events.show.subscribe'), class: "btn btn-danger subscribe-link-action" %>
+              <% end %>
+            <!-- L'événement est complet -->
+            <% else %>
+              <p><%= t('events.show.no_places_left') %></p>
+              <%= simple_form_for [@event, @booking], method: :post do |f| %>
+                  <%= f.hidden_field :on_waiting_list, value: true %>
+                  <%= f.hidden_field :reimbursed, value: "pending" %>
+                  <%= f.submit t('events.show.subscribe_waiting_list'), class: "btn btn-danger" %>
+              <% end %>
+            <% end %>
+          <!-- L'évenement a un nombre de places illimitées -->
+          <% else %>
+            <%= simple_form_for [@event, @booking], url: event_bookings_path(@event), method: :post do |f| %>
                 <%= f.hidden_field :on_waiting_list, value: false %>
                 <%= f.hidden_field :reimbursed, value: "pending" %>
-                <%= f.hidden_field :state, value: "paid" %>
-                <%= f.hidden_field :cancellation_message, value: "" %>
                 <%= f.submit t('events.show.subscribe'), class: "btn btn-danger" %>
-          <% end %>
-        <% end %>
-      <!-- Le current user n'a pas encore de booking pour l'event -->
-      <% else %>
-        <!-- L'événement a un nombre limité de places -->
-        <% if @event.max_participants %>
-          <!-- Il reste des places -->
-          <% if @event.max_participants - @event.validated_bookings_number > 0 %>
-            <%= simple_form_for [@event, @booking], method: :post do |f| %>
-                <%= f.hidden_field :on_waiting_list, value: false %>
-                <%= f.hidden_field :reimbursed, value: "pending" %>
-                <%= f.submit t('events.show.subscribe'), class: "btn btn-danger subscribe-link-action" %>
             <% end %>
-          <!-- L'événement est complet -->
-          <% else %>
-            <p><%= t('events.show.no_places_left') %></p>
-            <%= simple_form_for [@event, @booking], method: :post do |f| %>
-                <%= f.hidden_field :on_waiting_list, value: true %>
-                <%= f.hidden_field :reimbursed, value: "pending" %>
-                <%= f.submit t('events.show.subscribe_waiting_list'), class: "btn btn-danger" %>
-            <% end %>
-          <% end %>
-        <!-- L'évenement a un nombre de places illimitées -->
-        <% else %>
-          <%= simple_form_for [@event, @booking], url: event_bookings_path(@event), method: :post do |f| %>
-              <%= f.hidden_field :on_waiting_list, value: false %>
-              <%= f.hidden_field :reimbursed, value: "pending" %>
-              <%= f.submit t('events.show.subscribe'), class: "btn btn-danger" %>
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
     <% end %>
   </div>
 </div>
@@ -236,11 +248,14 @@
     <div class="row">
       <div class="col-xs-12 col-lg-7">
         <div class="event-url">
-          <p id="copy"><%= event_url(@event.id) %></p>
+          <p id="copy_<%=@event.id%>"><%= event_url(@event.id) %></p>
         </div>
+        <div class="alert-copy-link" id="alert_<%=@event.id%>">
+        <p><%= t('copy-link.notification') %></p>
+      </div>
       </div>
       <div class="col-xs-12 col-lg-2">
-        <div class="btn btn-danger url-copy-button" data-clipboard-target="#copy" id="btn-copy">
+        <div class="btn btn-danger btn-copy-link" data-clipboard-target="#copy_<%=@event.id%>" id="btn_<%=@event.id%>">
           <i class="fi-link"></i> <%= t('events.show.copy_link') %>
         </div>
       </div>
@@ -259,45 +274,58 @@
   <div class="row container-list">
     <div class="col-xs-12 col-sm-3">
       <!-- photo de l'admin -->
-      <%= link_to user_path(@event.user), class: "event-photo-container flex-center-column" do %>
+      <%= link_to user_path(@event.user), class: "event-organizer-container flex-center-column" do %>
         <div><%= avatar(@event.user, class: "avatar-large") %></div>
         <p><%= t('events.show.organized_by', name: @event.user.first_name) %></p>
       <% end %>
     </div>
     <div class="col-xs-12 col-sm-9">
       <!-- Nom de l'event -->
+
       <h3 class="border-bottom"> <strong> <%= @event.location %> </strong> </h3>
       <!-- Content box -->
-      <div class="content-box">
-        <div class="content-box-item">
-          <div class= "margin margin-sides">
-            <div class="text-center margin color-red">
-              <i class="fi-calendar"></i>
+      <div class="row">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-lg-3">
+            <div class= "calendar-ebs">
+              <div class="text-center margin color-red">
+                <i class="fi-calendar"></i>
+              </div>
+              <div class="calendar-details center">
+                <div>
+                  <p><strong> <%= t('events.show.beginning') %></strong></p>
+                  <p><%= @event.starts_at.strftime('%d/%m/%Y - %H:%M') %> </p>
+                </div>
+                <div class= "margin margin-sides">
+                  <p><strong> <%= t('events.show.end')%> </strong></p>
+                  <p> <%= @event.ends_at.strftime('%d/%m/%Y - %H:%M') %> </p>
+                </div>
+              </div>
             </div>
-            <p><strong> <%= t('events.show.beginning') %></strong></p>
-            <p><%= @event.starts_at.strftime('%d/%m/%Y - %H:%M') %> </p>
           </div>
-          <div class= "margin margin-sides">
-            <p><strong> <%= t('events.show.end')%> </strong></p>
-            <p> <%= @event.ends_at.strftime('%d/%m/%Y - %H:%M') %> </p>
+          <div class="col-xs-12 col-sm-12 col-lg-6">
+            <div class="description-ebs">
+              <div class="text-center margin color-red">
+                <i class="fi-align-left"></i>
+              </div>
+              <div class="description-center">
+                <p> <strong> <%= @event.description %></strong> </p>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="content-box-item-participants">
-          <div class="text-center margin color-red">
-            <i class="fi-align-left"></i>
-          </div>
-          <p class="description-center"> <strong> <%= @event.description %> </strong> </p>
-        </div>
-        <div class="content-box-item text-center">
-          <div class="text-center margin color-red">
-            <i class="fi-dollar-bill"></i>
-          </div>
-          <div class="margin">
-            <% if @event.price == 0 %>
-              <h1><%= t('events.show.free') %></h1>
-            <% else %>
-              <h1><%= @event.price %> <i class="fi-euro"></i></h1>
-            <% end %>
+          <div class="col-xs-12 col-sm-12 col-lg-3">
+            <div class="price-ebs">
+              <div class="text-center margin color-red">
+                <i class="fi-dollar-bill"></i>
+              </div>
+              <div class="margin">
+                <% if @event.price == 0 %>
+                  <h1><%= t('events.show.free') %></h1>
+                <% else %>
+                  <h1><%= @event.price %> <i class="fi-euro"></i></h1>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -309,7 +337,7 @@
   <div class="row container-list">
     <div class="col-xs-12 col-sm-3">
       <!-- photo de l'admin -->
-      <div class="event-photo-container flex-center-column">
+      <div class="event-organizer-container flex-center-column">
           <i class="fi-torsos-all" style="font-size: 100px;"></i>
           <% if @event.max_participants %>
             <h3 class="color-red"><strong> <%= @participants_number %>/<%= @event.max_participants %></strong> </h3>
@@ -357,8 +385,8 @@
   </div>
 </div>
 
-<div class="container container-list">
-  <div class="row">
+<div class="container ">
+  <div class="row container-list">
     <div class="col-xs-12 col-sm-6 col-md-6">
       <div>
         <h3 id="messages_count" class="border"><strong>
@@ -579,3 +607,10 @@
     });
   </script>
 <% end %>
+
+
+
+
+
+
+
