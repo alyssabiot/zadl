@@ -1,7 +1,7 @@
 module ApplicationHelper
   def avatar(user)
    if user.photo.present?
-     cl_image_tag(current_user.photo, height: 38, width: 38, crop: :fill, gravity: :face, class: "avatar")
+     cl_image_tag(user.photo, height: 38, width: 38, crop: :fill, gravity: :face, class: "avatar")
    elsif user.facebook_picture_url.present?
      image_tag user.facebook_picture_url, height: 38, width: 38, crop: :fill, gravity: :face, class: "avatar"
    else
@@ -11,7 +11,7 @@ module ApplicationHelper
 
   def avatar_large(user)
    if user.photo.present?
-     cl_image_tag(current_user.photo, height: 100, width: 100, crop: :fill, gravity: :face, class: "avatar-large")
+     cl_image_tag(user.photo, height: 100, width: 100, crop: :fill, gravity: :face, class: "avatar-large")
    elsif user.facebook_picture_url.present?
      image_tag user.facebook_picture_url, height: 100, width: 100, crop: :fill, gravity: :face, class: "avatar-large"
    else
@@ -23,7 +23,7 @@ module ApplicationHelper
     if user.nil?
       image_tag "rest.jpg", height: 60, width: 60, class: "avatar-medium"
     elsif user.photo.present?
-      cl_image_tag(current_user.photo, height: 60, width: 60, crop: :fill, gravity: :face, class: "avatar-medium")
+      cl_image_tag(user.photo, height: 60, width: 60, crop: :fill, gravity: :face, class: "avatar-medium")
     elsif user.facebook_picture_url.present?
       image_tag user.facebook_picture_url, height: 60, width: 60, crop: :fill, gravity: :face, class: "avatar-medium"
     else
@@ -33,11 +33,11 @@ module ApplicationHelper
 
   def avatar_dropdown(user)
    if user.photo.present?
-     cl_image_tag(current_user.photo, height: 38, width: 38, crop: :fill, gravity: :face, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown")
+     cl_image_tag(user.photo, height: 38, width: 38, crop: :fill, gravity: :face, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown")
    elsif user.facebook_picture_url.present?
      image_tag user.facebook_picture_url, height: 38, width: 38, crop: :fill, gravity: :face, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"
    else
-     image_tag "default-profile.png", height: 38, width: 38, class: "avatar dropdown-toggle"
+     image_tag "default-profile.png", height: 38, width: 38, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"
    end
   end
 
