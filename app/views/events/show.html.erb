@@ -2,6 +2,14 @@
 <% content_for :meta_description, "Don't Paddle, ZA:DL !" %>
 <% content_for :meta_image, @event.photo.url %>
 
+<%= avatar_large(current_user) %>
+
+<% if current_user %>
+  <% if current_user.photo.present? %>
+      <%= cl_image_tag(current_user.photo, height: 100, width: 100, crop: :fill, gravity: :face, class: "avatar-large-bis") %>
+  <% end %>
+<% end %>
+
 <div class="event-banner text-center flex-container center" style="background-image: linear-gradient(-915deg, rgba(124, 152, 179, 0.84) 0%, rgba(232, 179, 179, 0.82) 85%), url('<%= url_photo(@event) %>');">
   <div class="title-event flex-item">
     <h1><%= @event.name %></h1>

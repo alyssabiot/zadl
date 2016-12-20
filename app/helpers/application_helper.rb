@@ -12,6 +12,18 @@ module ApplicationHelper
     end
   end
 
+  def avatar_large(user)
+   if user.nil?
+     image_tag "rest.jpg", height: 100, width: 100, class: "avatar-large-bis"
+   elsif user.photo.present?
+     cl_image_tag(current_user.photo, height: 100, width: 100, crop: :fill, gravity: :face, class: "avatar-large-bis")
+   elsif user.facebook_picture_url.present?
+     image_tag user.facebook_picture_url
+   else
+     image_tag "default-profile.png"
+   end
+  end
+
   def url_photo(event)
     if event.photo.present?
       cl_image_path event.photo
