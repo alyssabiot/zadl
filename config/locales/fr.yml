@@ -185,8 +185,8 @@ fr:
         organized_by: "Organisé par"
         sure: "Etes-vous sûr de vouloir vous désinscrire ?"
         unsubscribe_title: "Envoyez un message d'explication à %{organizer}"
-        send: "Confirm and send your message"
         money_collected: "Cagnotte collectée - Fermée à l'inscription"
+        send: "Confirmer et envoyer le message"
 
   user_mailer:
     welcome:
@@ -212,6 +212,11 @@ fr:
       body_accepted: "%{organizer} a accepté votre demande de remboursement pour l'événement %{event_name}"
       body_refused: "%{organizer} a refusé votre demande de remboursement pour l'événement %{event_name}"
       profile_access: "Voir mon profil"
+    waiting_list:
+      subject: "Une place s'est libérée pour l'événement %{event_name}"
+      hello: "Bonjour %{participant}, "
+      body: "Une place s'est libérée pour l'événement %{event_name}. Pour vous inscrire allez à la page de l'événement!"
+      event_access: "Accéder à l'activité"
 
   event_mailer:
     event_cancelled:

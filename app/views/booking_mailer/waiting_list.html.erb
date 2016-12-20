@@ -1,0 +1,9 @@
+<p> <%= t('booking_mailer.waiting_list.hello', participant: @participant.first_name.capitalize) %> </p>
+
+<p> <%= t('booking_mailer.waiting_list.body', event_name: @event.name) %> </p>
+
+<%= link_to event_url(id: @event.id), style: "text-decoration: none;" do %>
+ <button style="background-color: #DA4167 ; border: 2px solid #DA4167 ; border-radius: 5px; color: white; font-size: 16px;">
+   <%= t('booking_mailer.waiting_list.event_access')%>
+ </button>
+<% end %>
