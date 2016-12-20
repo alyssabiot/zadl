@@ -162,7 +162,7 @@ en:
         beginning: "Beginning :"
         end: "End :"
         participants:
-          zero: "No participants so far"
+          zero: "0 participants"
           one: "%{count} participant so far"
           other: "%{count} participants so far"
         places:

@@ -2,6 +2,7 @@
   display: none;
   color: $red;
   margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .container-list {
@@ -44,12 +45,6 @@
   padding-top: 8px;
 }
 
-.event-link {
-  line-height: 37px;
-  background-color: #F1EFEB;
-  margin-left: 0px;
-  margin-right: 0px;
-}
 
 .content-box {
   display: flex;
@@ -122,9 +117,16 @@
   .organizer-lg {
     flex: 0 0 30%;
   }
-  .event-box-right {
-    padding-left: 30px;
+
+  .event-link-url {
+    min-height: 33px;
+    background-color: #F1EFEB;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius: 5px;
+    padding-top: 7px;
   }
+
   // smart-phones (xs)
 
   @media (max-width: $screen-sm-min) {
@@ -141,10 +143,7 @@
     .event-photo {
       height: 40vh;
     }
-    // Photo de l'event à gauche ou au dessous
-    .photo-info-box {
-    }
-    // Infos à droite de l'icone ou au dessous
+    // Infos à droite de l'icone
     .event-calendar-mq, .event-participants-mq, .event-organizer-mq {
       display: flex;
       justify-content: space-between;
@@ -155,7 +154,7 @@
       flex: 0 0 30%;
     }
     .item-user-show {
-      flex: 1 0 auto;
+      flex: 0 0 70%;
       text-align: left;
     }
     // Boutons / lien admin centré ou avec marge
@@ -166,6 +165,13 @@
       min-height: 33px;
       margin-bottom: 10px;
     }
+    .event-link-mq {
+      margin-top: 10px;
+    }
+    .container-list {
+      padding-bottom: 10px;
+    }
+
   }
 
   // tablettes (sm)
@@ -189,18 +195,18 @@
     .photo-info-box {
       display: flex;
       justify-content: space-around;
-      // align-items: center;
     }
     .event-photo-mq {
       flex: 0 0 40vh;
     }
     .event-box-right {
       flex: 1 0 auto;
+      padding-left: 30px;
     }
     // Boites à droite de la photo
     .top-boxes {
     }
-    // Infos à droite de l'icone ou au dessous
+    // Infos à droite des icones
     .event-calendar-mq, .event-participants-mq, .event-organizer-mq {
       display: flex;
       justify-content: space-around;
@@ -226,6 +232,18 @@
       min-height: 33px;
       margin-bottom: 20px;
     }
+    // bouton copier le lien à droite
+    .event-link-mq {
+      display: flex;
+      text-align: center;
+    }
+    .event-link {
+      flex: 0 0 80%;
+      display: inline-block;
+    }
+    .event-link-btn {
+      flex: 0 0 20%;
+    }
   }
 
   // small laptop (md)
@@ -242,27 +260,27 @@
     }
     // Hauteur de la photo de l'event
     .event-photo {
-      height: 30vh;
-      width: 30vh;
+      height: 40vh;
+      width: 40vh;
     }
-    // Photo de l'event à gauche ou au dessous
+    // Photo de l'event à gauche
     .photo-info-box {
       display: flex;
       justify-content: space-around;
-      // align-items: center;
     }
     .event-photo-mq {
-      flex: 0 0 30vh;
+      flex: 0 0 40vh;
     }
     .event-box-right {
-      flex: 1 1 auto;
+      flex: 1 0 auto;
+      padding-left: 30px;
     }
     // Boites à droite de la photo
     .top-boxes {
       display: flex;
       justify-content: space-around;
     }
-    // Infos à droite de l'icone ou au dessous
+    // Infos au dessus des icones
     .event-calendar-mq, .event-participants-mq, .event-organizer-mq {
       display: inline;
       text-align: center;
@@ -288,6 +306,9 @@
       .btn, p {
         text-align: center;
       }
+      .btn {
+        margin-top: 20px;
+      }
       .item-user-show {
         text-align: center;
       }
@@ -301,6 +322,18 @@
     .event-link {
       min-height: 33px;
       margin-bottom: 20px;
+    }
+    // bouton copier le lien à droite
+    .event-link-mq {
+      display: flex;
+      text-align: center;
+    }
+    .event-link {
+      flex: 0 0 80%;
+      display: inline-block;
+    }
+    .event-link-btn {
+      flex: 0 0 20%;
     }
   }
 
@@ -321,24 +354,24 @@
       height: 40vh;
       width: 40vh;
     }
-    // Photo de l'event à gauche ou au dessous
+    // Photo de l'event à gauche
     .photo-info-box {
       display: flex;
       justify-content: space-around;
-      // align-items: center;
     }
     .event-photo-mq {
       flex: 0 0 40vh;
     }
     .event-box-right {
       flex: 1 0 auto;
+      padding-left: 30px;
     }
     // Boites à droite de la photo
     .top-boxes {
       display: flex;
       justify-content: space-around;
     }
-    // Infos à droite de l'icone ou au dessous
+    // Infos au dessous des icones
     .event-calendar-mq, .event-participants-mq, .event-organizer-mq {
       display: inline;
       text-align: center;
@@ -363,6 +396,9 @@
       .btn, p {
         text-align: center;
       }
+      .btn {
+        margin-top: 20px;
+      }
       .item-user-show {
         text-align: center;
       }
@@ -376,6 +412,18 @@
     .event-link {
       min-height: 37px;
       margin-bottom: 20px;
+    }
+    // bouton copier le lien à droite
+    .event-link-mq {
+      display: flex;
+      text-align: center;
+    }
+    .event-link {
+      flex: 0 0 80%;
+      display: inline-block;
+    }
+    .event-link-btn {
+      flex: 0 0 20%;
     }
   }
 }
