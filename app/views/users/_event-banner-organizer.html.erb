@@ -149,39 +149,41 @@
           <!-- Le current user a un booking pour l'event -->
           <% if has_a_booking_not_cancelled?(current_user, event) %>
             <% booking = booking_find_by_user_and_event(current_user, event) %>
-            <!-- Le booking est validé -->
-            <% if booking.on_waiting_list == false && booking.state == 'paid' %>
-              <button type="button" class="margin btn btn-danger" data-toggle="modal" data-target="#ModalUnsubscribe_<%=booking.id%>">
-                <%= t('users.show.event-banner.unsubscribe') %>
-              </button>
-              <!-- Modal en cas de désinscription -->
-              <div class="modal fade" id="ModalUnsubscribe_<%=booking.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel"><%=  t('users.show.event-banner.sure') %></h4>
-                    </div>
-                    <div class="modal-body">
-                      <%= simple_form_for booking, method: :delete do |f| %>
-                        <%= f.input :cancellation_message, label: t('users.show.event-banner.unsubscribe_title', organizer: event.user.first_name) %>
-                        <%= f.submit t('users.show.event-banner.send'), class: "btn btn-danger" %>
-                      <% end %>
+            <% if booking != "No booking" %>
+              <!-- Le booking est validé -->
+              <% if booking.on_waiting_list == false && booking.state == 'paid' %>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalUnsubscribe_<%=booking.id%>">
+                  <%= t('users.show.event-banner.unsubscribe') %>
+                </button>
+                <!-- Modal en cas de désinscription -->
+                <div class="modal fade" id="ModalUnsubscribe_<%=booking.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"><%=  t('users.show.event-banner.sure') %></h4>
+                      </div>
+                      <div class="modal-body">
+                        <%= simple_form_for booking, method: :delete do |f| %>
+                          <%= f.input :cancellation_message, label: t('users.show.event-banner.unsubscribe_title', organizer: event.user.first_name) %>
+                          <%= f.submit t('users.show.event-banner.send'), class: "btn btn-danger" %>
+                        <% end %>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            <!-- Le current user est en liste d'attente -->
-            <% elsif booking.on_waiting_list == true %>
-              <p class="red-font margin-top align-left half-width"><%= t('users.show.event-banner.waiting-list-on') %></p>
-              <% if event.max_participants - event.validated_bookings_number > 0 %>
-              <div class="margin half-width">
-                <%= simple_form_for booking do |f| %>
-                   <%= f.hidden_field :on_waiting_list, value: false %>
-                   <%= f.hidden_field :reimbursed, value: "pending" %>
-                   <%= f.submit t('users.show.event-banner.participate'), class: "btn btn-danger" %>
-                 <% end %>
-              </div>
+              <!-- Le current user est en liste d'attente -->
+              <% elsif booking.on_waiting_list == true %>
+                <p class="red-font margin-top align-left half-width"><%= t('users.show.event-banner.waiting-list-on') %></p>
+                <% if event.max_participants - event.validated_bookings_number > 0 %>
+                <div class="half-width">
+                  <%= simple_form_for booking do |f| %>
+                     <%= f.hidden_field :on_waiting_list, value: false %>
+                     <%= f.hidden_field :reimbursed, value: "pending" %>
+                     <%= f.submit t('users.show.event-banner.participate'), class: "btn btn-danger" %>
+                   <% end %>
+                </div>
+                <% end %>
               <% end %>
             <% end %>
           <!-- Le current user n'a pas encore de booking pour l'event -->

@@ -1,33 +1,35 @@
-<div class="event-banner-user-show container-list">
-  <div class="photo-info-box">
-    <div class="event-photo-mq">
-      <%= link_to event_path(event) do %>
-        <div class="margin event-photo" style="background-image: url('<%= url_photo(event) %>');">
-        </div>
-      <% end %>
-    </div>
-    <div class="event-box-right">
-      <div class="event-title-mq">
+<div class="event-banner-user-show">
+  <div class="container-list">
+    <div class="photo-info-box">
+      <div class="event-photo-mq">
         <%= link_to event_path(event) do %>
-          <h3 class="border-bottom"> <strong> <%= event.name %> </strong> </h3>
+          <div class="margin event-photo" style="background-image: url('<%= url_photo(event) %>');">
+          </div>
         <% end %>
       </div>
-      <div class="top-boxes">
-        <div class="calendar">
-          <%= render partial: "event-banner-calendar", locals: {event: event} %>
+      <div class="event-box-right">
+        <div class="event-title-mq">
+          <%= link_to event_path(event) do %>
+            <h3 class="border-bottom"> <strong> <%= event.name %> </strong> </h3>
+          <% end %>
         </div>
-        <div class="participants-md-lg">
-          <%= render partial: "event-banner-participants", locals: {event: event} %>
-        </div>
-        <!-- Partie de droite qui dépend de l'organisateur -->
-        <div class="organizer-lg">
-          <%= render partial: "event-banner-organizer", locals: {event: event, duplicated_event: @duplicated_event} %>
+        <div class="top-boxes">
+          <div class="calendar">
+            <%= render partial: "event-banner-calendar", locals: {event: event} %>
+          </div>
+          <div class="participants-md-lg">
+            <%= render partial: "event-banner-participants", locals: {event: event} %>
+          </div>
+          <!-- Partie de droite qui dépend de l'organisateur -->
+          <div class="organizer-lg">
+            <%= render partial: "event-banner-organizer", locals: {event: event, duplicated_event: @duplicated_event} %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- lien à copier -->
-  <div class="event-link-mq text-center">
-      <%= render partial: "event-link-banner", locals: {event: event} %>
+    <!-- lien à copier -->
+    <div class="event-link-mq text-center">
+        <%= render partial: "event-link-banner", locals: {event: event} %>
+    </div>
   </div>
 </div>

@@ -162,7 +162,7 @@ fr:
         beginning: "Début :"
         end: "Fin :"
         participants:
-          zero: "Pas de participants pour l'instant"
+          zero: "Pas de participants"
           one: "%{count} participant"
           other: "%{count} participants"
         places:
