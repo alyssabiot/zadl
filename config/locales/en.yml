@@ -204,6 +204,11 @@ en:
       body_accepted: "%{organizer} accepted your reimbursement demand for the event %{event_name}"
       body_refused: "%{organizer} refused your reimbursement demand for the event %{event_name}"
       profile_access: "Go to my profile"
+    waiting_list:
+      subject: "There is a free spot for your event %{event_name}"
+      hello: "Hello %{participant}, "
+      body: "There is a free spot for your event %{event_name}. Go to the event page to subscribe!"
+      event_access: "Access event page"
 
   event_mailer:
     event_cancelled:
