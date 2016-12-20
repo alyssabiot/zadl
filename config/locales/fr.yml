@@ -215,7 +215,7 @@ fr:
     waiting_list:
       subject: "Une place s'est libérée pour l'événement %{event_name}"
       hello: "Bonjour %{participant}, "
-      body: "Une place s'est libérée pour l'événement %{event_name}. Pour vous inscrire allez à la page de l'événement!"
+      body: "Une place s'est libérée pour l'événement %{event_name}. Pour vous inscrire allez à la page de l'événement !"
       event_access: "Accéder à l'activité"
 
   event_mailer:
