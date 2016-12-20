@@ -76,7 +76,15 @@ class BookingsController < ApplicationController
     @booking.cancelled = true
     @booking.cancellation_message = params[:booking][:cancellation_message]
     @booking.save
+    @event = @booking.event
     BookingMailer.user_unsubscription(current_user, @booking).deliver_now
+    @waiting_list = []
+    @waiting_list = @booking.event.bookings.where(on_waiting_list: true)
+    if !@waiting_list.empty?
+      @waiting_list.each do |booking|
+        BookingMailer.waiting_list(booking.user, @event).deliver_now
+      end
+    end
     flash[:notice] = t('controllers.bookings.unsubscription', name: @booking.event.user.first_name)
     redirect_to user_path(current_user)
   end

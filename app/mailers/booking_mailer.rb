@@ -21,4 +21,11 @@ class BookingMailer < ApplicationMailer
     @event = booking.event
     mail(to: @booking.user.email, subject: t('booking_mailer.reimbursement_status.subject', organizer: @event.user.first_name.capitalize, event_name: @event.name))
   end
+
+  def waiting_list(participant, event)
+    @greeting = "Hi"
+    @event = event
+    @participant = participant
+    mail(to: @participant.email, subject: t('booking_mailer.waiting_list.subject', event_name: @event.name))
+  end
 end
