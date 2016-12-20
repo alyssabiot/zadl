@@ -2,14 +2,6 @@
 <% content_for :meta_description, "Don't Paddle, ZA:DL !" %>
 <% content_for :meta_image, @event.photo.url %>
 
-<%= avatar_large(current_user) %>
-
-<% if current_user %>
-  <% if current_user.photo.present? %>
-      <%= cl_image_tag(current_user.photo, height: 100, width: 100, crop: :fill, gravity: :face, class: "avatar-large-bis") %>
-  <% end %>
-<% end %>
-
 <div class="event-banner text-center flex-container center" style="background-image: linear-gradient(-915deg, rgba(124, 152, 179, 0.84) 0%, rgba(232, 179, 179, 0.82) 85%), url('<%= url_photo(@event) %>');">
   <div class="title-event flex-item">
     <h1><%= @event.name %></h1>
@@ -351,7 +343,7 @@
     <div class="col-xs-12 col-sm-3">
       <!-- photo de l'admin -->
       <%= link_to user_path(@event.user), class: "event-organizer-container flex-center-column" do %>
-        <div><%= avatar(@event.user, class: "avatar-large") %></div>
+        <div><%= avatar_large(@event.user) %></div>
         <p><%= t('events.show.organized_by', name: @event.user.first_name) %></p>
       <% end %>
     </div>
@@ -428,7 +420,7 @@
           <div class="participant_card">
             <% if participant %>
               <%= link_to user_path(participant) do %>
-                <div><%= avatar(participant, class: "avatar-medium") %></div>
+                <div><%= avatar_medium(participant) %></div>
                 <div class="text-center"><%= participant.first_name %></div>
               <% end %>
             <% else  %>
@@ -437,18 +429,18 @@
                 <!-- Le current user n'a pas de booking pour l'event -->
                 <% if booking_find_by_user_and_event(current_user, @event) == "No booking" %>
                   <div class = "subscribe-link" id="popover" data-placement="top" data-trigger="hover" data-content="<%= t('events.show.popover') %>">
-                    <div><%= avatar(participant, class: "avatar-medium") %></div>
+                    <div><%= avatar_medium(participant) %></div>
                     <div><p> <%= "..." %> </p></div>
                   </div>
                 <!-- Le current user a un booking (même annulé - WIP) -->
                 <% else %>
-                  <div><%= avatar(participant, class: "avatar-medium") %></div>
+                  <div><%= avatar_medium(participant) %></div>
                   <div><p> <%= "..." %> </p></div>
                 <% end %>
               <!-- il n'y a pas de current user -->
               <% else %>
                 <div class = "subscribe-link" id="popover" data-trigger="hover" data-content=<%= t('events.show.popover') %>>
-                  <div><%= avatar(participant, class: "avatar-medium") %></div>
+                  <div><%= avatar_medium(participant) %></div>
                   <div><p> <%= "..." %> </p></div>
                 </div>
               <% end %>
@@ -504,7 +496,7 @@
           <div class="col-xs-12 col-sm-3">
             <!-- Partie Gauche avatar -->
             <%= link_to user_path(booking.user), class: "flex-center-column" do %>
-              <div><%= avatar(booking.user, class: "avatar-large") %>
+              <div><%= avatar_large(booking.user) %>
               </div>
               <p> <%= t('events.show.cancelled_by', name: booking.user.first_name) %></p>
             <% end %>

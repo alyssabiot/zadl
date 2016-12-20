@@ -1,7 +1,7 @@
 <div class="container">
   <div class="text-center">
     <h2> <%= @user.first_name %> <%= @user.last_name %> </h2>
-    <div> <%= avatar(@user, class: "avatar-large") %> </div>
+    <div> <%= avatar_large(@user) %> </div>
   </div>
   <!-- Cas où current user est sur sa propre page de profil -->
   <% if @user == current_user %>

@@ -1,26 +1,43 @@
 module ApplicationHelper
-  def avatar(user, options = { height: 1000, width: 1000, crop: :fill, gravity: :face })
-    options_min = options.except!(:crop, :gravity)
-    if user.nil?
-      image_tag "rest.jpg", options_min
-    elsif user.photo.present?
-      cl_image_tag(user.photo, options)
-    elsif user.facebook_picture_url.present?
-      image_tag user.facebook_picture_url, options_min
-    else
-      image_tag "default-profile.png", options_min
-    end
+  def avatar(user)
+   if user.photo.present?
+     cl_image_tag(current_user.photo, height: 38, width: 38, crop: :fill, gravity: :face, class: "avatar")
+   elsif user.facebook_picture_url.present?
+     image_tag user.facebook_picture_url, height: 38, width: 38, crop: :fill, gravity: :face, class: "avatar"
+   else
+     image_tag "default-profile.png", height: 38, width: 38, class: "avatar"
+   end
   end
 
   def avatar_large(user)
-   if user.nil?
-     image_tag "rest.jpg", height: 100, width: 100, class: "avatar-large-bis"
-   elsif user.photo.present?
-     cl_image_tag(current_user.photo, height: 100, width: 100, crop: :fill, gravity: :face, class: "avatar-large-bis")
+   if user.photo.present?
+     cl_image_tag(current_user.photo, height: 100, width: 100, crop: :fill, gravity: :face, class: "avatar-large")
    elsif user.facebook_picture_url.present?
-     image_tag user.facebook_picture_url
+     image_tag user.facebook_picture_url, height: 100, width: 100, crop: :fill, gravity: :face, class: "avatar-large"
    else
-     image_tag "default-profile.png"
+     image_tag "default-profile.png", height: 100, width: 100, class: "avatar-large"
+   end
+  end
+
+  def avatar_medium(user)
+    if user.nil?
+      image_tag "rest.jpg", height: 60, width: 60, class: "avatar-medium"
+    elsif user.photo.present?
+      cl_image_tag(current_user.photo, height: 60, width: 60, crop: :fill, gravity: :face, class: "avatar-medium")
+    elsif user.facebook_picture_url.present?
+      image_tag user.facebook_picture_url, height: 60, width: 60, crop: :fill, gravity: :face, class: "avatar-medium"
+    else
+      image_tag "default-profile.png", height: 60, width: 60, class: "avatar-medium"
+   end
+  end
+
+  def avatar_dropdown(user)
+   if user.photo.present?
+     cl_image_tag(current_user.photo, height: 38, width: 38, crop: :fill, gravity: :face, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown")
+   elsif user.facebook_picture_url.present?
+     image_tag user.facebook_picture_url, height: 38, width: 38, crop: :fill, gravity: :face, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"
+   else
+     image_tag "default-profile.png", height: 38, width: 38, class: "avatar dropdown-toggle"
    end
   end
 
