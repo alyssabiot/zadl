@@ -43,7 +43,7 @@ module ApplicationHelper
 
   def url_photo(event)
     if event.photo.present?
-      cl_image_path event.photo
+      cl_image_path event.photo, crop: :fill, gravity: :south
     else
       image_path "default-event.png"
     end
