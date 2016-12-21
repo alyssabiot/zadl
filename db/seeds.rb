@@ -89,6 +89,7 @@ booking1.user = user7
 booking1.on_waiting_list = false
 booking1.cancelled = false
 booking1.cancellation_message = nil
+booking1.state = "paid"
 booking1.save!
 
 booking2 = Booking.new()
@@ -97,6 +98,7 @@ booking2.user = user1
 booking2.on_waiting_list = false
 booking2.cancelled = false
 booking2.cancellation_message = nil
+booking2.state = "paid"
 booking2.save!
 
 booking3 = Booking.new()
@@ -105,6 +107,7 @@ booking3.user = user3
 booking3.on_waiting_list = false
 booking3.cancelled = false
 booking3.cancellation_message = nil
+booking3.state = "paid"
 booking3.save!
 
 booking4 = Booking.new()
@@ -113,6 +116,7 @@ booking4.user = user4
 booking4.on_waiting_list = false
 booking4.cancelled = false
 booking4.cancellation_message = nil
+booking4.state = "paid"
 booking4.save!
 
 booking5 = Booking.new()
@@ -121,6 +125,7 @@ booking5.user = user5
 booking5.on_waiting_list = false
 booking5.cancelled = false
 booking5.cancellation_message = nil
+booking5.state = "paid"
 booking5.save!
 
 booking6 = Booking.new()
@@ -129,6 +134,7 @@ booking6.user = user6
 booking6.on_waiting_list = false
 booking6.cancelled = false
 booking6.cancellation_message = nil
+booking6.state = "paid"
 booking6.save!
 
 booking7 = Booking.new()
@@ -137,6 +143,7 @@ booking7.user = user8
 booking7.on_waiting_list = false
 booking7.cancelled = false
 booking7.cancellation_message = nil
+booking7.state = "paid"
 booking7.save!
 
 booking8 = Booking.new()
@@ -145,6 +152,7 @@ booking8.user = user9
 booking8.on_waiting_list = false
 booking8.cancelled = false
 booking8.cancellation_message = nil
+booking8.state = "paid"
 booking8.save!
 
 booking9 = Booking.new()
@@ -153,6 +161,7 @@ booking9.user = user10
 booking9.on_waiting_list = false
 booking9.cancelled = false
 booking9.cancellation_message = nil
+booking9.state = "paid"
 booking9.save!
 
 booking10 = Booking.new()
@@ -161,6 +170,7 @@ booking10.user = user11
 booking10.on_waiting_list = false
 booking10.cancelled = false
 booking10.cancellation_message = nil
+booking10.state = "paid"
 booking10.save!
 
 booking11 = Booking.new()
@@ -169,6 +179,7 @@ booking11.user = user12
 booking11.on_waiting_list = false
 booking11.cancelled = false
 booking11.cancellation_message = nil
+booking11.state = "paid"
 booking11.save!
 
 message1 = Message.new(content: "Au top !")
@@ -189,8 +200,8 @@ message2.save!
 event2 = Event.new(location:"La Trinité-sur-Mer", price: 70)
 event2.name = "WE Voile entre potes"
 event2.description = "Du Tour de Houat à Belle-Ile, venez profiter de l'air marin entre amis le temps d'un weekend !"
-event2.starts_at = DateTime.new(2017,05,25,10,00,00)
-event2.ends_at = DateTime.new(2017,05,28,19,00,00)
+event2.starts_at = DateTime.new(2017,9,16,19,00,00)
+event2.ends_at = DateTime.new(2017,9,19,23,00,00)
 event2.user = user2
 event2.max_participants = 5
 event2.notif_subscription = true
@@ -205,6 +216,7 @@ booking12.user = user2
 booking12.on_waiting_list = false
 booking12.cancelled = false
 booking12.cancellation_message = nil
+booking12.state = "paid"
 booking12.save!
 
 booking13 = Booking.new()
@@ -213,6 +225,7 @@ booking13.user = user5
 booking13.on_waiting_list = false
 booking13.cancelled = false
 booking13.cancellation_message = nil
+booking13.state = "paid"
 booking13.save!
 
 booking14 = Booking.new()
@@ -221,6 +234,7 @@ booking14.user = user3
 booking14.on_waiting_list = false
 booking14.cancelled = false
 booking14.cancellation_message = nil
+booking14.state = "paid"
 booking14.save!
 
 booking15 = Booking.new()
@@ -229,6 +243,7 @@ booking15.user = user1
 booking15.on_waiting_list = false
 booking15.cancelled = true
 booking15.cancellation_message = "Je ne pourrai finalement pas venir, je pars au Wagon Tokyo :)"
+booking15.state = "paid"
 booking15.save!
 
 event3 = Event.new(location:"16 villa gaudelet - 75011 Paris", price: 20)
@@ -250,6 +265,7 @@ booking16.user = user9
 booking16.on_waiting_list = false
 booking16.cancelled = false
 booking16.cancellation_message = nil
+booking16.state = "paid"
 booking16.save!
 
 booking17 = Booking.new()
@@ -258,6 +274,7 @@ booking17.user = user10
 booking17.on_waiting_list = false
 booking17.cancelled = false
 booking17.cancellation_message = nil
+booking17.state = "paid"
 booking17.save!
 
 booking18 = Booking.new()
@@ -266,6 +283,7 @@ booking18.user = user7
 booking18.on_waiting_list = false
 booking18.cancelled = false
 booking18.cancellation_message = nil
+booking18.state = "paid"
 booking18.save!
 
 booking19 = Booking.new()
@@ -274,6 +292,7 @@ booking19.user = user5
 booking19.on_waiting_list = false
 booking19.cancelled = false
 booking19.cancellation_message = nil
+booking19.state = "paid"
 booking19.save!
 
 booking20 = Booking.new()
@@ -282,4 +301,54 @@ booking20.user = user2
 booking20.on_waiting_list = true
 booking20.cancelled = false
 booking20.cancellation_message = nil
+booking20.state = "paid"
 booking20.save!
+
+event4 = Event.new(location:"16 villa gaudelet - 75011 Paris", price: 10)
+event4.name = "diner en tête à tête"
+event4.description = "Pour les amoureux de la bouffe"
+event4.starts_at = DateTime.new(2017,12,10,10,00,00)
+event4.ends_at = DateTime.new(2017,12,11,23,00,00)
+event4.user = user2
+event4.max_participants = 3
+event4.notif_subscription = true
+event4.notif_cancellation = true
+event4.notif_message = true
+event4.withdrawed = false
+event4.save!
+
+booking21 = Booking.new()
+booking21.event = event4
+booking21.user = user2
+booking21.on_waiting_list = false
+booking21.cancelled = false
+booking21.cancellation_message = nil
+booking21.state = "paid"
+booking21.save!
+
+booking22 = Booking.new()
+booking22.event = event4
+booking22.user = user1
+booking22.on_waiting_list = false
+booking22.cancelled = false
+booking22.cancellation_message = nil
+booking22.state = "paid"
+booking22.save!
+
+booking23 = Booking.new()
+booking23.event = event4
+booking23.user = user3
+booking23.on_waiting_list = false
+booking23.cancelled = false
+booking23.cancellation_message = nil
+booking23.state = "paid"
+booking23.save!
+
+booking24 = Booking.new()
+booking24.event = event4
+booking24.user = user4
+booking24.on_waiting_list = true
+booking24.cancelled = false
+booking24.cancellation_message = nil
+booking24.state = "pending"
+booking24.save!
