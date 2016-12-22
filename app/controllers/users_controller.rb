@@ -26,6 +26,8 @@ class UsersController < ApplicationController
     @bookings_archived = @bookings_archived_not_sorted.sort_by { |booking| booking.event.starts_at }
     # Events non annulés organisés par @user triés par dte de création
     @events_organized = @user.events.where("events.active = ?", true).sort_by { |event| event.created_at }
+    # Tous les bookings en cours de l'user (hors annulés et liste d'attente)
+    @events_participated = @user.bookings.joins(:event).where("events.active = ? AND bookings.cancelled = ? AND bookings.state = ?", true, false, 'paid').sort_by { |event| event.created_at }
   end
 
   private

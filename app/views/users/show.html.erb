@@ -48,23 +48,27 @@
           <h3 class= "border-bottom"> <%= t('users.show.block-organizer-title')%> </h3>
           <div class = "info">
             <div class="icon"><i class="fi-megaphone"></i></div>
-            <div> <%= t('users.show.organized-activity_html', number: @events_organized.size)%></div>
+            <div> <%= t('users.show.organized-activity_html', count: @events_organized.size)%></div>
           </div>
-          <div class = "info">
-            <div class="icon"><i class="fi-clock"></i></div>
-            <div> <%= t('users.show.last-organized-activity_html', date: time_ago_in_words(@events_organized.last.created_at))%></div>
-          </div>
+          <% if @events_organized.size > 0 %>
+            <div class = "info">
+              <div class="icon"><i class="fi-clock"></i></div>
+              <div> <%= t('users.show.last-organized-activity_html', date: time_ago_in_words(@events_organized.last.created_at))%></div>
+            </div>
+          <% end %>
         </div>
         <div class="block-participant container-list">
           <h3 class= "border-bottom"> <%= t('users.show.block-participant-title')%> </h3>
           <div class = "info">
             <div class="icon"><i class="fi-ticket"></i></div>
-            <div> <%= t('users.show.participated-activity_html', number: @events_organized.size)%> </div>
+            <div> <%= t('users.show.participated-activity_html', count: @events_participated.size)%> </div>
           </div>
-          <div class = "info">
-            <div class="icon"><i class="fi-clock"></i></div>
-            <div> <%= t('users.show.last-participated-activity_html', date: time_ago_in_words(@events_organized.last.created_at))%> </div>
-          </div>
+          <% if @events_participated.size > 0 %>
+            <div class = "info">
+              <div class="icon"><i class="fi-clock"></i></div>
+              <div> <%= t('users.show.last-participated-activity_html', date: time_ago_in_words(@events_participated.last.created_at))%> </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
