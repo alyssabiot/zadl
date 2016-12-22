@@ -165,10 +165,16 @@ en:
       on-zadl-since_html: "Zadler since <intense>%{date}</intense>"
       block-organizer-title: "Organizer profile"
       block-participant-title: "Participant profile"
-      organized-activity_html: "<intense>%{number} events</intense> organized"
+      organized-activity_html:
+        zero: "No activity organized <intense>so far</intense>"
+        one: "<intense>1 activity</intense> organized"
+        other: "<intense>%{count} events</intense> organized"
       average-number-organizer: "<intense>%{number} participants</intense> in average"
       last-organized-activity_html: "Last event created <intense>%{date}</intense> ago"
-      participated-activity_html: "Participated <intense>%{number} events</intense>"
+      participated-activity_html:
+        zero: "No participations <intense>so far</intense>"
+        one: "<intense>1 event</intense> attended"
+        other: "<intense>%{count} events</intense> attended"
       last-participated-activity_html: "Last event participated <intense>%{date}</intense> ago"
       average-number-participant: "<intense>%{number} participants</intense> in average"
       event-banner:
