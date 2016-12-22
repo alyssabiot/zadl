@@ -145,9 +145,9 @@
       }
     }
     // Hauteur de la photo de l'event
-    // .event-photo {
-    //   height: 40vh;
-    // }
+    .event-photo {
+      height: 40vh;
+    }
     // Infos à droite de l'icone
     .event-calendar-mq, .event-participants-mq, .event-organizer-mq {
       display: flex;
@@ -199,13 +199,13 @@
     // Photo de l'event à gauche ou au dessous
     .photo-info-box {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
     }
     .event-photo-mq {
       flex: 0 0 40vh;
     }
     .event-box-right {
-      flex: 1 0 auto;
+      flex: 1 0 0;
       padding-left: 30px;
     }
     // Boites à droite de la photo
@@ -271,13 +271,13 @@
     // Photo de l'event à gauche
     .photo-info-box {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
     }
     .event-photo-mq {
       flex: 0 0 40vh;
     }
     .event-box-right {
-      flex: 1 0 auto;
+      flex: 1 0 0;
       padding-left: 30px;
     }
     // Boites à droite de la photo
@@ -362,13 +362,13 @@
     // Photo de l'event à gauche
     .photo-info-box {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
     }
     .event-photo-mq {
       flex: 0 0 40vh;
     }
     .event-box-right {
-      flex: 1 0 auto;
+      flex: 1 0 0;
       padding-left: 30px;
     }
     // Boites à droite de la photo
