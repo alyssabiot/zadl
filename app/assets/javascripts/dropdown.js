@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  if (window.matchMedia("(min-width: 600px)").matches) {
     $('.dropdown').hover(
         function() {
             $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn();
@@ -15,5 +14,4 @@ $(document).ready(function () {
         function() {
             $(this).stop(true, true).delay(200).fadeOut();
         });
-  }
 });
