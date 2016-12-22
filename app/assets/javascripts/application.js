@@ -28,6 +28,8 @@ $(function () {
   });
 });
 
-
+dataConfirmModal.setDefaults({
+    title: "Annulation d'activité"
+});
 
 
