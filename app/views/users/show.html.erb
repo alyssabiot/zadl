@@ -39,9 +39,35 @@
     <% end %>
   <!-- Cas où current user est sur la page de profil d'un autre user -->
   <% else %>
-    <% @user.events.each do |event| %>
-      <%= render "event-banner", event: event %>
-    <% end %>
+    <div class="profile-stats">
+      <div class="bandeau-rose">
+        <%= t('users.show.on-zadl-since_html', date: time_ago_in_words(@user.created_at))%>
+      </div>
+      <div class="blocks">
+        <div class="block-organizer container-list">
+          <h3 class= "border-bottom"> <%= t('users.show.block-organizer-title')%> </h3>
+          <div class = "info">
+            <div class="icon"><i class="fi-megaphone"></i></div>
+            <div> <%= t('users.show.organized-activity_html', number: @events_organized.size)%></div>
+          </div>
+          <div class = "info">
+            <div class="icon"><i class="fi-clock"></i></div>
+            <div> <%= t('users.show.last-organized-activity_html', date: time_ago_in_words(@events_organized.last.created_at))%></div>
+          </div>
+        </div>
+        <div class="block-participant container-list">
+          <h3 class= "border-bottom"> <%= t('users.show.block-participant-title')%> </h3>
+          <div class = "info">
+            <div class="icon"><i class="fi-ticket"></i></div>
+            <div> <%= t('users.show.participated-activity_html', number: @events_organized.size)%> </div>
+          </div>
+          <div class = "info">
+            <div class="icon"><i class="fi-clock"></i></div>
+            <div> <%= t('users.show.last-participated-activity_html', date: time_ago_in_words(@events_organized.last.created_at))%> </div>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
 
