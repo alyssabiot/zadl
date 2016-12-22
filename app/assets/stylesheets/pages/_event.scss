@@ -2,6 +2,7 @@
   height: 40vh !important;
   justify-content: center;
   background-size: cover !important;
+  background-position: center center;
   color: white;
   position: relative;
 }
@@ -292,6 +293,8 @@ h3 {
 .photo-forum {
   margin-top: 30px;
   margin-bottom: 30px;
+  background-size: cover !important;
+  background-position: center center;
 }
 // .fa-users{
 //   font-size: 80px;
