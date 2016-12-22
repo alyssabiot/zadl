@@ -57,7 +57,7 @@
             <%=link_to t('users.show.event-banner.edit'), edit_event_path(event), class: "btn btn-danger" %>
           </div>
           <div class="delete-link half-width">
-            <%= link_to t('users.show.event-banner.delete'), event_path(event), method: :delete%>
+            <%= link_to t('users.show.event-banner.delete'), event_path(event), data: { title: t('users.show.event-banner.delete-title'), confirm: t('users.show.event-banner.delete-question'), commit: t('users.show.event-banner.delete-yes'), cancel: t('users.show.event-banner.delete-no') }, method: :delete%>
           </div>
         </div>
       </div>

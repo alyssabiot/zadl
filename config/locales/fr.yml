@@ -151,6 +151,10 @@ fr:
       duplicate_confirm: "Confirmer la date et créer l'activité"
       no_places_left: "Activité complète"
       popover: "Cliquer ici pour s'inscrire !"
+      delete-title: "Annulation d'activité"
+      delete-question: "Etes-vous sûr de vouloir annuler votre activité ? Un message sera envoyé aux participants."
+      delete-yes: "Oui"
+      delete-no: "Non"
 
   users:
     show:
@@ -187,6 +191,10 @@ fr:
         unsubscribe_title: "Envoyez un message d'explication à %{organizer}"
         money_collected: "Cagnotte collectée - Fermée à l'inscription"
         send: "Confirmer et envoyer le message"
+        delete-title: "Annulation d'activité"
+        delete-question: "Etes-vous sûr de vouloir annuler votre activité ? Un message sera envoyé aux participants."
+        delete-yes: "Oui"
+        delete-no: "Non"
 
   user_mailer:
     welcome:

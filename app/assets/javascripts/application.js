@@ -8,6 +8,7 @@
 //= require gmaps/google
 //= require typed
 //= require clipboard
+//= require data-confirm-modal
 //= require_tree ./vendor/
 //= require_tree .
 
