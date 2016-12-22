@@ -108,6 +108,11 @@
     background-size: cover;
   }
 
+  .event-photo {
+    background-size: cover !important;
+    background-position: center center;
+  }
+
   .calendar {
     flex: 1 0 auto;
   }
