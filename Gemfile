@@ -32,6 +32,7 @@ gem 'devise-i18n'
 gem 'date_validator'
 gem 'stripe'
 gem 'icalendar'
+gem 'data-confirm-modal'
 
 gem 'geocoder'
 gem 'coffee-rails'

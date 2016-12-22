@@ -151,6 +151,10 @@ en:
       duplicate_confirm: "Confirm the date and create your activity"
       no_places_left: "No places left"
       popover: "Click here to subscribe!"
+      delete-title: "Event cancellation"
+      delete-question: "Are you sure you want to cancel your event? A message will be send to the participants."
+      delete-yes: "Yes"
+      delete-no: "No"
 
   users:
     show:

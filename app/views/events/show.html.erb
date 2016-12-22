@@ -126,7 +126,7 @@
           <% else %>
             <div class="right-bottom">
               <%=link_to t('events.show.edit'), edit_event_path(@event), class: "btn btn-danger" %>
-              <%= link_to t('events.show.cancel'), event_path(@event), method: :delete, class: "margin margin-sides link_admin" %>
+              <%= link_to t('events.show.cancel'), event_path(@event), data: { title: t('events.show.delete-title'), confirm: t('events.show.delete-question'), commit: t('events.show.delete-yes'), cancel: t('events.show.delete-no') }, method: :delete, class: "margin margin-sides link_admin", id: "delete-event" %>
               <%= link_to '#', data: {toggle: "modal", target: "#ModalDupplicate"}, class: "margin margin-sides link_admin" do %>
                 <%=  t('events.show.duplicate')%>
               <% end %>
