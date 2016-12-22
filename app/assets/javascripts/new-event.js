@@ -8,5 +8,4 @@ $(document).ready(function() {
     $('.form-part').addClass('hidden');
     $(this).parent().parent().prev().fadeIn().removeClass('hidden')
   });
-
 });
