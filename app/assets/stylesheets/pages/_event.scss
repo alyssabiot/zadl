@@ -47,26 +47,6 @@
   font-size: 20px;
 }
 
-
-// @media (max-width: 800px) {
-//   .event-calendar-bs {
-//     display: flex;
-//     justify-content: space-around;
-//     align-items: center;
-//   }
-//   .event-participants-bs {
-//     display: flex;
-//     justify-content: space-around;
-//     align-items: center;
-//   }
-//   .event-status-bs {
-//     display: flex;
-//     justify-content: space-around;
-//     align-items: center;
-//   }
-// }
-
-
 .title-event h1{
   margin-top: 0px !important;
   margin-bottom: 0px !important;
@@ -98,32 +78,95 @@
   }
 }
 
-@media (max-width: 600px) {
-  .calendar-ebs {
+// media queries sur l'event box
+
+.event-banner-event-show {
+  // all screen sizes {
+  .icon-event-show {
+    color: $red;
+  }
+  .item-event-show {
+    text-align: left;
+  }
+  .price {
     display: flex;
-    justify-content: space-around;
     align-items: center;
   }
 
-  .price-ebs {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  // smart-phones (xs)
+  @media (max-width: $screen-sm-min) {
+    .calendar-box, .description-box, .price-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .icon-event-show {
+      width: 82px;
+      flex: 0 0 30%;
+    }
+    .item-event-show {
+      flex: 0 0 70%;
+      text-align: left;
+    }
+    h1 {
+      font-size: 30px;
+      margin: 0px;
+    }
   }
-
-  .description-ebs {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    p {
-      max-width:150px;
+  // tablettes (sm)
+  @media (min-width: $screen-sm-min) and (max-width: $screen-md-min) {
+    .calendar-box, .description-box, .price-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .icon-event-show {
+      width: 82px;
+      flex: 0 0 30%;
+    }
+    .item-event-show {
+      flex: 0 0 70%;
+      text-align: left;
+    }
+    h1 {
+      font-size: 30px;
+      margin: 0px;
     }
   }
 
-  .container-list {
-    margin: 5px;
+  // small, large and extra-large laptops (md, lg & xl)
+
+  @media (min-width: $screen-md-min) {
+    .top-boxes {
+      display: flex;
+      justify-content: space-between;
+      align-items: top;
+    }
+    .calendar-box {
+      flex: 0 0 25%;
+    }
+    .description-box {
+     flex: 1 0 0;
+    }
+    .price-box {
+      flex: 0 0 20%;
+    }
+    .icon-event-show {
+      text-align: center;
+    }
+    .item-event-show {
+      text-align: left;
+    }
+    .price {
+     text-align: center !important;
+    }
+    h1 {
+      font-size: 30px;
+      margin: 0px;
+    }
   }
 }
+
 
 .flex-container{
   padding: 0;
@@ -140,7 +183,6 @@
 
 .flex-item {
   text-align: center;
-
 }
 
 .center {
@@ -149,7 +191,6 @@
 }
 
 .event-url {
-  // border: 1px solid $light-gray;
   font-size: 16px;
   border-radius: 5px;
   margin-right: 5px;
@@ -296,12 +337,3 @@ h3 {
   background-size: cover !important;
   background-position: center center;
 }
-// .fa-users{
-//   font-size: 80px;
-// }
-
-
-
-// box-shadow: 0 3px 13px 0 rgba(0,0,0,0.07);
-
-
